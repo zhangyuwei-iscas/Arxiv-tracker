@@ -1,19 +1,19 @@
-categories: ["cs.CV", "cs.LG", "cs.AI"]
+categories: ["cs.SE", "cs.DB", "cs.AI", "cs.PL", "cs.OS", "cs.AR"]
 keywords:
-  - "open vocabulary"
-  - "open-vocabulary"
-  - "open vocabulary segmentation"
-  - "open-vocabulary segmentation"
-  - "vision language model"
-  - "training-free"
-  - "training free"
+  - "agent trajectory analysis"
+  - "security of agent skills"
+  - "code generation"
+  - "bug fixing"
+  - "database testing"
+  - "RISC-V software"
+  - "neuro-symbol"
 
 # exclude_keywords: # 选择排除的关键词
 #   - "Large Language Model"
 #   - "LLM"
   
 logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 30
+max_results: 50
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 
@@ -45,8 +45,8 @@ email:
 llm:
   provider: "openai-compatible"     # 兼容 OpenAI SDK 的服务
   # 硅基流动的版本
-  base_url: "https://api.siliconflow.cn"
-  model: "Qwen/Qwen2.5-7B-Instruct"
+  base_url: "https://open.bigmodel.cn/api/coding/paas/v4/"
+  model: "glm-5.3[1m]"
   api_key_env: "OPENAI_COMPAT_API_KEY"
   # Deepseek的版本
   # base_url: "https://api.deepseek.com"
