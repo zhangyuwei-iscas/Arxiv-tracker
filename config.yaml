@@ -3,6 +3,7 @@ keywords:
   - "agent trajectory analysis"
   - "security of agent skills"
   - "code generation"
+  - "software testing"
   - "bug fixing"
   - "database testing"
   - "RISC-V software"
@@ -39,7 +40,7 @@ email:
   detail: "full"  # simple / full
   max_items: 30
   attach_md: true  # 是否开启Markdown附件
-  attach_pdf: false  # 是否开启PDF附件
+  attach_pdf: true  # 是否开启PDF附件
 
 # —— LLM（DeepSeek/OpenAI 兼容） ——
 llm:
@@ -71,7 +72,7 @@ translate:
   fields: ["title", "summary"]   # 可扩：["title","summary","comments"]
 
 site:
-  enabled: true
+  enabled: false
   dir: "docs" 
   title: "arXiv 论文速递"
   keep_runs: 1024         # 历史保留期（按页面份数）
