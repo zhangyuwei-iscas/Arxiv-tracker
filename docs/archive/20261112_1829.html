@@ -1,0 +1,1062 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-12 18:29</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261112_1829</div>
+    <div class="row"><div class="card">
+<div class="title">One Policy for 100 Household Tasks: Our Solution for the 2026 BEHAVIOR Challenge</div>
+<div class="meta-line">Authors: Ilia Larchenko, Gleb Zarin, Atindra Nair, Keerti Manney, Vitaly Kleban, Mirko Kiefer, Anjana Yodaiken</div>
+<div class="meta-line">First: 2026-11-10T18:06:16+00:00 · Latest: 2026-11-10T18:06:16+00:00</div>
+<div class="meta-line">Comments: Code: https://github.com/Robot-Learning-Collective/behavior-1k-solution-2026 ; checkpoint: https://huggingface.co/IliaLarchenko/BEHAVIOR2026VLA ; project page: https://robot-learning-collective.github.io/behavior-1k-2026/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14432v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14432v1">PDF</a> · <a href="https://github.com/Robot-Learning-Collective/behavior-1k-solution-2026">Code1</a> · <a href="https://huggingface.co/IliaLarchenko/BEHAVIOR2026VLA">Code2</a> · <a href="https://huggingface.co/huggingface">Code3</a> · <a href="https://robot-learning-collective.github.io/behavior-1k-2026/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator. We placed 9th on the final leaderboard, the only independent team in the top 10. The core of the solution is a single vision-language-action (VLA) model, one checkpoint for all 100 tasks, built on our 1st-place 2025 solution, which is based on $π_{0.5}$. On the 50 tasks shared with 2025, its Q rises from 0.260 to 0.371; across all 100 tasks it scores 0.392. Our main conclusion from 2025 was that the model was undertrained, so most of the 2026 work went into training the model for longer, optimizing some training parameters, making each training step slightly faster and reducing the gradient noise: a migration from 50 to 100 tasks (semantic stages built from the demonstrations&#x27; skill annotations, task and stage embeddings of new tasks warm-started from similar old ones, and a 21-dimensional action space matching the teleoperation controls); variance-reduced multi-sample flow matching with a simple noise-vs-compute model that picks the number of action-expert samples per observation without ablations; and a 200k-step training run, about one pass over the 211M frames of the demonstrations. A cloud evaluation infrastructure keeps a shared record with provenance, episode diagnostics and restorable simulator states, and runs six simulators on one GPU together faster than real time. On top of the learned policy, 14 tasks are routed to a GPT-6 Astra coding agent that controls the robot through observation and motion tools, starting every episode from a frozen copy of its own practice session on training instances. Across these 14 tasks, Astra&#x27;s mean Q is 0.639, against 0.108 for the learned policy. The public submission included only part of the Astra results and scored 0.446 Q with 27.3% full-task success.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We describe our solution for the 2026 BEHAVIOR Challenge: 100 long-horizon household tasks in the OmniGibson simulator.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Evaluating LLM-Generated World Models for Neuro-Symbolic Reasoning</div>
+<div class="meta-line">Authors: Souhaila Djaffal, Amna Jamal, Gagana Madhugiri Devaraja, Anidipta Pal, Jobst Heitzig</div>
+<div class="meta-line">First: 2026-11-10T17:58:12+00:00 · Latest: 2026-11-10T17:58:12+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14419v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14419v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Formal world models can support planning, verification, and safety reasoning, but constructing them from open-ended natural-language situations is difficult, particularly in multi-agent settings where several formalizations may be plausible. We study whether five LLMs can generate such world models as partially observable stochastic games and whether mechanical validity is sufficient to establish that the resulting model faithfully represents the intended decision problem. We introduce a benchmark of 44 scenarios spanning game, situational, and cultural settings and evaluate generated world models along three dimensions: mechanical validity, reference-relative structural agreement, and semantic criteria. Across three empirical tracks, we analyze 410 first-pass generations. In the reference-backed game track, 134/135 generated world models pass a strict mechanical audit, yet mean permutation-invariant structural F1 is only 0.366, with just 28/134 mechanically valid models exactly matching the authored reference. In the cultural track, explicitly naming the country changes the generated structural representation for most LLMs while producing only small changes in automated semantic scores. These results show that executability is a necessary but insufficient criterion for LLM-generated world models: models that are mechanically valid can still differ substantially in the structure used by downstream neuro-symbolic reasoning and planning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Formal world models can support planning, verification, and safety reasoning, but constructing them from open-ended natural-language situations is difficult, particularly in multi-agent settings where several formalizations may be plausible.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">When Should Diffusion Language Models Reconsider Their Commitments?</div>
+<div class="meta-line">Authors: Haoyang Zheng, Yidong Ouyang, Blake Jianhang Chen, Tian Tan, Ziqian Lin, Liqian Peng, Alec Go, Guang Lin</div>
+<div class="meta-line">First: 2026-11-08T18:49:48+00:00 · Latest: 2026-11-10T17:21:23+00:00</div>
+<div class="meta-line">Comments: This paper is being withdrawn because agreement has not yet been reached regarding Google&#x27;s authorization for its public release</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.11551v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.11551v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Masked Diffusion Models (MDMs) are well known for fast text generation via parallel decoding. However, independent parallel sampling can commit to inconsistent predictions, and less is known about how to selectively revise these early token commitments. In this work, we introduce $\underline{\mathrm{P}}$lanned $\underline{\mathrm{U}}$nmasking-and-$\underline{\mathrm{R}}$evision Joint $\underline{\mathrm{L}}$earning (PURL) for MDMs, a training-based framework that seamlessly unifies parallel generation with selective token revision. We derive a normalized joint transition whose likelihood factorizes into edit selection, unmask selection, and token prediction. These components are trained jointly on partially masked sequences constructed according to the model&#x27;s own unmasking policy. During inference, all three decisions are supported by a single shared forward pass, enabling the model to decode masked tokens and revise noisy tokens. Across logic puzzles, mathematical reasoning, and code generation, PURL improves accuracy at matched unmask budgets, with relative gains up to 47.4% accuracy improvement and up to an $8\times$ reduction in scheduled decoding rounds. Beyond these gains, our analysis further reveals general principles of revisable decoding: token edits become more effective as context accumulates; early edits can steer unfinished trajectories, whereas later edits tend to remain localized; and effective edits therefore depend on both calibrating when to intervene and learning where and how to revise. Together, these suggest that effective parallel generation depends not on revising more tokens, but on making the right commitments revisable at the right time.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Masked Diffusion Models (MDMs) are well known for fast text generation via parallel decoding.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">EngineAgent: Agentizing On-Device LLM Inference Engines with Inference Stack Hierarchy Awareness and Hardware Abilities</div>
+<div class="meta-line">Authors: Zhengxiang Huang, Yujie Sun, Shengheng Chen, Zhaode Wang, Chaoyue Niu, Zeyu Zhao, Chengfei Lv, Fan Wu, Guihai Chen</div>
+<div class="meta-line">First: 2026-11-10T17:16:47+00:00 · Latest: 2026-11-10T17:16:47+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14356v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14356v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Rapidly evolving LLM architectures and heterogeneous mobile hardware make supporting new models in on-device inference engines a recurring and costly system challenge. Each model may require coordinated changes across conversion, graph construction, operators, and hardware backends. Existing coding agents often miss these cross-layer dependencies and struggle to diagnose failures across host--device execution paths. We present EngineAgent, an agentic system for automating on-device LLM model enablement. Its key insight is to separate reusable engine and hardware knowledge from model-specific implementation. Before enablement, EngineAgent constructs a hierarchy-aware engine index that captures engine abstraction layers and cross-layer dependencies, and pre-validates backend-specific build, execution, and debugging workflows using already supported models. For each new model, a builder uses this knowledge to coordinate cross-layer changes, while an auditor checks implementation completeness and drives iterative debugging through device-side validation. Across 12 tasks spanning three mobile LLMs and four engine--backend pairs on CPUs, GPUs, and NPUs, EngineAgent achieves 75% end-to-end success with either of two underlying LLMs, versus 33.3% for the strongest coding-agent baseline. Success requires compilation, on-device execution, and output-logit agreement with reference implementations. EngineAgent also reduces average per-task time and model-API cost relative to baselines using the same underlying LLMs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Rapidly evolving LLM architectures and heterogeneous mobile hardware make supporting new models in on-device inference engines a recurring and costly system challenge.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RoboMemory: A Brain-inspired Multi-memory Agentic Framework for Interactive Environmental Learning in Physical Embodied Systems</div>
+<div class="meta-line">Authors: Mingcong Lei, Honghao Cai, Yuyuan Yang, Yimou Wu, Jinke Ren, Zezhou Cui, Liangchen Tan, Junkun Hong, Gehan Hu, Shuangyu Zhu, Shaohan Jiang, Ge Wang, Junyuan Tan, Zhenglin Wan, Zhongkai Xue, Zheng Li, Zhen Li, Shuguang Cui, Yiming Zhao, Yatong Han</div>
+<div class="meta-line">Venue: CoRL 2026</div>
+<div class="meta-line">First: 2025-08-02T15:39:42+00:00 · Latest: 2026-11-10T16:20:24+00:00</div>
+<div class="meta-line">Comments: Accepted at the 10th Conference on Robot Learning (CoRL 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2508.01415v9">Abs</a> · <a href="https://arxiv.org/pdf/2508.01415v9">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Long-horizon embodied tasks require agents to learn, reason, and generalize robustly across complex real-world environments. However, existing approaches often struggle with partial observability, fragmented spatial reasoning, and inefficient integration of heterogeneous memories, limiting their capacity for long-horizon adaptation. To address this, we introduce RoboMemory, a brain-inspired framework that unifies Temporal, Spatial, Semantic, and Episodic memory for efficient long-horizon planning and interactive learning. Its core innovations are a comprehensive memory system designed for embodied tasks, and a dynamic spatial knowledge graph for scalable, consistent memory updates. Extensive experiments on EmbodiedBench show that RoboMemory improves the average success rate of Qwen2.5-VL-72B-Ins by 26.5 percentage points and achieves performance comparable to strong closed-source VLM agents. Real-world trials further suggest RoboMemory&#x27;s potential for interactive environmental learning by reusing accumulated experience across repeated task attempts.
+  These results demonstrate RoboMemory as a scalable memory-augmented framework for embodied agents, improving long-horizon planning and cumulative learning in complex interactive environments.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Long-horizon embodied tasks require agents to learn, reason, and generalize robustly across complex real-world environments.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Verifiable Agentic Traffic Class: A Policed Quality-of-Service Mechanism for Agentic AI Traffic, Evaluated from Simulation to Real-Kernel Adversarial Testing</div>
+<div class="meta-line">Authors: Naveen Babu Narayanan Nair, Sajay Kurup</div>
+<div class="meta-line">First: 2026-11-10T15:33:22+00:00 · Latest: 2026-11-10T15:33:22+00:00</div>
+<div class="meta-line">Comments: 20 pages, 3 figures, 15 tables; submitted to IEEE Access; code and data at doi:10.5281/zenodo.23865136</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14211v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14211v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Software agents built on large language models generate traffic unlike human web traffic, yet routers have no class for it and cannot verify a sender&#x27;s claim to be an agent. This paper proposes the Verifiable Agentic Traffic Class (VATC), which combines a reserved Differentiated Services Code Point (DSCP) value declaring agent traffic, a router-side classifier that demotes flows contradicting the declaration to a class served after best-effort traffic, and a rate-limited priority queue. VATC was compared with static Differentiated Services (DiffServ), a dedicated class that trusts the marking, and fq_codel, a per-flow fair-queuing scheduler, in two simulators and on a real Linux kernel. VATC matched DiffServ under steady load. In a constructed burst it cut mean agent queuing delay by 98% relative to DiffServ in simulation (assuming an immediate verdict), at a 12% increase in human delay; most of the gain came from the separate class. Under a spoofed flood in the kernel, the rate limit held human latency 11 times below DiffServ&#x27;s. Without verification, DiffServ and a tightly configured fq_codel gave legitimate agents lower latency than VATC; a live four-feature classifier then demoted all 20 bulk-shaped spoofers and gave agents 0.30 ms, but missed six spoofers that copied the agent pattern. With emulated network delay, a timing feature of the classifier stopped separating agent from human flows. In real agent harnesses on a congested link, router queueing took 13% to 63% of task time, depending on harness and assumed model latency. The traffic was synthetic or sandbox-scale.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Software agents built on large language models generate traffic unlike human web traffic, yet routers have no class for it and cannot verify a sender&#x27;s claim to be an agent.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Scoped Semantic Invariance as a Foundation for LLM Reliability</div>
+<div class="meta-line">Authors: Rosario Uceda-Sosa, Maria Chang, Karthikeyan Natesan Ramamurthy, Moninder Singh</div>
+<div class="meta-line">Venue: EMNLP 2026</div>
+<div class="meta-line">First: 2026-10-23T20:26:21+00:00 · Latest: 2026-11-10T15:31:06+00:00</div>
+<div class="meta-line">Comments: Accepted at EMNLP 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.33267v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.33267v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LLMs often answer semantically equivalent queries inconsistently, even when the underlying facts are known. We formalize consistency as semantic invariance over equivalence classes of queries and show that invariance under arbitrary meaning-preserving transformations is undecidable in general. This motivates scoped semantic invariance, where model behavior is evaluated relative to bounded semantic domains.
+  We operationalize this framework using knowledge graphs (KGs), which act as explicit semantic control structures defining local semantic constraints and grounding contexts. Across the MITRE D3FEND ontology and eight Wikidata- derived domains, we show that inconsistencies are structured rather than random, concentrating in localized hotspot subgraphs organized around recurring TREE, STAR, and CYCLE patterns that remain stable across models and domains.
+  We further show that selective graph grounding improves correctness and cross-model consistency, while indiscriminate grounding introduces regressions. A layered grounding strategy achieves the strongest monotonicity profile, preserving correct knowledge while reducing inconsistency. Finally, we show that hotspot structures discovered from simple consistency probes transfer to more realistic compositional reasoning tasks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LLMs often answer semantically equivalent queries inconsistently, even when the underlying facts are known.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Selective Retrieval Routing for Multi-Violation Knowledge Graph Repair</div>
+<div class="meta-line">Authors: Tung-Wei Lin, Gabe Fierro, Han Li, Tianzhen Hong, Pierluigi Nuzzo, Alberto Sangiovanni-Vincentelli</div>
+<div class="meta-line">First: 2026-11-05T02:29:58+00:00 · Latest: 2026-11-10T15:24:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.07342v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.07342v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Knowledge graphs often contain missing or inconsistent facts that undermine the applications built on them. Schema validation detects such violations but does not identify which of several valid repairs recovers the intended graph. External corpora can supply the evidence needed to identify the intended repair, but retrieving from them is costly and not always successful. We propose a framework for selective retrieval in iterative graph repair. An LLM repair agent explores and edits the graph, while a router controls its access to a researcher agent that retrieves external evidence. We extend a violation-injection framework to generate cases with multiple compatible violations and known reference repairs. The agent&#x27;s repair outcomes on these cases provide supervision for training the deployment-specific router. On two building-automation datasets, researcher access improves repairs for some violations and degrades them for others, with effects differing across deployments. The router uses fewer repair-time tokens than always enabling access in all six evaluation suites. It achieves higher repair $F_1$ than always disabling access in five of six suites.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Knowledge graphs often contain missing or inconsistent facts that undermine the applications built on them.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly</div>
+<div class="meta-line">Authors: Fuqiang Wang, Jiahao Fu, Ren Hefeng, Yining Qian, Chuanting Zhang, Cheng Tan, Yuwen Liu, Jingxuan Wei</div>
+<div class="meta-line">First: 2026-11-02T05:07:03+00:00 · Latest: 2026-11-10T14:13:33+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.02536v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.02536v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models have demonstrated strong capabilities in structured reasoning and code generation, yet identifying an assembly fault does not guarantee the ability to generate executable rework programs. In interlocking assemblies, a locally plausible repair program may violate blocking dependencies, omit required recovery operations, or terminate in an incorrect configuration. We identify this challenge as fault-conditioned executable rework generation, where models must jointly reason about structural failures and generate programs that restore constrained assembly states. To benchmark this capability, we introduce FORGE-Bench, containing 4,000 tasks across 26 interlocking assemblies with five assemblies held out for evaluating generalization to unseen structures. We further propose FORGE (Fault-Oriented Rework Code Generation for Executable Interlocking Assembly), a structured state-to-program framework that decomposes rework generation into Rework Structuring and Action Grounding. Rework Structuring captures fault-induced recovery dependencies, while Action Grounding maps these dependencies into state-conditioned executable actions. Experiments show that locally reasonable repair code is insufficient for reliable assembly recovery, and that connecting structural recovery reasoning with executable action realization is essential for verified target restoration.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models have demonstrated strong capabilities in structured reasoning and code generation, yet identifying an assembly fault does not guarantee the ability to generate executable rework programs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ProofCoder: Continuous Reasoning for Automated Software Verification</div>
+<div class="meta-line">Authors: Martim Afonso, Inês Lynce, Maurizio Morisio, João F. Ferreira</div>
+<div class="meta-line">First: 2026-11-10T13:59:49+00:00 · Latest: 2026-11-10T13:59:49+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14106v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14106v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Formal verification using proof assistants provides strong correctness guarantees for software, but constructing proofs remains labor-intensive and requires significant expertise. Recent approaches based on large language models (LLMs) have shown promise in automating proof synthesis. However, these approaches typically constrain the model to a rigid tactic-generation loop, in which the surrounding system controls premise retrieval, proof-state management, and backtracking. We introduce ProofCoder, an agentic proof-synthesis system for Rocq that approaches theorem proving from a coding-agent perspective. Rather than generating tactics within a fixed loop, ProofCoder reasons continuously throughout proof search and uses proof-assistant feedback to decide when to gather additional information, inspect proof states, revise previously generated proof fragments, or backtrack to an earlier point in the proof. This allows it to iteratively construct, repair, and refine proofs, at either tactic-level or whole-proof granularity. We evaluate ProofCoder on 280 challenging verification tasks from the AutoRocq Benchmark. On the best-performing configurations, ProofCoder increases proof success from 47% to 60% over the state-of-theart AutoRocq system, corresponding to a 27.7% relative improvement at approximately half the cost. Our ablations identify continuous reasoning as a key design choice: without it, the agent solves fewer lemmas at substantially higher cost, backtracks four to six times more often, and more frequently discards its own revisions. Whole-proof and tactic-level generation achieve similar success rates but follow distinct search and repair strategies. These results suggest that effective automated software verification requires more than improved tactic selection: continuous reasoning and feedback-guided proof revision are critical ingredients for robust proof synthesis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Formal verification using proof assistants provides strong correctness guarantees for software, but constructing proofs remains labor-intensive and requires significant expertise.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Program-Aided Patchable Skill Evolution</div>
+<div class="meta-line">Authors: Jiahao Wang, Yuqi Xiong, Qing Yang, Zhipeng Xu, Zhenghao Liu, Zulong Chen, Yubin Bao</div>
+<div class="meta-line">First: 2026-11-10T12:53:12+00:00 · Latest: 2026-11-10T12:53:12+00:00</div>
+<div class="meta-line">Comments: 17 pages, 6 figures, 5 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14019v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14019v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Agent skills have emerged as an effective means of enabling LLM agents to solve complex, interactive tasks by encoding reusable knowledge without modifying model parameters. Recent approaches further improve skill adaptation by distilling reusable experience from agent execution trajectories and evolving skills based on downstream task feedback. However, existing methods primarily represent skills as natural language documents, intertwining procedural logic with descriptive knowledge and making skills difficult to maintain and evolve. To address this limitation, we propose PASE (Program-Aided Patchable Skill Evolution), a program-aided framework that iteratively evolves skills by associating them with executable programs. Unlike prior approaches that encode trajectory-derived experience primarily in natural language, PASE separates reusable procedural logic into editable programs, enabling targeted updates to executable components while reducing the need to repeatedly revise natural language skills. Extensive experiments across diverse models and benchmarks demonstrate that PASE consistently outperforms all baselines, by achieving over 2.8% improvements. Further analyses show that PASE exhibits greater evolutionary stability and generalisation capability, highlighting the critical role of programmatic knowledge in skill evolution. We will release all data and code via GitHub.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Agent skills have emerged as an effective means of enabling LLM agents to solve complex, interactive tasks by encoding reusable knowledge without modifying model parameters.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Coding Agent Memory Post-Training II: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via On-Policy Distillation</div>
+<div class="meta-line">Authors: Lirui Luo, Kelong Mao, Xinwei Yang, Rongqing Li, Luyu Chen, Kieran Wong, Yudong Guo, Xinrui Wang, Jiayin Zhu, Gu Simiu, Sulong Xu, Cong Fang</div>
+<div class="meta-line">First: 2026-11-10T12:49:24+00:00 · Latest: 2026-11-10T12:49:24+00:00</div>
+<div class="meta-line">Comments: 40 pages, 6 figures, 8 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14009v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14009v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Language-model agents increasingly tackle long-horizon tasks whose interaction histories exceed the model&#x27;s active context. They must therefore decide what to write down and what to read back, and when to do either. Recent work has begun to use on-policy distillation (OPD) to make memory control part of the policy, relying on memory tools and compaction protocols that lie outside either model&#x27;s pre-training. However, this weakens the distillation on both sides: the teacher cannot give useful guidance on an interface it has never used, and the student samples too few meaningful memory actions for that guidance to take effect. To study this problem, we introduce Coding Agent Memory Gym II (CAMG-II), a suite of long-horizon agentic-RL environments spanning Shop, Coding, AutoResearch, General, and Visual. Alongside each environment&#x27;s native task interface, CAMG-II provides ordinary Bash access and an episode-persistent workspace, enabling the policy to create, revise, search, and reuse files as memory across context replacements. We also introduce Coding Agent Memory Post-Training II (CAMP-II), which trains a single policy jointly across all five environments with fully asynchronous OPD to learn this file-based memory behavior directly from a frozen teacher with a prior for file operations. On CAMG-II, CAMP-II obtains 2.97 times the gain of the strongest OPD baseline. The memory behavior CAMP-II learns generalizes to two external benchmarks, Terminal-Bench 2.1 and SWE-Bench Pro V2, with improved success rates.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Language-model agents increasingly tackle long-horizon tasks whose interaction histories exceed the model&#x27;s active context.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DOTRAG: Retrieval-Time Reasoning Along Paths</div>
+<div class="meta-line">Authors: Larnell Moore, Naihao Deng, Rada Mihalcea, Farnaz Jahanbakhsh</div>
+<div class="meta-line">First: 2026-04-06T22:38:15+00:00 · Latest: 2026-11-10T12:15:55+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.18760v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.18760v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Graph Retrieval-Augmented Generation (GraphRAG) faces significant challenges in complex relational retrieval tasks, particularly in densely connected knowledge graphs where the number of possible paths grows rapidly with reasoning depth. Existing GraphRAG retrieval algorithms either rely on rigid, predefined heuristics to identify relevant graph context or employ costly LLM-based reasoning to guide graph traversal. To address these limitations, we propose DotRAG, a lightweight, training-free GraphRAG retrieval algorithm that uses large language model (LLM) reasoning to narrow the search space and recover task-relevant relational paths. During indexing, DotRAG constructs an entity-relation knowledge graph, generates a graph-wide overview summarizing its contents, and leverages graph reachability indexing to avoid expensive online graph traversals. At query time, the LLM uses this overview to identify promising graph regions and hypothesizes relationship sequences connecting graph information to the query. The LLM then performs targeted relational searches, using graph constraints to restrict the candidate pool progressively. On MetaQA 2-hop queries, DotRAG achieves 97.78% retrieval recall and 51.27% F1, compared to the best baseline scores of 34.74% and 6.33%, respectively. On STaRK-MAG, DotRAG achieves 85.07% recall on 2-hop queries while demonstrating greater computational efficiency than reasoning-based GraphRAG baselines, with 12.2x lower retrieval latency than HopRAG.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Graph Retrieval-Augmented Generation (GraphRAG) faces significant challenges in complex relational retrieval tasks, particularly in densely connected knowledge graphs where the number of possible paths grows rapidly with reasoning depth.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Scaling Shapley Energy Attribution to Large LLM Batches</div>
+<div class="meta-line">Authors: Qi Luo, Ziwen Wang, Kunlin Li, Changxi Liu, Yun Chen</div>
+<div class="meta-line">First: 2026-11-10T09:34:38+00:00 · Latest: 2026-11-10T09:34:38+00:00</div>
+<div class="meta-line">Comments: 13 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13802v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13802v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LLM services have become essential infrastructure for applications such as chat assistants and coding agents. Service providers need to attribute resource consumption to individual requests for purposes such as billing. Among these resources, energy is a key metric for assessing the cost of serving each request. However, serving engines batch requests together, and GPUs report only aggregate energy consumption. Providers typically estimate each request&#x27;s share in proportion to its token consumption, but this approach can produce substantially unfair estimates. The Shapley value provides a principled solution to fair energy allocation, but computing it directly requires $2^N-1$ GPU runs for $N$ requests, which is infeasible for large batches.
+  To address this problem, we propose StepSplit. Across GPU generations, we observe that the energy consumed by each inference step, a forward pass over a batch, consists of a shared energy, largely due to reading model weights, and a request-specific energy. We derive a closed-form Shapley value: each request is charged its own energy plus an equal part of the shared energy of every step in which it participates. A microbenchmark of 2.5-17.8 minutes calibrates both parts of the step energy once per model and GPU configuration. Under static batching, StepSplit uses this closed form in a single pass over the scheduler log. Under continuous batching, removing a request can change how the remaining requests are batched, so StepSplit adds a correction to the closed form, computed by replaying the scheduler on a CPU. We evaluate StepSplit against Shapley values measured using 529,513 GPU runs. Under static batching with batch sizes of 8-256, StepSplit achieves an $L_1$ error of 0.4-4.3%, compared with 13.4-61.3% for token-proportional allocation. Under continuous batching with 8-128 requests, the corresponding errors are 0.5-6.4% and 20.6-71.7%.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LLM services have become essential infrastructure for applications such as chat assistants and coding agents.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Differentiable Learning of Lifted Action Schemas for Classical Planning</div>
+<div class="meta-line">Authors: Jonas Reiter, Jakob Elias Gebler, Hector Geffner</div>
+<div class="meta-line">First: 2026-05-13T09:59:49+00:00 · Latest: 2026-11-10T08:57:59+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.13282v4">Abs</a> · <a href="https://arxiv.org/pdf/2605.13282v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Classical planners can effectively solve very large deterministic MDPs represented in STRIPS or PDDL where states are sets of atoms over objects and relations, and lifted action schemas add or delete these atoms. This compact representation yields strong search heuristics and provides an ideal setting for structural generalization, since lifted relations and action schemas give rise to infinitely many domain instances. A central challenge is to learn these relations and action schemas from data, and recent approaches have addressed this problem using different types of observations. In this work, we develop a novel neural network architecture for learning action schemas from traces where states are fully observed but action arguments are unobserved. The problem is a simplification but an important step towards learning planning domains from sequences of images and action labels, and we aim to solve this simplification in a nearly perfect manner. The challenge lies in learning the action schemas while simultaneously identifying the action arguments from observed state changes. Our approach yields a robust differentiable component that can then be integrated into larger neuro-symbolic models. We evaluate the architecture on various planning domains, where the learned lifted action schemas must recover the ground-truth structure. Additionally, we report experiments on robustness to observation noise, on component ablations, and on a variation related to slot-based dynamics models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Classical planners can effectively solve very large deterministic MDPs represented in STRIPS or PDDL where states are sets of atoms over objects and relations, and lifted action schemas add or delete these atoms.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TACT: Mitigating Overthinking and Overacting in Coding Agents via Activation Steering</div>
+<div class="meta-line">Authors: Yuan Sui, Yulin Chen, Yibo Li, Xue Jiang, Yufei He, Yihong Dong, Xiaoxin He, Tianyu Gao, Bryan Hooi</div>
+<div class="meta-line">Venue: Neurips 2026</div>
+<div class="meta-line">First: 2026-05-07T10:24:27+00:00 · Latest: 2026-11-10T08:29:57+00:00</div>
+<div class="meta-line">Comments: Neurips 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.05980v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.05980v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">When language model agents tackle complex software engineering tasks, they often degrade over long trajectories, which we define as *agent drift*. We focus on two recurring failure modes *overthinking* and *overacting*, i.e., where the agent repeatedly reasons over information it already has, and where it issues tool calls without integrating recent observations or acquiring new evidence. In this paper, we introduce TACT (Think-Act Calibration via activation Steering), to detect and mitigate agent drift in the residual stream before it surfaces as a behavioral failure. In specific, we label trajectory steps as overthinking, overacting, or calibrated, and find that their hidden states can separate linearly along two *drift axes*, pointing from calibrated behavior toward each failure mode (AUC $\approx$ 0.9). To mitigate agent drift, we project each step&#x27;s activation onto these axes at test time and pull drifted ones back toward the calibrated region. Experiments show that TACT outperforms unsteered baselines across SWE-bench Verified, Terminal-Bench 2.0, and CLAW-Eval, lifting average resolve rate by $+5.8$ pp on Qwen3.5-27B and $+4.8$ pp on Gemma-4-26B-A4B-it while cutting steps-to-resolve by up to $26\%$. These gains frame agent drift as a steerable direction in the residual stream, and position TACT as a viable handle for reliable long-horizon agents.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">When language model agents tackle complex software engineering tasks, they often degrade over long trajectories, which we define as *agent drift*.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CIDERS: Cloud-Edge LLM Collaborative Learning via Accelerating Personalized Bilevel Optimization</div>
+<div class="meta-line">Authors: Victor H. Chen, Hairui Yu, Stella K. Chung, Hong Yan</div>
+<div class="meta-line">First: 2026-09-14T14:45:24+00:00 · Latest: 2026-11-10T07:53:02+00:00</div>
+<div class="meta-line">Comments: There are several key inssues in our experiment that we must withdraw as soon as possible to avoid any misleading</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.15664v3">Abs</a> · <a href="https://arxiv.org/pdf/2609.15664v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Amid the rapid advancement of physical-world intelligence, cloud-edge collaborative large language models (LLMs) have emerged as a promising roadmap for practical LLM deployment. However, existing cloud-edge paradigms struggle to balance global consensus with local personalization, which fails to satisfy the need for a unified knowledge foundation on the cloud and domain-specific adaptation at the edge. To address this, we introduce, for the first time, a personalized bilevel optimization framework that formalizes cloud-edge LLM collaboration as a dual structure: the upper level optimizes edge-side personalization, while the lower level governs cloud-side knowledge transfer, reaching cloud-edge evolving in coordination. We then propose CIDERS, an efficient solver that decomposes the model into a learnable backbone and a messenger. While the cloud performs knowledge transfer to the learnable backbone, the key lies in embedding global trajectories into each local personalization step via consensus-variate correction to reconcile personalization with consensus. We provide a comprehensive theoretical analysis, including a geometric characterization of the local trajectory and a full convergence guarantee, revealing an explicit trade-off structure between personalization and global convergence. Extensive experiments demonstrate that CIDERS consistently outperforms competitive baselines on the compressed edge path, with 3.1x and 1.7x gains on mathematical reasoning and code generation, respectively, and a 10\% relative gain on instruction metrics. Mechanism experiments attribute these gains to early consensus-corrected coordination and task-aware distillation. Overall, CIDERS offers a viable path toward consensus-guided continuous personalization in cloud-edge LLM systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Amid the rapid advancement of physical-world intelligence, cloud-edge collaborative large language models (LLMs) have emerged as a promising roadmap for practical LLM deployment.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bootstrapped On-Policy Distillation</div>
+<div class="meta-line">Authors: Yue Wu, Xueyu Zhou, Yangrong Hu, Jian Huang</div>
+<div class="meta-line">First: 2026-11-10T07:30:34+00:00 · Latest: 2026-11-10T07:30:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13680v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13680v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">On-policy distillation (OPD) improves language models by distilling teacher predictions on student-generated trajectories, while on-policy self-distillation (OPSD) removes the need for an external teacher by using a reference-conditioned copy of the model as the teacher. Despite its great early improvements, we find that OPSD does not remain consistently effective under continued training and can eventually suffer substantial performance degradation. We study this training behavior and link the degradation to a growing mismatch between the evolving reference-free student and the frozen privileged teacher. In the early stage of OPSD, the privileged teacher remains closely aligned with the student and provides useful guidance for improving the student&#x27;s generation trajectories. However, as training progresses, the growing distributional mismatch between the privileged teacher and reference-free student can cause the teacher to provide misleading supervision, ultimately degrading student performance. This phenomenon motivates us to first leverage privileged reference supervision to acquire useful knowledge and then transfer it to a fresh student. We introduce Bootstrapped On-Policy Distillation (BOPD), a two-stage framework that first uses OPSD to internalize task-relevant information from reference-conditioned supervision into an intermediate model, and then distills this reference-free intermediate model into a fresh copy of the initial model. Experiments across models show that BOPD improves mathematical reasoning and code generation beyond both the initial models and the constructed OPSD teachers. These results suggest that privileged reference supervision can be more effectively exploited by first transferring its task-relevant signal into a task-adapted model and then distilling from that model without reference conditioning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">On-policy distillation (OPD) improves language models by distilling teacher predictions on student-generated trajectories, while on-policy self-distillation (OPSD) removes the need for an external teacher by using a reference-conditioned copy of the model as the teacher.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Megrez: A Knowledge-Guided Agent for Formal Mathematics over MK Set Theory</div>
+<div class="meta-line">Authors: Tiancheng Xu, Wensheng Yu</div>
+<div class="meta-line">First: 2026-11-10T05:42:16+00:00 · Latest: 2026-11-10T05:42:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13613v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13613v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">General-purpose coding agents equipped with proof-assistant tools have shown strong performance on standalone competition problems, yet cumulative textbook formalization inside a low-resource mathematical library still faces three obstacles: aligning textbook concepts with library declarations, keeping long-horizon search synchronized with live proof states, and integrating locally verified proofs reliably into a growing codebase. We present Megrez, a knowledge-guided formalization agent for Rocq libraries built on Morse--Kelley (MK) set theory. Megrez coordinates a general coding agent through three mechanisms: (1) a source-rebuildable knowledge graph merging formal declarations, compiler references, and curated metadata to support retrieval via Chinese aliases, concept clusters, proof dependencies, and multi-lane full-text ranking; (2) a feedback-driven 1--5 tactic short-burst proving loop paired with a goal-local branch ledger and exponential-interval structured reflection; and (3) a three-check acceptance pipeline (statement fidelity, axiom auditing, and full builds) coupled with a multi-corpus Provider stack and a candidate-bound recoverable batch state machine. Deployment and evaluation on a point-set topology corpus demonstrate effective cross-chapter formalization and scalable premise retrieval.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">General-purpose coding agents equipped with proof-assistant tools have shown strong performance on standalone competition problems, yet cumulative textbook formalization inside a low-resource mathematical library still faces three obstacles: aligning textbook concepts with library declarations, keeping long-horizon search synchronized with live proof states, and integrating locally verified proofs reliably into a growing codebase.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MMCOMET: A Large-Scale Multimodal Commonsense Knowledge Graph for Visual Reasoning</div>
+<div class="meta-line">Authors: Jinwoo Kim, Rina Carines Cabral, Dhita Putri Pratama, Eileen Wang, Hiba Arnaout, Shuo Yang, Danyang Liu, Seungyeon Ji, Jie Yang, Josiah Poon, Jeff Z. Pan, Kyungreem Han, Soyeon Caren Han</div>
+<div class="meta-line">First: 2026-03-01T11:21:50+00:00 · Latest: 2026-11-10T04:13:56+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.01055v3">Abs</a> · <a href="https://arxiv.org/pdf/2603.01055v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Commonsense knowledge is widely used to support multimodal reasoning and generation, yet existing resources are predominantly text-only and lack grounding in visual context. This limitation often leads to the retrieval of semantically related but visually misaligned knowledge, and can degrade downstream performance. We introduce MMCOMET, a large-scale multimodal commonsense knowledge graph that integrates physical, social, and eventive knowledge with visual grounding. MMCOMET extends ATOMIC2020 by associating each commonsense triple with representative images through a hybrid alignment pipeline, resulting in over 900K multimodal tuples spanning 19 relation types. We further establish a unified evaluation framework across diverse vision-language tasks, including visual commonsense reasoning, visual question answering, visual storytelling, image editing, and image captioning. Our analysis shows that multimodal grounding provides more contextually aligned and reliable knowledge compared to both text-only knowledge graphs and LLM-based knowledge generation, particularly in reasoning-intensive scenarios. At the same time, we observe that the effectiveness of external knowledge is task-dependent, and naive knowledge integration can introduce noise in perception-dominated settings. To mitigate this, we propose an adaptive knowledge router that dynamically selects optimal paths or bypass knowledge in harmful settings. MMCOMET provides a scalable multimodal commonsense resource and a benchmark for studying the role of grounded knowledge in multimodal systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Commonsense knowledge is widely used to support multimodal reasoning and generation, yet existing resources are predominantly text-only and lack grounding in visual context.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TACS-RF: Tool-driven Agentic Circuit Synthesis of RF and mmWave Modules</div>
+<div class="meta-line">Authors: Tristan Liang, Aravind Nagulu</div>
+<div class="meta-line">First: 2026-10-22T20:23:05+00:00 · Latest: 2026-11-10T03:27:03+00:00</div>
+<div class="meta-line">Comments: Accepted for presentation at the 2027 IEEE Radio and Wireless Week (RWW), Silicon Monolithic Integrated Circuits in RF Systems (SiRF)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31882v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.31882v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present the framework of TACS-RF - a Tool-driven Agentic Circuit Synthesis of RF and mmWave modules. In this framework, a large-language-model (LLM) coding agent (Claude Opus 4.8) directly drives industry-standard electronic-design-automation (EDA) tools such as Cadence Virtuoso/Spectre, Calibre, Cadence EMX, and Ansys HFSS to design RF and mmWave modules. We validate the framework through the agentic design of a 240-251 GHz sub-THz transmitter in a 90 nm SiGe BiCMOS process. The agent semi-autonomously designed the sub-blocks including a 60 GHz push-push Colpitts VCO with second-harmonic extraction, multistage differential cascode power drivers, a push-push frequency doubler, a differential bowtie antenna, and all the interstage matching networks. The transmitter chain with parasitic-extracted devices and EM-verified passives delivers +5.1 to +6.3 dBm across an 11 GHz varactor-only tuning range, phase noise of -80 to -88 dBc/Hz at 1 MHz offset while consuming a DC power of 361 mW. We describe the agent-driven design flow and the resulting division of labor between human and agent, taking a step toward a &quot;text-to-ASIC&quot; future for designing RF/mmWave hardware.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present the framework of TACS-RF - a Tool-driven Agentic Circuit Synthesis of RF and mmWave modules.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The WoW: A Large-Scale World Knowledge Corpus for Full-Lifecycle LLM Training</div>
+<div class="meta-line">Authors: Tianze Sun, Yongyao Duan, Sam Chen</div>
+<div class="meta-line">First: 2026-11-10T02:56:20+00:00 · Latest: 2026-11-10T02:56:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13487v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13487v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Existing Chinese educational corpora often suffer from fragmented coverage and a lack of systematic organization. In this paper, we propose WoW (\textbf{Wo}rld Kno\textbf{w}ledge), a large-scale dataset designed for the full-cycle training of foundation models. The construction of this dataset is driven by an Educational Knowledge Graph, which serves as a taxonomic backbone for the systematic collection and completion of missing educational modules across all levels. Compared to previous versions, this iteration provides enhanced systematicity, superior quality, and a larger scale, while incorporating multimodal signals and supporting every stage of model development. Experiments demonstrate that WoW significantly improves model performance across diverse benchmarks. To facilitate community research, we further provide an interactive platform for graph-based data selection and retrieval.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Existing Chinese educational corpora often suffer from fragmented coverage and a lack of systematic organization.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The AI Era&#x27;s Lines of Code? A Case Study on What an Engineer&#x27;s Token Spend Measures</div>
+<div class="meta-line">Authors: Shyam Agarwal, Olga Lvova, Agnia Sergeyuk, Anastasiia Serova, Timofey Bryksin, Thomas Zimmermann, Bogdan Vasilescu</div>
+<div class="meta-line">First: 2026-11-10T00:17:26+00:00 · Latest: 2026-11-10T00:17:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13396v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13396v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Organizations use engineers&#x27; token spend to monitor AI adoption, set budgets, and measure productivity, but the metric&#x27;s relationship with engineering output is unclear. We link five weeks of token usage in coding agents to the commits of 404 engineers at JetBrains, and analyze a company survey of 412 employees. We find that token spend varied mostly between engineers, and which engineers spent the most stayed largely the same over the five weeks. Among weeks with similar commit counts, the 90th percentile of spend was 39 to 240 times the 10th. Within an engineer, doubling spend was associated with about 10% more commits. Available work metrics explained 38% of the variation in spend between engineers and 13% of the week-to-week variation within an engineer. In the survey, respondents in technical roles reported in nearly nine of ten agent evaluations using agents for tasks beyond coding, such as analysis, research, and planning. Token spend therefore measures how much engineers use agents across many kinds of work and not the outcome and value of that work. We recommend using token spend at most for resource accounting, and evaluating agent-assisted work with evidence about tasks and outcomes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Organizations use engineers&#x27; token spend to monitor AI adoption, set budgets, and measure productivity, but the metric&#x27;s relationship with engineering output is unclear.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Online-Adaptive Fuzzy Cognitive Maps for Neuro-symbolic Financial Forecasting</div>
+<div class="meta-line">Authors: Brandon Rodriguez, Abel Deulofeu, Olaoluwa Adigun</div>
+<div class="meta-line">First: 2026-11-10T00:05:44+00:00 · Latest: 2026-11-10T00:05:44+00:00</div>
+<div class="meta-line">Comments: 8 pages, 3 figures. Accepted at ICMLA 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13388v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13388v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present a neuro-symbolic framework that pairs online-adaptive Fuzzy Cognitive Maps (FCMs) with long short-term memory (LSTM) networks for financial forecasting. Financial markets exhibit regime shifts and nonlinear dynamics. Existing models often trade off one of these key properties: these models capture temporal patterns but hide causal drivers, or they recover causal graphs that cannot adapt post-training. We close this gap with two frameworks. Framework I constructs an FCM from live dual-source price series and macroeconomic indicators, and adapts its edges online through an error-driven Hebbian rule. We introduce the Asymmetric Additive Residual Fusion method to seamlessly combine the FCM and LSTM predictions under Framework I. Framework II constructs a literature-grounded, LLM-augmented FCM where every edge carries a verifiable citation that gives an auditable map of factor interactions. On NASDAQ Composite data, Framework I matched the performance of the LSTM baseline on state-directional accuracy and outperformed LSTM by 7.6 percentage points on the return-sign accuracy. Framework I outperformed standalone FCM models across both evaluation metrics. The adaptive maps converged to new regimes within 10-15 trading days, and Framework II center-node FCMs scored 68.9% to 85.7% on the state-directional accuracy.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present a neuro-symbolic framework that pairs online-adaptive Fuzzy Cognitive Maps (FCMs) with long short-term memory (LSTM) networks for financial forecasting.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CompressionBench: How can your coding agents compress LLMs?</div>
+<div class="meta-line">Authors: Xinrui Zhong, Zhifeng Li, Zhiming Wang, Xinze Feng, Yongqi Liu, Shanglin Yang, Yang Zhou, Zikun Li, Zhuoming Chen, Beidi Chen</div>
+<div class="meta-line">First: 2026-11-04T18:14:50+00:00 · Latest: 2026-11-09T23:05:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.06858v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.06858v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recursive self-improvement requires AI systems to improve the models and infrastructure used by subsequent systems. LLM compression offers a concrete efficiency objective: retain a pretrained model&#x27;s behavior within a smaller model storage budget. We study whether coding agents can carry out this step autonomously. We formulate compression as a terminal task in which an agent receives a source checkpoint, storage limit, inference environment, and time budget, then constructs compressed weights and executable inference code. The agent controls its algorithm and experiments; perplexity feedback guides search, and independent verification checks the final model. Across six agents and six model--size settings, 29 of 36 submissions pass verification. Selecting the lowest-perplexity agent design per task yields an average 3.4% perplexity increase over BF16 and 77.33% downstream accuracy, compared with 79.56% for BF16. Recorded experiments reveal how agents achieve these outcomes and where improvement breaks down. Agents lower PPL in 21 of 24 revisions at nearly fixed storage; complete-model feedback reverses 17 of 79 prior local rankings; and generation and inference tests expose failures that likelihood alone misses. The results identify representation design, experimental judgment, and capability validation as central to agent-driven model compression, a measurable component of efficiency-oriented self-improvement.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recursive self-improvement requires AI systems to improve the models and infrastructure used by subsequent systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Veritas: A Verifier Generation Harness for Agent Tasks</div>
+<div class="meta-line">Authors: Daoan Zhang, Qinbo Bai, Dehai Min, Xingyu Mu, Ziyi Chen, Jianing Yin</div>
+<div class="meta-line">First: 2026-11-09T23:01:40+00:00 · Latest: 2026-11-09T23:01:40+00:00</div>
+<div class="meta-line">Comments: 31 pages, 1 figure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13336v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13336v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The effectiveness of a self-improving system relies heavily on the quality of its verifier, which judges the outcome of each improvement round. However, the verifiers of most tasks are written by hand, which is expensive and does not scale to tasks that come without one. We propose Veritas, a harness that generates verifiers automatically. Unlike general-purpose agent harnesses, Veritas adds three mechanisms for verifier generation: an evidence header stating what the verifier will observe, a library of domain rules that tasks leave unstated, and authoring principles, partly refined by a self-improvement loop. We evaluate on six benchmarks: four scored by execution, whose official verifiers we first certify, and two that compare pairs of responses. With the model fixed, the verifiers Veritas generates agree better with the official verdicts than those of seven other harnesses on all four execution-scored benchmarks. On the two pairwise benchmarks they are at or near the best. They also agree better than those of the vendor&#x27;s own harness for two of three other model families. Its mechanisms also improve 9 of 12 harness-benchmark pairs scored by execution across three harnesses.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The effectiveness of a self-improving system relies heavily on the quality of its verifier, which judges the outcome of each improvement round.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">F3-AGI v4.0: Bioenergetically-Gated Active Inference, Metaplastic Preconditioning, and Residual Program Synthesis for Sample-Efficient Abstract Reasoning</div>
+<div class="meta-line">Authors: Henrique Oliveira</div>
+<div class="meta-line">First: 2026-11-09T22:47:43+00:00 · Latest: 2026-11-09T22:47:43+00:00</div>
+<div class="meta-line">Comments: 14 pages, 5 figures. Code and reproducibility materials: https://github.com/henrique-polybee/f3-agi-v4</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13325v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13325v1">PDF</a> · <a href="https://github.com/henrique-polybee/f3-agi-v4">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Few-shot abstract reasoning on ARC-AGI requires inducing algorithmic transformations from 2 to 5 demonstration pairs without task-specific pretraining. Because few-shot demonstrations under-constrain the hypothesis space, program synthesis suffers from the Rashomon effect (predictive multiplicity): heuristic search finds spurious programs with low training error that fail on test inputs, while unconstrained library growth degrades latency. We introduce F3-AGI v4.0, a CPU-native neuro-symbolic and active inference architecture comprising three mechanisms: (1) F3-Metabolic-Optim, combining mistake-gated plasticity, Fisher-EMA preconditioning, and virtual ATP gating; (2) Adaptive Complexity-Guided Program Synthesis (AACR) with a Cycle-3 ResidualPatchSynthesizer and smallest-pair early rejection; and (3) a 512D L2-normalized random projection driving Expected Free Energy (EFE) exploration with dead-signature pruning. Across three empirical studies: (i) on a synthetic 5-task class-incremental stream without replay, F3-Metabolic-Optim achieves 91.67% final accuracy with 9.17% forgetting, skipping 93.47% of updates, cutting L1 plasticity cost by 65.7%, and running 2.19x faster than EWC; (ii) on the 400-task ARC-AGI-1 public evaluation set (offline CPU, zero LLM calls), F3-AGI v4.0 solves 57/400 tasks (14.25% pass@2; 56/400 pass@1) with a mean latency of 1.62 s/task, decomposed into 19/50 (38.00%, 1.19 s/task, a 42.5x paired speedup over Horizon 2) on the 50-task calibration slice and 38/350 (10.86%) on the 350 strictly uninspected hold-out tasks (with 7 autonomous Cycle-3 patch solutions); and (iii) in a local 5-game (15-level) ARC-AGI-3-inspired interactive suite, our agent completes 15/15 levels with 89.44% level-weighted RHAE (90.72% unweighted).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Few-shot abstract reasoning on ARC-AGI requires inducing algorithmic transformations from 2 to 5 demonstration pairs without task-specific pretraining.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PegasusAI Studio: Legible Cyberinfrastructure and Accountable AI Agents for Scientific Workflows</div>
+<div class="meta-line">Authors: Komal Thareja, Mats Rynge, Berent Aldikacti, Angelina Ju, Ian Lumsden, Anirban Mandal, Rajiv Mayani, Kin Wai Ng, Hamza Safri, Michael Stealey, Sai Swaminathan, Michela Taufer, Karan Vahi, Michael Zink, Ewa Deelman</div>
+<div class="meta-line">First: 2026-11-09T22:22:25+00:00 · Latest: 2026-11-09T22:22:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13309v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13309v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">AI coding agents can now construct scientific workflows, but operating them on shared cyberinfrastructure (CI) raises problems that code generation does not solve. Agents need current knowledge of the workflow system and its execution sites and access to the runtime state of distributed executions, while facilities need to attribute every agent action to a user and bound it by that user&#x27;s privileges. We present PegasusAI Studio, an AI-assisted science gateway built on the Pegasus and HTCondor stack. Studio makes CI legible to agents by projecting one facility-curated knowledge base into the native configuration of several coding agents, by introspecting workflow interfaces and execution sites, and by grounding diagnosis in workflow and scheduler telemetry. Agent actions operate within a trust envelope that combines federated authentication, per-user execution environments and scheduler credentials, provider-neutral model access, observability, and approval controls for state-changing actions. The same application runs as a JupyterHub-based gateway on a research cloud and as an Open OnDemand application on HPC systems. We evaluate Studio through case studies of legacy CASA weather workflow modernization, a gravitational-wave reanalysis, an EEG analysis built with an open-weight model, and an Event Horizon Telescope (EHT) M87 image reconstruction that recovered from two failed runs to a zero-failure execution. The evaluation establishes that these mechanisms operate as designed.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">AI coding agents can now construct scientific workflows, but operating them on shared cyberinfrastructure (CI) raises problems that code generation does not solve.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Project Progress Desk: Know Where All Your Claude Code and Codex Projects Stand at a Glance</div>
+<div class="meta-line">Authors: Wanghao Ye, Yiting Wang, Shwai He, Guoheng Sun, Ziyao Wang, Yexiao He, Zheyu Shen, Zhaoyi Liu, Bowei Tian, Daeun Jung, Aditya Sarkar, Parastoo Pilevar, Xiaochuan Gong, Yancheng Zhu, Yingying Fan, Qiong Wang, Yuning Zhang, Meng Feng, Siyuan Peng, Zhenle Duan, Sihan Chen, Ziyi Wang, Yifei Dong, Yilong Dai, Ang Li</div>
+<div class="meta-line">First: 2026-11-09T21:53:26+00:00 · Latest: 2026-11-09T21:53:26+00:00</div>
+<div class="meta-line">Comments: 6 pages, 4 figures. Submitted to IUI 2027 Demos</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13287v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13287v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Codex and Claude Code let developers work on many projects in parallel, but keeping track of them still means switching between chats, terminal sessions and providers. We present Project Progress Desk, a local desktop interface that brings overall progress, blockers and pending decisions into one view. Users can see which projects need attention, inspect what remains, and compare earlier approaches before choosing how to continue. Agent receipts link reported outcomes to each project&#x27;s weighted acceptance checklist; the overview distinguishes receipt-supported progress from dated estimates. We describe daily use across 36 projects, including a choice between two implementations based on their recorded outcomes. At the demo, attendees will explore 30 simulated projects, trace completed work to overall progress, and watch a coding agent&#x27;s new result update the overview.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Codex and Claude Code let developers work on many projects in parallel, but keeping track of them still means switching between chats, terminal sessions and providers.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Combining Relevant Expert Knowledge Using Mixtures of Feedback Fuzzy Cognitive Maps</div>
+<div class="meta-line">Authors: Olaoluwa Adigun, Akash Kumar Panda, Bart Kosko</div>
+<div class="meta-line">First: 2026-11-03T21:50:07+00:00 · Latest: 2026-11-09T21:29:42+00:00</div>
+<div class="meta-line">Comments: 8 page, 8 figures, 2 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05664v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.05664v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A neuro-symbolic system should combine only relevant answers from expert agents or other knowledge sources. Using only relevant experts for a given input query becomes ever more important for accuracy and scalability as the knowledge network grows and connects ever more knowledge sources. We extend the standard definition of relevance from the legal theory of evidence: An answer is relevant if and only if it is both probative and material for the matter at hand given the knowledge available. We apply this relevancy scheme to mixing the feedback fuzzy cognitive maps (FCMs) of real or artificial experts. The expert FCM directed causal graphs mix or combine into a common knowledge network. We compare the equilibrium limit-cycle predictions or answers of the experts to the answers of the mixture FCM and then estimate the probative status of answers by their difference or variation. A new Bayes-like theorem de-mixes the knowledge mixture into corresponding posterior-like FCMs that also allow relevancy-based comparisons. The result is a final set of relevancy mixing weights that produces a relevancy-mixed FCM knowledge network for the given query. So different queries produce different relevancy-mixed FCMs. We demonstrate this relevancy approach using generated synthetic FCMs from an actual 13-node expert FCM that models the causes and feedbacks of ischemic-stroke risk.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A neuro-symbolic system should combine only relevant answers from expert agents or other knowledge sources.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ExpertCrowd-SWE: Measuring Frontier Coding Agents on Expert-Authored Engineering Tasks in Unfamiliar Codebases</div>
+<div class="meta-line">Authors: Josip Vrdoljak, Akash Singh, Bas Steunebrink, Alex Yarotsky, John Lorenzo, Achille Nicoletti, Sam Pigott</div>
+<div class="meta-line">Venue: www</div>
+<div class="meta-line">First: 2026-11-09T21:20:57+00:00 · Latest: 2026-11-09T21:20:57+00:00</div>
+<div class="meta-line">Comments: 17 pages, 5 figures, 6 tables. Dataset: https://huggingface.co/datasets/ExpertCrowd/ec-swe ; leaderboard: https://www.toptal.com/expertcrowd/benchmarks/expertcrowd-swe-benchmark</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13246v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13246v1">PDF</a> · <a href="https://huggingface.co/datasets/ExpertCrowd/ec-swe">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">ExpertCrowd-SWE (EC-SWE) is a benchmark of 100 expert-authored, multi-file software engineering tasks for evaluating autonomous coding agents in large, unfamiliar codebases. Each task is a change request written by a practising engineer against a pinned commit of a real repository, paired with a sealed reference solution and a task-specific grader whose weighted, mostly executable criteria award partial credit; must-pass blockers and pass/fail gates encode what a maintainer would refuse to merge. The tasks span 87 open-source projects and 11 languages. The median ticket is 148 words, while the median reference solution changes 471 lines. Every task image is calibrated before release so that the reference solution scores 1.0 and both the untouched repository and an inert change score 0; nearly half of the tasks also ship alternative, lazy and adversarial control patches that the grader must classify correctly. The final 100 tasks were selected for difficulty against current frontier models. We evaluate seven frontier models, five runs each (3,495 scored runs), in a single platform harness that gives each model its provider-native tool interface. Claude Opus 5.5 (67.3%) and GPT-6 Astra (63.7%) lead without a statistically significant gap, followed by Claude Fable 5.1 (46.5%), Gemini 3.8 Flash (40.0%), and a statistically indistinguishable group of Qwen 3.8 Max, DeepSeek V4.1 Flash and Grok 4.6 (32-34%). No task is fully solved by every model, and on 80 tasks no model earns full credit on all five runs. Scores span 35 points. Depending on the model, agents take a median of 33 to 166 steps per run, with little relation to score. We release 24 tasks with their environments, graders and results, and hold out 76 to limit contamination.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">ExpertCrowd-SWE (EC-SWE) is a benchmark of 100 expert-authored, multi-file software engineering tasks for evaluating autonomous coding agents in large, unfamiliar codebases.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">From Process Models to Composable Agentic Workflows: Combining BPMN, Agents and Enterprise Knowledge</div>
+<div class="meta-line">Authors: Christian Fillies, Jan Fillies, Frauke Weichhardt, Gay Anne Wood-Albrecht</div>
+<div class="meta-line">First: 2026-11-09T20:18:32+00:00 · Latest: 2026-11-09T20:18:32+00:00</div>
+<div class="meta-line">Comments: 14 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13196v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13196v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LLM-based agents can reason, use tools and collaborate. However, coordinating increasingly complex agentic applications becomes difficult to understand, monitor and improve. Decisions distributed across prompts, tool calls and application logic make workflows implicit. We introduce **Recursive Capability Composition**, enabling agents to execute business processes and expose them as reusable Agentic Tools.
+  This paper presents a BPMN-based approach to Agentic Workflows, combining explicit orchestration with autonomous reasoning. SemTalk BPMN models are transformed into executable workflows using a LangGraph/Pregel runtime. Agentic Tasks introduce LLM reasoning at selected activities, while conventional BPMN controls process flows, deterministic decisions, system interactions and human approvals. Agentic Participants provide reusable interfaces for agent behavior or other executable processes.
+  BPMN orchestration makes multi-agent systems more understandable and manageable. Explicit process models provide developers and operators with a shared view of workflow structures and execution progress, facilitating debugging, monitoring and optimization.
+  Enterprise agents also need organization-specific context. Process Models and Knowledge Graphs describe activities, participants, information objects, decisions and relationships between processes. They provide structured knowledge of how an organization operates, supporting informed agent decisions and actions.
+  Our contributions are threefold: 1. **Model-Driven Execution:** Transforming BPMN models into executable Agentic Workflows. 2. **Recursive Capability Composition:** Exposing agents and executable business processes as reusable tools for other agents. 3. **Enterprise Context:** Using Process Models and Ontologies to provide organization-specific knowledge for agent reasoning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LLM-based agents can reason, use tools and collaborate.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AgentScript-Eval: Benchmarking LLMs and Agents for Code Generation in an Enterprise DSL</div>
+<div class="meta-line">Authors: Dipin Khati, Shubham Mehrotra, Bin Bi, Zhou Yu, Denys Poshyvanyk, James Zhu, Sitaram Asur, Phil L. Mui</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-11-09T20:04:32+00:00 · Latest: 2026-11-09T20:04:32+00:00</div>
+<div class="meta-line">Comments: Accepted to 40th Conference on Neural Information Processing Systems (NeurIPS 2026). Workshop: 2nd Workshop on Agentic AI Benchmarks and Applications for Enterprise Tasks (AABA4ET), NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13183v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13183v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Domain-specific languages (DSLs) are widely used in enterprise software, giving a compact interface to complex tasks, from data access to infrastructure automation. Platforms increasingly extend them to agents, where a developer declares the topics, permitted actions, and guardrails of an agent rather than writing general-purpose code. Large language models (LLMs) write general-purpose code well, but that ability has been measured almost entirely on languages abundant in public pretraining data, and enterprise DSLs are neither abundant nor public. We introduce AgentScript-Eval, an execution-graded benchmark of 100 real tasks for AgentScript, the declarative DSL that Salesforce uses in Agentforce to build conversational agents. Tasks span authoring an agent from a specification, debugging a broken definition, and optimizing a working one. Evaluating five models zero-shot, we find that the regime is hard: the best model reaches only 25.0% pass@3, and every model scores 0% on authoring from scratch. We further find that model scale and price are weak predictors of success -- a 31B open-weight model attains the highest compilation rate of any model tested (48.0%) and matches the strongest frontier model on partial-credit accuracy at the lowest token cost. Adding an agentic compile-and-edit loop is the single largest lever, roughly doubling partial-credit accuracy. Beyond that gain, the wording of domain guidance matters more than its packaging. The same skill pack scores 28% as plain documentation but only 14% as a live plugin. Rewriting one skill inside that plugin then raises it to 37%, our best result, with catalog and tooling untouched. Larger models did not reliably outperform smaller ones; what mattered was the harness surrounding the model and the guidance supplied to it.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Domain-specific languages (DSLs) are widely used in enterprise software, giving a compact interface to complex tasks, from data access to infrastructure automation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Autonomous Optimization of Numerical Algorithms by an AI Agent: Application to Atomistic Simulation</div>
+<div class="meta-line">Authors: Jeheon Woo</div>
+<div class="meta-line">First: 2026-11-09T19:23:39+00:00 · Latest: 2026-11-09T19:23:39+00:00</div>
+<div class="meta-line">Comments: 29 pages, 5 figures, 1 table; Supplementary Information included</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13143v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13143v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents built on large language models, run in automated improvement loops, can discover more efficient algorithms. We present AIOA, a framework that brings this approach to the numerical algorithms of atomistic simulation: an agent improves an algorithm against a pre-specified metric in a loop guarded by verifiers it cannot alter. Applied to ASE, a widely used atomistic simulation library, AIOA targets two facets of an algorithm: its implementation, rewritten to run faster with unchanged results, and the method itself, redesigned to converge with fewer force evaluations. Agents made six kernels 22-24 times faster on average in Python with NumPy and SciPy. On unseen problems, optimizers from the best configuration needed 3.1-3.4 times fewer force evaluations than L-BFGS for structure relaxation and 4.6-17 times fewer than standard climbing-image nudged elastic band calculations for reaction paths. The agents&#x27; optimizers also contain two algorithmic components we did not find in the literature.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents built on large language models, run in automated improvement loops, can discover more efficient algorithms.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">WorkflowArena: Benchmarking Executable Workflow Orchestration in LLM-Based Multi-Agent Systems</div>
+<div class="meta-line">Authors: Zheng Jiang, Fang Niu, Bo Peng, Houde Qian, Wenyi Li, Deyao Hong, Mingju Gao, Yizhe Chi, Youjie Zheng, Kaisen Yang, Calvin Xiao, Lifeng Sun, Huan-ang Gao</div>
+<div class="meta-line">First: 2026-11-09T18:45:28+00:00 · Latest: 2026-11-09T18:45:28+00:00</div>
+<div class="meta-line">Comments: Project page: https://lab.einsia.ai/workflowarena</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12856v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12856v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://lab.einsia.ai/workflowarena">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language model agents are increasingly deployed as multi-agent systems rather than as a standalone model operating within a single context. Recent agent harnesses allow the model to instantiate worker agents and to author the executable workflow that coordinates them, shifting the design of system structure from developers to the model at run time. The quality of this organization therefore constitutes a distinct capability, yet existing benchmarks either measure end-to-end task completion or evaluate coordination under structures specified in advance. We formalize this capability as workflow orchestration and introduce WorkflowArena, a benchmark of 145 long-horizon tasks spanning 8 professional domains, from software engineering and formal mathematics to legal analysis and 3D production. Each task specifies an initial workspace and an integrated deliverable composed of interdependent components, which is assessed by a hidden verifier. Agents determine autonomously whether and how to delegate, and all delegation is recorded, enabling joint evaluation of deliverable quality and the organization of the underlying work. Experiments with nine models show that no single configuration performs best across all domains and that systems exhibit distinct delegation strategies: at high effort, Claude models in Claude Code invoke workflows less frequently but with larger worker groups, whereas GPT models in Codex delegate more frequently in smaller units. When the executing model is held fixed on a challenging subset of tasks, workflows authored by Claude Opus 5.5 substantially improve weaker executors, indicating that workflow organization is itself a measurable determinant of task performance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language model agents are increasingly deployed as multi-agent systems rather than as a standalone model operating within a single context.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DeepChronos: Temporal Neuro-Symbolic Reasoning for Multi-Step Attack Detection</div>
+<div class="meta-line">Authors: Sofia Burkow, Andrea Agiollo, Enkeleda Bardhi, Fernando Kuipers, Kaitai Liang, Georgios Smaragdakis</div>
+<div class="meta-line">First: 2026-11-09T17:37:36+00:00 · Latest: 2026-11-09T17:37:36+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12760v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12760v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern cyber threats commonly unfold as multi-step attacks comprising temporally and causally related phases. Current defenses commonly follow a detect first and correlate later paradigm. Intrusion detection systems classify events independently, while downstream systems reconstruct attack progression from the resulting alerts or audit records. In this context, learning-based detectors learn attack-step dependencies implicitly as statistical regularities in the data and cannot guarantee that their predictions follow the real attack progression. Conversely, correlation systems represent attack relationships explicitly, but apply this knowledge only after the underlying attack observations have been detected. We present DEEPCHRONOS, a neuro-symbolic network intrusion detection system that shifts the paradigm from detect first and correlate later to detection through logical progression. DEEPCHRONOS combines learned flow-level evidence with explicit attack-phase rules, temporal prerequisites, and previously inferred phases, allowing the evolving attack history to inform and constrain each detection decision. Evaluations on DARPA 2000 and AIT-LDS V2 show that DEEPCHRONOS improves macro F1 over purely neural baselines by up to 11.3%, eliminates causal violations under strict temporal constraints, and maintains millisecond-scale inference latency. These results demonstrate that integrating explicit attack progression knowledge into detection produces more accurate and temporally coherent multi-step attack predictions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern cyber threats commonly unfold as multi-step attacks comprising temporally and causally related phases.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents</div>
+<div class="meta-line">Authors: Zhi Chen, Zhensu Sun, Yuling Shi, Chao Peng, Xiaodong Gu, David Lo, Lingxiao Jiang</div>
+<div class="meta-line">First: 2026-02-08T10:26:31+00:00 · Latest: 2026-11-09T15:41:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2602.07900v3">Abs</a> · <a href="https://arxiv.org/pdf/2602.07900v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large Language Model (LLM) code agents increasingly resolve repository-level issues by iteratively editing code, invoking tools, and validating candidate patches. In these workflows, agents often write tests on the fly, but the value of this behavior remains unclear. This raises a central question: how does agent-written testing relate to task outcomes and resource use during repository-level issue resolution? To better understand the role of agent-written tests, we analyze 5,000 recorded agent runs produced by six strong LLMs on SWE-bench Verified using the lightweight mini-SWE-agent scaffold. Our results show that test writing is common for most models. GPT-5.2 is an exception: it rarely writes new test files while achieving a resolution rate close to the top-ranked model. Test-writing frequency varies widely across models. Within a given model, it differs less between resolved and unresolved tasks. When tests are written, their files contain substantially more statements that print runtime values than assertions that check conditions. We then compare baseline prompts with revised prompts that encourage or discourage writing new test files for four models. Agents start or stop writing test files as requested on 36.8%-93.2% of tasks. Resolved-task totals differ by 0-13 out of 500 per model, with no statistically significant difference, while API calls or token use differ substantially for three models. Similar resolution totals can therefore hide substantial differences in how agents test and how many resources they use.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large Language Model (LLM) code agents increasingly resolve repository-level issues by iteratively editing code, invoking tools, and validating candidate patches.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SciMARS: Multi-Agent Recursive Self-Improvement for Closed-Loop Scientific Discovery</div>
+<div class="meta-line">Authors: Weimin Wu, Han Liu</div>
+<div class="meta-line">First: 2026-11-09T15:20:32+00:00 · Latest: 2026-11-09T15:20:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12552v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12552v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We propose SciMARS, a framework for recursive task-local adaptation of multi-agent harnesses in closed-loop scientific discovery. Multi-agent systems coordinate analysis, experimental design, and verification as scientific evidence evolves. However, two problems limit their effectiveness: (i) without shared memory, agents lose observations and repeat work; (ii) fixed role procedures, handoffs, and memory policies perpetuate mistakes despite retained evidence. We address these problems with a shared evidence graph and separate component editors. SciMARS adapts roles and coordination; SciMARS + Memory adds a third editor for how agents record, retrieve, and receive evidence. Candidate probes guide composition and selection of the next harness. We evaluate scientific discovery through experimental-data replay and a digital twin. SciMARS + Memory resolves 12/18 GPT-6-Astra and 2/18 GLM-5.3 attempts on Autonomous Science Bench, compared with 8/18 and 1/18 for the base multi-agent team. On ScienceAgentBench and AppWorld, it solves 14/38 and 11/20 tasks, compared with 11/38 and 5/20 for the base team. These results support combining shared memory with harness adaptation across scientific and interactive tasks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We propose SciMARS, a framework for recursive task-local adaptation of multi-agent harnesses in closed-loop scientific discovery.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Improving Evaluation Realism with Inference-Time Compute and Deployment Scaffolds</div>
+<div class="meta-line">Authors: Axel Ahlqvist, Richard Guan, Juan-Pablo Rivera, Adeline Kassler, Dmitrii Troitskii, Alexandra Souly, Kai Fronsdal, Robert Kirk, John Hughes</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2026-09-02T08:47:34+00:00 · Latest: 2026-11-09T15:11:56+00:00</div>
+<div class="meta-line">Comments: 78 pages, 45 figures, 6 tables (8 figures in the main text). Accepted at NeurIPS 2026. Code: https://github.com/meridianlabs-ai/petri_dish and https://github.com/AxelAhlqvist1995/petri-bon ; reproduction assets: https://github.com/AxelAhlqvist1995/petri-realism-reproduction</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.02302v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.02302v2">PDF</a> · <a href="https://github.com/meridianlabs-ai/petri_dish">Code1</a> · <a href="https://github.com/AxelAhlqvist1995/petri-bon">Code2</a> · <a href="https://github.com/AxelAhlqvist1995/petri-realism-reproduction">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A core obstacle to alignment evaluation is evaluation awareness: capable models can tell when they are being tested rather than deployed, weakening the conclusions a safety evaluation can support. We present two techniques that make simulated alignment evaluations harder to distinguish from real deployments. Our first technique, critique refinement, spends additional inference-time compute on each simulator action: the simulator generates multiple candidate actions, refines them using feedback from an instance of the target model on how to make them more realistic, and continues the evaluation with the most deployment-like candidate. Our second technique, DISH (Deployment-Imitating SWE-Agent Harness), wraps the target in an agent harness, reducing the gap between simulated and real deployment environments in coding settings. We test the techniques on multiple target models and find that applying both yields larger realism gains than either alone. We show that automated approaches can improve the realism of alignment evaluations, and that they compare favorably to spending the extra compute on more audit attempts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A core obstacle to alignment evaluation is evaluation awareness: capable models can tell when they are being tested rather than deployed, weakening the conclusions a safety evaluation can support.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">LLM-as-Code: Agentic Programming for Agent Harness</div>
+<div class="meta-line">Authors: Junjia Qi, Zichuan Fu, Jingtong Gao, Wenlin Zhang, Hanyu Yan, Xian Wu, Xiangyu Zhao</div>
+<div class="meta-line">Venue: KDD 2026</div>
+<div class="meta-line">First: 2026-06-14T15:47:27+00:00 · Latest: 2026-11-09T13:57:40+00:00</div>
+<div class="meta-line">Comments: Accepted at the KDD 2026 Workshop on Agentic Software Engineering (AgenticSE)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.15874v3">Abs</a> · <a href="https://arxiv.org/pdf/2606.15874v3">PDF</a> · <a href="https://github.com/FuzzyKuji/OpenProgram">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Every major LLM agent framework gives the LLM the role of orchestrator; the model decides what to do next, when to call tools, and when to stop. We argue that token explosion, control-flow hallucination, and unreliable completion are not implementation bugs but architectural consequences of assigning the deterministic work of looping, branching, and sequencing to a probabilistic system. A better prompt or a stronger model cannot guarantee the reliability of the LLM agent. We therefore propose Agentic Programming, in which the program governs all control flow, and the LLM is itself part of it, an adaptive component we call LLM-as-Code and invoke only where a task calls for reasoning or generation. Within each call the model keeps full flexibility, but it cannot alter the program&#x27;s execution path. With control in the program, the LLM&#x27;s context is built from the execution history&#x27;s call tree and forms a directed acyclic graph (DAG). Each call&#x27;s context length is then determined by its call depth rather than by accumulation over steps. A case study of computer-use agents shows that the design is practical, not just a theoretical stance, substantially improving the stability of long visual operation sequences.Code is available at https://github.com/FuzzyKuji/OpenProgram.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Every major LLM agent framework gives the LLM the role of orchestrator; the model decides what to do next, when to call tools, and when to stop.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">How Much Do Structural Tools Help Small Coding Agents? A Pre-Registered Scale Study of Code Localization</div>
+<div class="meta-line">Authors: Saurav Bellam</div>
+<div class="meta-line">First: 2026-10-25T00:16:32+00:00 · Latest: 2026-11-09T13:25:12+00:00</div>
+<div class="meta-line">Comments: 29 pages, 5 figures. Depth labels and dataset card and full code, raw results and analysis will be released in the near future</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.33958v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.33958v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Code-graph and embedding tools are routinely added to LLM coding agents on the premise that they supply repository structure the model lacks. We report a pre-registered study of how much such tools help off-the-shelf agents localize the code an issue requires changing and how the benefit varies with model size. Nine open-weight models (Qwen3 0.6B to 32B, Gemma 4 E2B to 12B) run one fixed localization harness on 500 held-out SWE-bench tasks under four tool sets (grep only; plus embedding search; plus code-graph tools; both) and a placebo arm whose structural tools return random entities, with five sampled seeds per condition: 170,500 episodes under hypotheses, tests and claim criteria frozen before the runs. The tools raise canonical function Acc@10 by +0.06 to +0.10 for the Qwen3 models up to 14B and the two small Gemma 4 models, by +0.03 at 32B (a near miss after correction), and not at all for Gemma 4 12B, which rarely submits; the gain is larger for small models than for the largest model in both families. The placebo shows that the gain is caused by what the tools return rather than by having them, and that random tool output harms two small models. The pre-registered claim that a 4B model with tools matches a 32B model without them fails. Secondary analyses show that the embedding index, not the code graph, carries the gain; that the gain replicates on tasks created after every model&#x27;s release and survives a shell harness, thinking mode, FP8 serving and a file-level metric that output formatting cannot inflate; and that it is mostly exposure: the tools show the gold code more often. Injecting the gold code directly explains the size trend. A 32B model already finds the code without the tools, so they add little exposure, while small models act on a shown answer less often (conversion 0.09, 0.24 and 0.40 at 1.7B, 4B and 32B). We release registration, code, episodes and analyses.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Code-graph and embedding tools are routinely added to LLM coding agents on the premise that they supply repository structure the model lacks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TANSAR: Editable and Attributable Correlation Matrix Memories under Correlated Keys, with Rule-Constrained Multi-Hop Knowledge Editing</div>
+<div class="meta-line">Authors: Abdulhady Abas Abdulla, Jiyan Salim Mahmud, Fatemeh Daneshfar, Hussein Mohammed Ali, Mourad Oussalah, Muhammad Bilal</div>
+<div class="meta-line">First: 2026-11-09T13:17:46+00:00 · Latest: 2026-11-09T13:17:46+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12374v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12374v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Correlation Matrix Memories (CMMs) store associations as sums of rank-one outer products, providing closed-form addressability, exact deletion, and linear attribution. While classical analyses assume random, orthogonal keys, semantic encoders produce correlated representations. We analyse CMMs under correlated keys using frame-theoretic coherence: (i) capacity bounds yielding an encoder-independent limit $n \le d(1+\varepsilon^2)$ for mean squared crosstalk $\varepsilon^2$; (ii) an exact characterisation of the collateral effect of deleting an association, guaranteeing that deletion never invalidates certified associations; and (iii) a geometric transparency bound demonstrating why attribution requires candidate sets of centred keys. On this basis, we introduce Topology-Aware Neuro-Symbolic Associative Retrieval (TANSAR). TANSAR traverses a directed acyclic association graph, prunes invalid paths via sound ground Horn constraints, and injects a representation derived strictly from the verified path into the residual stream of a frozen language model, guarded by a Clopper--Pearson selective-risk gate. Controlled experiments confirm all theoretical bounds. In multi-hop knowledge editing, Horn pruning reduces answer contradictions from 25.1% to 0.5%, whereas Hopfield retrieval incurs 24% contradictions when stale associations remain stored (and 0% if stale associations are removed). An end-to-end edit transaction requires 13.6 ms on a standard CPU and 2.37 ms on GPU. The symbolic component matches gold labels across all 600 ProofWriter theories and achieves 94.0% agreement on FOLIO, demonstrating sound and efficient multi-hop associative retrieval with exact unlearning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Correlation Matrix Memories (CMMs) store associations as sums of rank-one outer products, providing closed-form addressability, exact deletion, and linear attribution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reconfigurable Action Theories: A Formal Foundation for Dynamically Composable Agent Harnesses</div>
+<div class="meta-line">Authors: Jianmin Ji</div>
+<div class="meta-line">First: 2026-11-09T12:23:29+00:00 · Latest: 2026-11-09T12:23:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12300v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12300v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Action theories typically fix their vocabulary and causal laws, whereas agent harnesses can change their tools, providers, and policies during execution. We introduce Reconfigurable Action Theories (RAT), in which actions can change the action theory itself. A theory module in RAT contains a vocabulary, causal laws, and an initializer. A RAT configuration records the active modules and the world state. Module loading and unloading are represented by actions governed by ordinary causal laws. RAT retains the standard causal action semantics of its language fragment when the active module set is fixed. We give sufficient conditions for at most one next configuration, preservation of existing behavior when a module is added, and equal results when modules are loaded in either order. We establish the computational complexity of reasoning tasks in RAT and translate finite RAT systems into nonmonotonic causal theories and Answer Set Programming (ASP), preserving bounded executions. Experiments compare finite RAT models with executions of official DeepSeek Harness, Pi, and OpenHands implementations. RAT provides a formal basis for checking how component changes affect a harness&#x27;s available actions, behavior, and reachable goals.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Action theories typically fix their vocabulary and causal laws, whereas agent harnesses can change their tools, providers, and policies during execution.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Embodied First Exam</div>
+<div class="meta-line">Authors: Kangrui Wang, Qineng Wang, Changhe Chen, Pingyue Zhang, Chi Gui, Feishi Wang, Canyu Chen, Wenli Xiao, Xiaoyu Huang, Tonghe Zhang, Linjie Li, Zihan Wang, Minyeong Kim, Yiyou Sun, Mingkai Deng, Jinyu Hou, Qi Zhu, Han Liu, Eric P. Xing, Huaxiu Yao, Zhiwen Fan, Yuejiang Liu, Dawn Song, Pieter Abbeel, Li Fei-Fei, Jiajun Wu, Yuke Zhu, Guanya Shi, Ruohan Zhang, Manling Li</div>
+<div class="meta-line">First: 2026-11-09T10:29:19+00:00 · Latest: 2026-11-09T10:29:19+00:00</div>
+<div class="meta-line">Comments: Preprint version</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12177v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12177v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Early successes on agentic robotics point to a potential paradigm shift toward using coding agents to control robots. Existing robotics benchmarks are built around visuomotor policy learning, leaving it open whether coding agents can reliably control diverse robots under physical-world constraints. We therefore introduce the Embodied First Exam, a unified, comprehensive, and agent-native evaluation framework where coding agents can choose their own control approach: direct control, code to control, or train a policy to control. We hope it serves as a first exam for coding agents before they enter the physical world, with 1,156 tasks in 35 suites on 47 robots, including 9 new suites that go beyond pick-and-place to spatial puzzles, dexterous manipulation, multi-robot interaction, dynamic whole-body control, and sim-to-sim engineering. Each task can be run in up to three evaluation settings. The Standard Setting mimics the real world: the agent receives only sensor observations and, by default, cannot reset the environment. Its Realtime variant keeps the environment running while the agent reasons. The Privileged Setting gives the agent access to the full simulator state and unlimited resets, allowing it to search for an oracle solution for training purposes. Success rates in this setting serve as an approximate upper bound. On the 456 core tasks, the strongest of eight agents, GPT-6 Astra in Codex, achieves a success rate of 34% in the Standard Setting, leaving much room for improvement. To see where agents fail, we label the stage at which failed attempts go wrong and compare failures across agents, settings, and stage categories.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Early successes on agentic robotics point to a potential paradigm shift toward using coding agents to control robots.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261111_1803.html">20261111_1803</a>
+<a href="archive/20261110_1842.html">20261110_1842</a>
+<a href="archive/20261109_1838.html">20261109_1838</a>
+<a href="archive/20261106_1809.html">20261106_1809</a>
+<a href="archive/20261105_1805.html">20261105_1805</a>
+<a href="archive/20261104_1811.html">20261104_1811</a>
+<a href="archive/20261103_1818.html">20261103_1818</a>
+<a href="archive/20261102_1818.html">20261102_1818</a>
+<a href="archive/20261030_1719.html">20261030_1719</a>
+<a href="archive/20261029_1708.html">20261029_1708</a>
+<a href="archive/20261028_1710.html">20261028_1710</a>
+<a href="archive/20261028_1323.html">20261028_1323</a>
+<a href="archive/20261027_1224.html">20261027_1224</a>
+<a href="archive/20261023_1041.html">20261023_1041</a>
+<a href="archive/20261020_1708.html">20261020_1708</a>
+<a href="archive/20261014_1633.html">20261014_1633</a>
+<a href="archive/20261013_1820.html">20261013_1820</a>
+<a href="archive/20261009_1817.html">20261009_1817</a>
+<a href="archive/20261008_1816.html">20261008_1816</a>
+<a href="archive/20261007_1803.html">20261007_1803</a>
+<a href="archive/20261006_1757.html">20261006_1757</a>
+<a href="archive/20261005_1812.html">20261005_1812</a>
+<a href="archive/20261001_1757.html">20261001_1757</a>
+<a href="archive/20260930_1730.html">20260930_1730</a>
+<a href="archive/20260929_1738.html">20260929_1738</a>
+<a href="archive/20260928_1733.html">20260928_1733</a>
+<a href="archive/20260925_1641.html">20260925_1641</a>
+<a href="archive/20260924_1618.html">20260924_1618</a>
+<a href="archive/20260923_1626.html">20260923_1626</a>
+<a href="archive/20260922_1624.html">20260922_1624</a>
+<a href="archive/20260921_1645.html">20260921_1645</a>
+<a href="archive/20260918_1606.html">20260918_1606</a>
+<a href="archive/20260917_1632.html">20260917_1632</a>
+<a href="archive/20260916_1627.html">20260916_1627</a>
+<a href="archive/20260915_1632.html">20260915_1632</a>
+<a href="archive/20260914_1726.html">20260914_1726</a>
+<a href="archive/20260911_1556.html">20260911_1556</a>
+<a href="archive/20260910_1600.html">20260910_1600</a>
+<a href="archive/20260909_1600.html">20260909_1600</a>
+<a href="archive/20260908_1556.html">20260908_1556</a>
+<a href="archive/20260907_1606.html">20260907_1606</a>
+<a href="archive/20260904_1552.html">20260904_1552</a>
+<a href="archive/20260903_1556.html">20260903_1556</a>
+<a href="archive/20260902_1547.html">20260902_1547</a>
+<a href="archive/20260901_1629.html">20260901_1629</a>
+<a href="archive/20260831_1732.html">20260831_1732</a>
+<a href="archive/20260828_2312.html">20260828_2312</a>
+<a href="archive/20260827_2200.html">20260827_2200</a>
+<a href="archive/20260827_1143.html">20260827_1143</a>
+<a href="archive/20260826_1232.html">20260826_1232</a>
+<a href="archive/20260825_1232.html">20260825_1232</a>
+<a href="archive/20260824_1521.html">20260824_1521</a>
+<a href="archive/20260824_1500.html">20260824_1500</a>
+<a href="archive/20260821_0338.html">20260821_0338</a>
+<a href="archive/20260820_0335.html">20260820_0335</a>
+<a href="archive/20260819_0338.html">20260819_0338</a>
+<a href="archive/20260818_0335.html">20260818_0335</a>
+<a href="archive/20260817_0328.html">20260817_0328</a>
+<a href="archive/20260816_0328.html">20260816_0328</a>
+<a href="archive/20260815_0352.html">20260815_0352</a>
+<a href="archive/20260814_0359.html">20260814_0359</a>
+<a href="archive/20260813_0403.html">20260813_0403</a>
+<a href="archive/20260812_0404.html">20260812_0404</a>
+<a href="archive/20260811_0357.html">20260811_0357</a>
+<a href="archive/20260810_0341.html">20260810_0341</a>
+<a href="archive/20260809_0338.html">20260809_0338</a>
+<a href="archive/20260808_0356.html">20260808_0356</a>
+<a href="archive/20260807_0844.html">20260807_0844</a>
+<a href="archive/20260806_0437.html">20260806_0437</a>
+<a href="archive/20260805_0439.html">20260805_0439</a>
+<a href="archive/20260804_0437.html">20260804_0437</a>
+<a href="archive/20260803_0416.html">20260803_0416</a>
+<a href="archive/20260802_0414.html">20260802_0414</a>
+<a href="archive/20260801_0426.html">20260801_0426</a>
+<a href="archive/20260731_0421.html">20260731_0421</a>
+<a href="archive/20260730_0416.html">20260730_0416</a>
+<a href="archive/20260727_0416.html">20260727_0416</a>
+<a href="archive/20260726_0414.html">20260726_0414</a>
+<a href="archive/20260725_0432.html">20260725_0432</a>
+<a href="archive/20260724_0419.html">20260724_0419</a>
+<a href="archive/20260723_0418.html">20260723_0418</a>
+<a href="archive/20260722_0423.html">20260722_0423</a>
+<a href="archive/20260721_0427.html">20260721_0427</a>
+<a href="archive/20260720_0411.html">20260720_0411</a>
+<a href="archive/20260719_0407.html">20260719_0407</a>
+<a href="archive/20260718_0413.html">20260718_0413</a>
+<a href="archive/20260717_0408.html">20260717_0408</a>
+<a href="archive/20260716_0417.html">20260716_0417</a>
+<a href="archive/20260715_0420.html">20260715_0420</a>
+<a href="archive/20260714_0421.html">20260714_0421</a>
+<a href="archive/20260713_0409.html">20260713_0409</a>
+<a href="archive/20260712_0409.html">20260712_0409</a>
+<a href="archive/20260711_0439.html">20260711_0439</a>
+<a href="archive/20260710_0454.html">20260710_0454</a>
+<a href="archive/20260709_0426.html">20260709_0426</a>
+<a href="archive/20260708_0455.html">20260708_0455</a>
+<a href="archive/20260707_0456.html">20260707_0456</a>
+<a href="archive/20260706_0421.html">20260706_0421</a>
+<a href="archive/20260705_0415.html">20260705_0415</a>
+<a href="archive/20260704_0421.html">20260704_0421</a>
+<a href="archive/20260703_0425.html">20260703_0425</a>
+<a href="archive/20260702_0452.html">20260702_0452</a>
+<a href="archive/20260701_0502.html">20260701_0502</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260629_0420.html">20260629_0420</a>
+<a href="archive/20260628_0423.html">20260628_0423</a>
+<a href="archive/20260627_0450.html">20260627_0450</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260625_0455.html">20260625_0455</a>
+<a href="archive/20260624_0505.html">20260624_0505</a>
+<a href="archive/20260623_0535.html">20260623_0535</a>
+<a href="archive/20260622_0445.html">20260622_0445</a>
+<a href="archive/20260621_0422.html">20260621_0422</a>
+<a href="archive/20260620_0442.html">20260620_0442</a>
+<a href="archive/20260619_0531.html">20260619_0531</a>
+<a href="archive/20260618_0519.html">20260618_0519</a>
+<a href="archive/20260617_0545.html">20260617_0545</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260615_0423.html">20260615_0423</a>
+<a href="archive/20260614_0423.html">20260614_0423</a>
+<a href="archive/20260613_0505.html">20260613_0505</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260611_0528.html">20260611_0528</a>
+<a href="archive/20260610_0504.html">20260610_0504</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260608_0421.html">20260608_0421</a>
+<a href="archive/20260607_0418.html">20260607_0418</a>
+<a href="archive/20260606_0451.html">20260606_0451</a>
+<a href="archive/20260604_0557.html">20260604_0557</a>
+<a href="archive/20260603_0556.html">20260603_0556</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260601_0419.html">20260601_0419</a>
+<a href="archive/20260531_0414.html">20260531_0414</a>
+<a href="archive/20260530_0512.html">20260530_0512</a>
+<a href="archive/20260529_0515.html">20260529_0515</a>
+<a href="archive/20260527_0459.html">20260527_0459</a>
+<a href="archive/20260526_0426.html">20260526_0426</a>
+<a href="archive/20260525_0417.html">20260525_0417</a>
+<a href="archive/20260524_0411.html">20260524_0411</a>
+<a href="archive/20260523_0445.html">20260523_0445</a>
+<a href="archive/20260522_0454.html">20260522_0454</a>
+<a href="archive/20260521_0508.html">20260521_0508</a>
+<a href="archive/20260520_0449.html">20260520_0449</a>
+<a href="archive/20260519_0442.html">20260519_0442</a>
+<a href="archive/20260518_0409.html">20260518_0409</a>
+<a href="archive/20260517_0425.html">20260517_0425</a>
+<a href="archive/20260516_0436.html">20260516_0436</a>
+<a href="archive/20260515_0457.html">20260515_0457</a>
+<a href="archive/20260514_0507.html">20260514_0507</a>
+<a href="archive/20260513_0503.html">20260513_0503</a>
+<a href="archive/20260512_0505.html">20260512_0505</a>
+<a href="archive/20260511_0418.html">20260511_0418</a>
+<a href="archive/20260510_0414.html">20260510_0414</a>
+<a href="archive/20260509_0426.html">20260509_0426</a>
+<a href="archive/20260508_0435.html">20260508_0435</a>
+<a href="archive/20260507_0454.html">20260507_0454</a>
+<a href="archive/20260506_0427.html">20260506_0427</a>
+<a href="archive/20260505_0436.html">20260505_0436</a>
+<a href="archive/20260504_0410.html">20260504_0410</a>
+<a href="archive/20260503_0414.html">20260503_0414</a>
+<a href="archive/20260502_0426.html">20260502_0426</a>
+<a href="archive/20260501_0429.html">20260501_0429</a>
+<a href="archive/20260430_0430.html">20260430_0430</a>
+<a href="archive/20260429_0437.html">20260429_0437</a>
+<a href="archive/20260428_0429.html">20260428_0429</a>
+<a href="archive/20260427_0405.html">20260427_0405</a>
+<a href="archive/20260426_0404.html">20260426_0404</a>
+<a href="archive/20260425_0410.html">20260425_0410</a>
+<a href="archive/20260424_0430.html">20260424_0430</a>
+<a href="archive/20260423_0426.html">20260423_0426</a>
+<a href="archive/20260422_0424.html">20260422_0424</a>
+<a href="archive/20260421_0418.html">20260421_0418</a>
+<a href="archive/20260420_0359.html">20260420_0359</a>
+<a href="archive/20260419_0358.html">20260419_0358</a>
+<a href="archive/20260418_0415.html">20260418_0415</a>
+<a href="archive/20260417_0421.html">20260417_0421</a>
+<a href="archive/20260416_0425.html">20260416_0425</a>
+<a href="archive/20260415_0426.html">20260415_0426</a>
+<a href="archive/20260414_0423.html">20260414_0423</a>
+<a href="archive/20260413_0352.html">20260413_0352</a>
+<a href="archive/20260412_0347.html">20260412_0347</a>
+<a href="archive/20260411_0356.html">20260411_0356</a>
+<a href="archive/20260410_0412.html">20260410_0412</a>
+<a href="archive/20260409_0411.html">20260409_0411</a>
+<a href="archive/20260407_0404.html">20260407_0404</a>
+<a href="archive/20260406_0347.html">20260406_0347</a>
+<a href="archive/20260405_0344.html">20260405_0344</a>
+<a href="archive/20260404_0350.html">20260404_0350</a>
+<a href="archive/20260403_0400.html">20260403_0400</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0407.html">20260331_0407</a>
+<a href="archive/20260329_0347.html">20260329_0347</a>
+<a href="archive/20260328_0350.html">20260328_0350</a>
+<a href="archive/20260326_0357.html">20260326_0357</a>
+<a href="archive/20260325_0405.html">20260325_0405</a>
+<a href="archive/20260324_0400.html">20260324_0400</a>
+<a href="archive/20260323_0342.html">20260323_0342</a>
+<a href="archive/20260322_0340.html">20260322_0340</a>
+<a href="archive/20260321_0347.html">20260321_0347</a>
+<a href="archive/20260320_0356.html">20260320_0356</a>
+<a href="archive/20260319_0358.html">20260319_0358</a>
+<a href="archive/20260318_0405.html">20260318_0405</a>
+<a href="archive/20260317_0401.html">20260317_0401</a>
+<a href="archive/20260316_0343.html">20260316_0343</a>
+<a href="archive/20260315_0341.html">20260315_0341</a>
+<a href="archive/20260314_0344.html">20260314_0344</a>
+<a href="archive/20260313_0352.html">20260313_0352</a>
+<a href="archive/20260312_0352.html">20260312_0352</a>
+<a href="archive/20260311_0347.html">20260311_0347</a>
+<a href="archive/20260310_0350.html">20260310_0350</a>
+<a href="archive/20260309_0338.html">20260309_0338</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0347.html">20260307_0347</a>
+<a href="archive/20260306_0402.html">20260306_0402</a>
+<a href="archive/20260305_0348.html">20260305_0348</a>
+<a href="archive/20260304_0348.html">20260304_0348</a>
+<a href="archive/20260303_0348.html">20260303_0348</a>
+<a href="archive/20260302_0336.html">20260302_0336</a>
+<a href="archive/20260301_0339.html">20260301_0339</a>
+<a href="archive/20260228_0348.html">20260228_0348</a>
+<a href="archive/20260227_0354.html">20260227_0354</a>
+<a href="archive/20260226_0402.html">20260226_0402</a>
+<a href="archive/20260225_0404.html">20260225_0404</a>
+<a href="archive/20260224_0406.html">20260224_0406</a>
+<a href="archive/20260223_0338.html">20260223_0338</a>
+<a href="archive/20260222_0339.html">20260222_0339</a>
+<a href="archive/20260221_0345.html">20260221_0345</a>
+<a href="archive/20260220_0348.html">20260220_0348</a>
+<a href="archive/20260219_0358.html">20260219_0358</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0343.html">20260217_0343</a>
+<a href="archive/20260216_0339.html">20260216_0339</a>
+<a href="archive/20260215_0338.html">20260215_0338</a>
+<a href="archive/20260213_0401.html">20260213_0401</a>
+<a href="archive/20260212_0404.html">20260212_0404</a>
+<a href="archive/20260210_0409.html">20260210_0409</a>
+<a href="archive/20260208_0339.html">20260208_0339</a>
+<a href="archive/20260207_0349.html">20260207_0349</a>
+<a href="archive/20260206_0347.html">20260206_0347</a>
+<a href="archive/20260205_0346.html">20260205_0346</a>
+<a href="archive/20260204_0354.html">20260204_0354</a>
+<a href="archive/20260202_0337.html">20260202_0337</a>
+<a href="archive/20260201_0333.html">20260201_0333</a>
+<a href="archive/20260131_0345.html">20260131_0345</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

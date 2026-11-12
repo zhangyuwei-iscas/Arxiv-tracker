@@ -74,7 +74,7 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-11-11 18:03</span>
+        <span class="badge">2026-11-12 18:29</span>
       </div>
     </div>
     <div class="hr"></div>
@@ -602,78 +602,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Early successes on agentic robotics point to a potential paradigm shift toward using coding agents to control robots.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Let the Fixer Decide: Training a Code Localizer from the Fixer&#x27;s Likelihood</div>
-<div class="meta-line">Authors: Khalil Hennara, Muhammad Hreden, Zeina Aldallal, Sara Chrouf, Safwan AlModhayan</div>
-<div class="meta-line">First: 2026-11-09T10:18:59+00:00 · Latest: 2026-11-09T10:18:59+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12164v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12164v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Code localizers are usually trained to predict the files a reference patch edits, but the code a fixer needs to read is not the same as the code it changes. We propose Fixer-Guided Localization (FGL): the localizer proposes several localizations, a frozen fixer scores each by how likely it makes a verified patch, and the localizer is trained on these scores with weighted supervised fine-tuning, without running tests and without reinforcement learning. We build the full pipeline on Gemma 4 E4B for the Kaggle Gemma-4 Developer Agent competition, from 1,629 test-verified Kimi K3 trajectories. The FGL target helps the fixer find the bug as often as the teacher&#x27;s localization while using 27.5% less code. On the development set, one EM round moves the agent in the expected direction compared with a matched control: more tasks reach a patch (53 vs. 46), fewer tasks get stuck reading files that do not exist (43 vs. 54), and more tasks are solved (8 vs. 6). Training also changes how the agent works: trained agents explore about three times more than the base model and write far fewer wrong patches, and the single agent solves up to 11 of 78 tasks, against 8 for the base model. An analysis of 13 evaluation runs identifies what limits a 4B agent under an 8-minute budget (time, repetition loops and edit quality) and gives practical lessons for training small coding agents. All data, code and adapters are publicly available.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Code localizers are usually trained to predict the files a reference patch edits, but the code a fixer needs to read is not the same as the code it changes.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">AdaPath: Query-Adaptive Path-Finding via Path-Bank for Multi-Hop Implicit Biomedical KGQA</div>
-<div class="meta-line">Authors: Jun Hyeong Kim, Dongki Kim, Yinhua Piao, Sung Ju Hwang</div>
-<div class="meta-line">Venue: EMNLP 2026</div>
-<div class="meta-line">First: 2026-08-31T10:32:23+00:00 · Latest: 2026-11-09T10:12:37+00:00</div>
-<div class="meta-line">Comments: 25 pages, 6 figures, 30 tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.30556v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.30556v2">PDF</a> · <a href="https://github.com/Jun-Hyeong-Kim/AdaPath">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Path-finding over knowledge graphs has become an effective way to ground LLM reasoning on multi-hop questions. However, biomedical QA introduces two distinct challenges that general-domain methods are not designed for: (i) queries do not expose intermediate reasoning and can be answered through multiple valid pathways, and (ii) biomedical knowledge graphs are densely connected, so path-finding methods easily take wrong turns. To address these challenges, we propose AdaPath, a path-finding framework that retrieves query-adaptive meta-paths from Path-Bank, which captures both query semantics and biomedical knowledge graph structure. AdaPath provides the missing cues in biomedical queries while effectively pruning dense knowledge graph neighborhoods during multi-hop reasoning. We further release BioStrat-QA, a biomedical KGQA benchmark that stratifies multi-hop queries by how much intermediate reasoning they expose. Across biomedical KGQA benchmarks, AdaPath consistently outperforms baselines, sustaining meaningful path-finding even when multi-hop queries expose less surface information. The source code is available at https://github.com/Jun-Hyeong-Kim/AdaPath.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Path-finding over knowledge graphs has become an effective way to ground LLM reasoning on multi-hop questions.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">System Optimizations for Cost-Efficient Agent Harnesses</div>
-<div class="meta-line">Authors: Jongseok Park, Jiaxiang Yu, Eric Zhou, Tony Hong, Sunga Kim, Yusuf Afifi, Ian Wong, Ion Stoica, Alvin Cheung</div>
-<div class="meta-line">First: 2026-11-09T09:39:06+00:00 · Latest: 2026-11-09T09:39:06+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12122v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12122v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">AI agent harnesses play the critical role of providing LLMs with an interface to a computing environment. Recent studies show that AI agents&#x27; task-execution accuracy depends mostly on the LLM used, while harness-side variances such as system prompts or tools have minimal impact. Rather, such harness-side variances show a larger impact on the cost of agent executions, achieving cost reductions up to 2.6 times on the same model and task. To further explore these harness-side cost optimization opportunities, we analyze the cost accumulation patterns across various agent traces and identify system opportunities to reduce token use and LLM calls without modifying the model or affecting task accuracy. Based on this analysis, we design Agency, a harness interposition platform that provides a unified abstraction and allows easy and portable implementation of harness-side system optimizations on existing off-the-shelf harnesses such as Claude Code or OpenAI Codex. Using Agency, we implement proof-of-concept optimization techniques based on our analysis and achieve cost reductions up to 35% across various real-world benchmarks on existing harnesses without compromising accuracy.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">AI agent harnesses play the critical role of providing LLMs with an interface to a computing environment.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Repository-Context-Guided Image Understanding for Agentic Software Development</div>
-<div class="meta-line">Authors: Fumiki Yohena, Toshiaki Sota, Shota Suzuki, Tomoko Okamoto, Michiaki Tatsubori</div>
-<div class="meta-line">First: 2026-11-09T08:33:52+00:00 · Latest: 2026-11-09T08:33:52+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13026v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13026v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Coding agents increasingly receive UI screenshots as part of bug reports, yet degraded image quality - caused by low resolution, compression artifacts, or small rendered text - can prevent them from identifying the relevant UI elements and source files. Vision-language models become less reliable as image quality deteriorates, while OCR-assisted approaches may propagate recognition errors from degraded inputs. Both approaches are limited when the visual evidence required for localization is no longer clearly observable in the query screenshot. We propose augmenting coding agents with repository-rendered reference images: crisp screenshots generated from the same codebase that the agent is tasked with modifying. These references provide readable visual evidence of the application&#x27;s UI while preserving the current, potentially bug-containing implementation state. Because they are generated from the available repository rather than requiring a known bug-free version, they can be produced automatically for reproducible application states without manual image annotation. We evaluate the approach on a controlled benchmark derived from SWE-bench Multimodal by injecting visual UI bugs into a real web application. We vary screenshot degradation and reference-image provision and measure whether the coding agent identifies the correct source file. The results show that reference images improve file localization especially for degraded image quality, increasing the gold file match rate under fourfold downsampling with JPEG compression. We confirmed with further analysis that the proposed approach recognizes text approximately 12 percentage points better than language biased OCR under the same degradation.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Coding agents increasingly receive UI screenshots as part of bug reports, yet degraded image quality - caused by low resolution, compression artifacts, or small rendered text - can prevent them from identifying the relevant UI elements and source files.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Alternating Abduction and Planning over Temporal Dynamic Knowledge Graphs</div>
-<div class="meta-line">Authors: Amir Hossein Sharafi, Alireza Shahbazi</div>
-<div class="meta-line">First: 2026-07-29T14:44:46+00:00 · Latest: 2026-11-09T08:05:25+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.27287v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.27287v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Knowledge graphs change over time, but the effects of actions on them are only partly stated: the ontology entails further consequences, facts that an action needs are often unknown, and an action may make the graph inconsistent. We study these problems for Temporal Dynamic Knowledge Graphs (TDKGs), that is, SROIQ knowledge bases whose actions are rules with delete/insert templates and whose events lie on an intrinsic timeline. We present three tools that use a SROIQ reasoner only through a few operations: temporal projection, which plays the events along the timeline and is the exact test of plans; DDA (Direct-Derivation Abduction), which explains an observation by assuming its negation and negating what the reasoner newly derives; and APT (Abduction and Planning over TDKGs), which plans backwards from a goal, assumes the facts that the plan needs but nobody stated, and lets DDA explain the assumptions, each explanation becoming a new goal for a sub-plan, up to a depth bound. The same machinery synthesises action sequences that end in a chosen contradiction. We prove that projection is decidable and that the indirect effects of an action are exactly the entailments of the updated state; that DDA is sound, terminates and finds every single-assertion explanation; and that APT is sound and terminates, while bounded planning is decidable but 2NExpTime-hard. We compare the tools analytically with hitting-set abduction and classical planning, compare DDA with the abduction solver CATS on shared problems, and run them on six benchmarks. Five reasoners (HermiT, Konclude, Pellet, Openllet, JFact) return identical results. Their incremental modes answered some checks wrongly after removals and gave no speed-up; parallel calls help only when a single call is expensive.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Knowledge graphs change over time, but the effects of actions on them are only partly stated: the ontology entails further consequences, facts that an action needs are often unknown, and an action may make the graph inconsistent.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Enhancing Multi-Step Chemical Mechanism Prediction with Graph-Guided Preference Data</div>
-<div class="meta-line">Authors: Yu Zhang, Ruijie Yu, Xuelin Zhao, Jinming Yang, Feng Zhu, Xiaokang Yang, Yaohui Jin, Yanyan Xu</div>
-<div class="meta-line">First: 2026-11-09T07:51:06+00:00 · Latest: 2026-11-09T07:51:06+00:00</div>
-<div class="meta-line">Comments: 5 figures, 3tables</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12013v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12013v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Predicting multi-step chemical reaction mechanisms requires identifying plausible intermediates and correctly ordering the elementary reaction steps. Existing computational methods focus on single-step elementary reaction prediction, limiting their ability to generalize to unseen reaction spaces. We introduce a graph-guided framework for multi-step chemical mechanism prediction that leverages a chemical mechanism knowledge graph (ChemMechKG) to guide large language models (LLMs). To improve pathway prediction, we develop a graph-aligned reaction mechanism predictor (GRMP) that uses graph neural networks to generate synthetic candidate pathways for pathway optimization. During inference, we design a relation retrieval (RR) module to extract relevant graph evidence from the KG for pathway refinement. Experiments show that GRMP achieves the highest pathway accuracy among all compared methods on ChemMechQA and oMe-Gold, reaching 48.1% and 57.9%, respectively. On a fixed sample of 110 out-of-distribution reactions from ChemMechQA-Hard, GRMP achieves 36.4% top-1 pathway accuracy. LLM-as-Judge and human assessment further demonstrate its ability to generalize to unseen reactions.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Predicting multi-step chemical reaction mechanisms requires identifying plausible intermediates and correctly ordering the elementary reaction steps.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261110_1842.html">20261110_1842</a>
+      <div class="history-list"><a href="archive/20261111_1803.html">20261111_1803</a>
+<a href="archive/20261110_1842.html">20261110_1842</a>
 <a href="archive/20261109_1838.html">20261109_1838</a>
 <a href="archive/20261106_1809.html">20261106_1809</a>
 <a href="archive/20261105_1805.html">20261105_1805</a>
