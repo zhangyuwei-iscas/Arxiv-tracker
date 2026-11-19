@@ -1,0 +1,1126 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-19 18:59</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261119_1859</div>
+    <div class="row"><div class="card">
+<div class="title">VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender</div>
+<div class="meta-line">Authors: Yuzhe Chen, Muxi Diao, Lele Yang, Wenbin Xu, Xuyang Liu, Qile Su, Changyi Liu, Jiankang Chen, Kaiyu Jiang, Haoyu Zhang, Hongyi Fu, Jianxiong Wang, Tianke Zhang, Haonan Fan, Yingxin Li, Bingyi Li, Xu Wang, Xuanyu Zheng, Bin Wen, Tingting Gao, Jiale Cao</div>
+<div class="meta-line">First: 2026-11-11T18:02:07+00:00 · Latest: 2026-11-18T18:56:21+00:00</div>
+<div class="meta-line">Comments: Project page: https://vibeprevisbench.github.io/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.15789v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.15789v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://vibeprevisbench.github.io/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Controllable real-world video generation models can condition on a rendered graybox proxy video, which fixes layout, motion and camera. Coding agents can build such videos by generating a 4D scene in Blender, yet no benchmark checks both these rendered proxy videos and the complex, multi-shot scenes behind them. We introduce VibePrevisBench, a benchmark for 4D scene generation: an agent turns a brief into an executable 4D scene and renders its proxy video. Its 242 tasks span four input kinds, including scripts, photos, continuations, and reference videos. Each delivery is scored along two evaluation dimensions. Rule-based Scene Check re-runs the code and compares the exported 4D scene with hidden ground truth facts in nine dimensions. VLM-based Screen Check asks a VLM judge whether facts that pass the rules are recognizable in the proxy video. We analyze the evaluation results and trajectories of 11 frontier coding agents and identify three key observations. First, multimodal understanding separates the agents, especially in understanding space and camera motion. Second, all agents seem to already master basic camera work and staging, and fail at challenging requests. Third, agents inspect their own renders but fail to correct their errors. Agents thus need better visual understanding of space and camera, explicit checks for challenging requests, and item-by-item verification of renders against the brief.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Controllable real-world video generation models can condition on a rendered graybox proxy video, which fixes layout, motion and camera.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Agentic Harness Engineering Beta: Requirement-Centered Evolution of Agent Harnesses</div>
+<div class="meta-line">Authors: Jiahang Lin, Jiahao Chen, Yiding Wang, Shichun Liu, Chengjun Pan, Shihan Dou, Honglin Guo, Yuyang Hu, Changhao Jiang, Zhenhua Han, Hang Yan, Qi Zhang, Tao Gui, Xuanjing Huang</div>
+<div class="meta-line">First: 2026-11-18T18:52:13+00:00 · Latest: 2026-11-18T18:52:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24924v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24924v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Real-world harness engineering is driven by explicit and implicit user requirements, which guide development and validation. However, existing harness evolution methods often overlook implicit requirements and interaction needs, while using a single evolution agent to modify the harness and benchmark scores to select changes. This process often produces narrow patches and leads to benchmark-specific local optima. We introduce Agentic Harness Engineering Beta (AHE-Beta), a requirement-centered loop that brings real-world engineering practices into harness evolution. The loop consists of three steps: (1) User-driven evaluation lets simulated users raise their requirements as issues while they work with the harness over multiple turns. (2) Team-based modification implements those requirements as generalizable changes rather than task-specific patches. (3) Requirement-driven selection merges a change only when it resolves a verified requirement and passes review. Empirically, on held-out tasks, AHE-Beta raises pass@1 from 21.9% to 33.3% while using 40.8% fewer tokens than Base Harness, and achieves higher pass@1 than Claude Code, Meta-Harness, and AHE. In a blind human A/B test, real users prefer AHE-Beta in 31 of 48 valid pairs and rate it higher on all five dimensions, matching the directional preference of the user simulator. The human A/B results show that AHE-Beta achieves its goal of aligning harness evolution with real-world user requirements. Without further evolution, the gains transfer to GLM-5.3 and DeepSeek-V4.1-Flash with pass@1 improvements of 15.8% and 5.3% over Base Harness. Together, these results show that requirement-centered harness evolution is a more general method for improving agent capabilities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Real-world harness engineering is driven by explicit and implicit user requirements, which guide development and validation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Ground, Iterate, Trace: Decomposing AI Research Ideation</div>
+<div class="meta-line">Authors: Samson Yu, Qiran Zou, Jing Yu Lim, Rushi Shah, Anirudh Goyal, Dianbo Liu</div>
+<div class="meta-line">First: 2026-11-18T18:31:37+00:00 · Latest: 2026-11-18T18:31:37+00:00</div>
+<div class="meta-line">Comments: 56 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24887v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24887v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models have been widely used to generate plausible research ideas, yet it remains unclear what makes automated ideation effective and how generated novel proposals arise from prior scientific work. We introduce the Creative AI Researcher (CAR), an agentic framework combining literature grounding, iterative development and explicit conceptual operators. CAR constructs a semantic knowledge graph from retrieved literature and equips an ideation agent with graph-retrieval tools and four operators: bisociation, analogy, exploration and elaboration. Each operator call is checked against structural acceptance conditions and recorded, producing a trace of intermediate transformations and declared literature sources. We evaluate CAR with two language-model backbones across 40 LiveIdeaBench research topics and two execution benchmarks. CAR achieves significantly higher methodological novelty (MN) than single-shot prompting and The AI Scientist. Its methodological novelty does not differ significantly from the Research Ideation Agent, while its feasibility scores are higher on both backbones. With a shared experiment executor, CAR achieves the highest pairwise win rate among the evaluated AI methods on FML-bench-Lite and BioXArena. In a ten-condition ablation study, MN point estimates favor CAR over one-step proposal on both backbones, but no MN contrast survives correction for multiple comparisons. The results do not establish a consistent quality benefit from explicit operators beyond free-form iteration. CAR makes the sequence of operations and declared literature sources inspectable, separating judged idea quality from procedural traceability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models have been widely used to generate plausible research ideas, yet it remains unclear what makes automated ideation effective and how generated novel proposals arise from prior scientific work.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CurvDelta: Low-Curvature Delta Modeling For Surgical Learning and Unlearning</div>
+<div class="meta-line">Authors: Zeguan Xiao, Zhuocheng Liang, Yun Chen, Yong Wang, Guanhua Chen, Pinyan Lu</div>
+<div class="meta-line">First: 2026-11-18T15:56:20+00:00 · Latest: 2026-11-18T15:56:20+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24654v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24654v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A central challenge in adapting large language models (LLMs) is capability preservation: an adaptation can achieve its target while degrading general capabilities. We introduce CurvDelta, a scalable framework that incorporates the preservation constraint into the parameterization of the model update. By analyzing the local geometry of the preservation constraint around the pre-adaptation model, CurvDelta constructs a low-curvature space in which parameter updates leave the preservation loss nearly invariant. We make its construction practical for LLMs through Kronecker-factored approximate curvature (K-FAC) and a factorized projection. We also introduce CurvLoRA, a low-rank variant within the same preservation geometry, designed for more efficient adaptation. Both methods apply to preservation-constrained adaptation tasks such as capability learning and selective unlearning. We evaluate our methods on mathematical reasoning, code generation, and knowledge unlearning. For mathematical reasoning and code generation, our approaches achieve competitive downstream performance while better preserving general capabilities, offering a favorable acquisition--retention trade-off relative to the baselines. For knowledge unlearning, our main results on TOFU and MUSE show a better balance between targeted forgetting and knowledge retention than the baselines, with retention performance close to the from-scratch retraining reference.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A central challenge in adapting large language models (LLMs) is capability preservation: an adaptation can achieve its target while degrading general capabilities.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Contour: Extensible Mapping Surfaces for Agentic Accelerator Kernel Generation</div>
+<div class="meta-line">Authors: Ruijie Gao, Jirong Yang, Mengtian Hong, Youyou Lu, Barry Lyu, Haoran Jin, Nathan Bleier</div>
+<div class="meta-line">First: 2026-08-01T23:22:04+00:00 · Latest: 2026-11-18T15:55:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.00894v4">Abs</a> · <a href="https://arxiv.org/pdf/2608.00894v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Emerging accelerators rarely ship with mature compiler backends, so recent work asks LLM agents to write native kernels directly from ISA documentation and simulator feedback. On two such accelerators, this direct workflow returns a correct kernel on only 17 of 38 workload instances, and most of its inference budget is spent re-deriving machine semantics and repairing illegal code rather than optimizing the workload. We present Contour, which consists of two parts. Contour-Explore replaces native-code generation with search over a mapping surface: a typed set of scheduling knobs and their legal domains, generated automatically from the accelerator&#x27;s ISA description and the workload graph. A compiler-owned resolver completes partial assignments into legal plans and emits native code, so every evaluated candidate is verified against the compiler&#x27;s default, and any policy can drive the search, including hill climbing, evolutionary search, and LLM agents. Compared with KernelCraft, a state-of-the-art agentic kernel generator, an LLM agent through Contour-Explore returns a verified kernel on every Gemmini and PLENA instance, produces 2.86x and 1.13x faster kernels on the instances where both succeed, and uses 26.3% and 83.4% fewer tokens per verified kernel. Contour-Ext extends the surface when search stalls: an LLM agent implements a new knob and its lowering in the compiler backend, and Contour-Ext accepts the extension only if the default path is byte-identical, every new value is numerically correct and changes the program, and the enlarged surface yields a measured gain. On VTA, Contour-Ext extends the AutoTVM surface of TVM, and AutoTVM&#x27;s XGBTuner then finds 4.14x faster kernels; on PLENA, the extended surface makes the kernels found by hill climbing 1.20x faster.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Emerging accelerators rarely ship with mature compiler backends, so recent work asks LLM agents to write native kernels directly from ISA documentation and simulator feedback.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Piccolo: Co-Evolving Decision Models and Data through Recursive Self-Improvement</div>
+<div class="meta-line">Authors: Zhenqing Ling, Qirui Jiao, Daoyuan Chen, Cheng Chen, Xinji Mai, Haowen Gao, Zhuo Zhang, Xuchen Pan, Mengsu Ding, Jiaji Deng, Yuexiang Xie, Xiaoming Qin, Weirui Kuang, Zhaoyang Liu, Yaliang Li, Bolin Ding, Jingren Zhou</div>
+<div class="meta-line">First: 2026-11-18T15:53:39+00:00 · Latest: 2026-11-18T15:53:39+00:00</div>
+<div class="meta-line">Comments: 22 pages, 13 figures, 11 tables. Project page and blog: https://decisionplayground.agentscope.io/piccolo.html</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24651v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24651v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://decisionplayground.agentscope.io/piccolo.html">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present Piccolo, a family of multimodal decision models (0.8B to 27B) that coevolves model capabilities and training data via Agentic Data Engineering and recursive self-improvement (RSI). The models predict probabilities over candidate answers for general-purpose text and visual judgments, agent harnesses, data workflows, and interactive games. Piccolo-27B tops the Decision Index Vision Full leaderboard with a score of 75.59, while Piccolo-9B and Piccolo-4B achieve 68.35 and 67.46, respectively. All three rank first on the Private benchmark in their respective model-size categories. Research agents analyze model behavior, construct training data, conduct experiments, and use the results to refine subsequent proposals. Semantic slices and a shared research memory connect these actions across the model family&#x27;s development. With training recipes comprising hundreds of thousands of examples, data selection and feedback-driven refinement are central to the self-improvement process. Our large-scale RSI exploration yields three counter-intuitive insights for decision-model development: (1) Backbone-recipe co-adaptation outweighs raw model recency: earlier backbones can surpass newer generations on visual tasks under identical recipes; (2) Targeted data curation enables 4B-9B models to rival 27B baselines on specialized workflows; and (3) Continuous loss reduction can decouple from and even degrade discrete decision accuracy. Together with the released weights and tools from the Data-Juicer and AgentScope ecosystems, Piccolo provides an actionable blueprint for building frontier decision models and scaling data-driven RSI.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present Piccolo, a family of multimodal decision models (0.8B to 27B) that coevolves model capabilities and training data via Agentic Data Engineering and recursive self-improvement (RSI).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Typed Knowledge over Constructive Institutions: A Proof-Relevant Type Theory for Verified Science</div>
+<div class="meta-line">Authors: Hans-Martin Will</div>
+<div class="meta-line">First: 2026-11-11T06:35:29+00:00 · Latest: 2026-11-18T15:40:19+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.15108v3">Abs</a> · <a href="https://arxiv.org/pdf/2611.15108v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Mathematical proof assistants such as Coq, Agda, and Lean 4 build proof irrelevance into definitional conversion ($p \equiv q$ for $p, q : P$ with $P : Prop$), erasing which derivation established a theorem. While natural for mathematics over fixed axioms, judgmental proof irrelevance is incompatible with verified scientific stores, which must inspect and compare independent derivations of a claim to assess consilience and compute counterfactual retractions when an assay, reagent, or model is invalidated. Moreover, combining definitional proof irrelevance with subsingleton elimination breaks normalization and makes algorithmic conversion non-transitive.
+  We present the type-theoretic and institutional foundations of Eigenius, a verified knowledge substrate for science. First, we formulate a dependent kernel with cumulative universes ($Prop, Set, Type_k$), impredicative $Prop$, inductive families with index-forced subsingleton elimination, and intensional identity types, where definitional equality $\equiv$ is untyped joinability under an orthogonal CRS and proof irrelevance is a witnessed axiom ($irrel : ΠP{:}Prop.\,Πp,q{:}P.\,Id\,P\,p\,q$). Second, we unify universe cumulativity, $Π$-covariant subtyping, and ontology class inclusions in a coercion-free subsumption judgment whose bidirectional fragments ($\mathcal{K}_0, \mathcal{K}_1$) satisfy subject reduction, compile to unification-free checkers ($\mathcal{A}_0, \mathcal{A}_1$), and match declarative typing. Third, we organize external verifiers into a three-level institutional hierarchy with explicit axiom policies (Adopt, Discharge, Relativize), internalize a justification logic with Why-provenance support $supp(j,P)$, and embed Cooper&#x27;s Type Theory with Records (TTR) for open-world knowledge graphs. Finally, we prove consistency in Grothendieck universes and mechanize the metatheory in Lean 4 with zero sorry axioms.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Mathematical proof assistants such as Coq, Agda, and Lean 4 build proof irrelevance into definitional conversion ($p \equiv q$ for $p, q : P$ with $P : Prop$), erasing which derivation established a theorem.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DuoCook: An Overcooked-Inspired Benchmark for Visual Planning and Coordination</div>
+<div class="meta-line">Authors: Ziyi Jiao, Heng Zhang, Drishti Regmi, Xiaokang Ye, Lianhui Qin, Peter Yichen Chen</div>
+<div class="meta-line">First: 2026-10-22T16:26:38+00:00 · Latest: 2026-11-18T15:34:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31511v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.31511v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coordinating two players in a cooking task requires a vision-language agent to track changing scene states, sequence recipe steps, and allocate shared resources under a time budget. We introduce an Overcooked-inspired benchmark for evaluating these capabilities in Unreal Engine environments constructed using coding agents. A single vision-language model controls both players from top-down visual observations \rev{through separate per-player decision calls}, selecting high-level actions \rev{and image-labeled target cells} while the engine executes navigation. The benchmark contains 20 maps in five categories. These categories support evaluation of \rev{two-player} coordination under equipment contention, changing terrain, and handoff dependencies. A prop legend and pot ingredient-count indicators provide explicit visual cues, while grid-based destinations support spatial grounding\rev{; text gives no station coordinates, so target locations come mainly from the image}. The evaluation compares \rev{five VLMs and a privileged scripted reference policy on all 20 maps}, measuring task score, order completion, delivery precision, \rev{aim accuracy}, and model API expenditure. \rev{Two paired ablations on all 20 maps toggle a shared self-authored notebook and reduce the textual prompt from about 3,600 to about 440 words while keeping the images fixed.} \rev{The strongest model completes 35\% of orders and exceeds the scripted reference, which has ground-truth station access; the notebook&#x27;s effect is mixed in sign and not statistically reliable, and reducing the prompt text lowers the score of two models while leaving the other three nearly unchanged.} Together, the environment design and evaluation protocol provide a framework for investigating how visual state tracking and task scheduling contribute to coordinated cooking behavior.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coordinating two players in a cooking task requires a vision-language agent to track changing scene states, sequence recipe steps, and allocate shared resources under a time budget.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">NaviGATE: Noise-Aware Dual-View Generation for Multimodal Knowledge Graph Reasoning</div>
+<div class="meta-line">Authors: Jie Peng, Yongxue Shan, Yongfu Zha, Cui Miao, Xiaodong Wang</div>
+<div class="meta-line">First: 2026-11-18T14:53:42+00:00 · Latest: 2026-11-18T14:53:42+00:00</div>
+<div class="meta-line">Comments: 9 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24552v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24552v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Multimodal knowledge graph reasoning (MKGR) aims to infer missing facts by jointly exploiting relational structures, textual descriptions, and visual evidence. Existing embedding-based methods effectively capture graph topology, but their fixed multimodal representations are less effective for query-specific fine-grained semantic reasoning, while generation-based methods are vulnerable to noisy retrieval and may produce invalid entities. To address these challenges, we propose NaviGATE, a noise-aware generative framework for MKGR. NaviGATE first aligns graph-derived structural representations with textual semantics, then performs structure-aware internal knowledge activation by fine-tuning the multimodal language model with multimodal entity summaries and injected structural tokens. In the noise-aware dual-view instruction tuning stage, NaviGATE jointly optimizes retrieval-free and retrieval-aware views: reliable retrieved candidates are reinforced through contrastive logit sharpening, while misleading candidates are suppressed through parametric consistency distillation. In inference, structure-constrained decoding restricts generation to valid entities in the target knowledge graph. Experiments on standard benchmarks show that NaviGATE consistently outperforms strong unimodal, multimodal, and generation-based baselines, and remains robust under noisy retrieval scenarios.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Multimodal knowledge graph reasoning (MKGR) aims to infer missing facts by jointly exploiting relational structures, textual descriptions, and visual evidence.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ABSClaw: From Invented Worlds to Reality-Grounded Social Simulation</div>
+<div class="meta-line">Authors: Shaobin He, Yan Gao, Quan Zheng, Zhenyang Lin, Zhen Liu, Jiyan He, Shuxin Zheng</div>
+<div class="meta-line">First: 2026-11-18T14:37:48+00:00 · Latest: 2026-11-18T14:37:48+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24517v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24517v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LLM-based artificial societies exhibit rich behavior but often lack scientific grounding: personas and environments are assumed, interaction networks are synthetic, and simulators are generated as free-form code, making results difficult to tie to real populations and sensitive to the backbone model. We argue that simulated worlds should be sampled from observed data, while simulation logic should be implemented by composing operations from a shared, task-independent vocabulary. In this paper, we introduce ABSClaw, a zero-code agent that compiles natural-language requests into executable, reality-grounded social simulations. ABSClaw grounds who acts, where they act, and with whom they interact in survey and census data, geospatial sources, and real networks. It expresses state transitions through 26 atomic operations. To support an open and extensible ecosystem, ABSClaw further allows capabilities to be added as lifecycle-scoped skills without modifying its core. Furthermore, we propose ABSBench, a benchmark of 193 real-world social-simulation tasks. On ABSBench, ABSClaw achieves the best overall performance among the evaluated social simulators. Three real-world case studies show that grounding personas, environments, and interaction networks each improves agreement with observed outcomes. With one runtime skill, ABSClaw executes 13 population-scale simulations, collectively involving 25 million agents. Together, these results demonstrate ABSClaw&#x27;s real-world fidelity, extensibility, and scalability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LLM-based artificial societies exhibit rich behavior but often lack scientific grounding: personas and environments are assumed, interaction networks are synthetic, and simulators are generated as free-form code, making results difficult to tie to real populations and sensitive to the backbone model.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Probing agent overeagerness in realistic settings with continuation audits</div>
+<div class="meta-line">Authors: Sean Lim, Clement Neo</div>
+<div class="meta-line">Venue: NeurIPS</div>
+<div class="meta-line">First: 2026-11-18T14:23:10+00:00 · Latest: 2026-11-18T14:23:10+00:00</div>
+<div class="meta-line">Comments: Presented at NeurIPS Workshops: (1) Third Workshop on Agents in the Wild: Safety, Security, and Beyond, and (2) The 1st Workshop on Interpreting Agent Behavior (IAB) at NeurIPS 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24491v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24491v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Frontier coding agents increasingly exhibit overeagerness, taking surprising, sometimes reckless actions beyond a user&#x27;s mandate --- reported in recent system cards from frontier model developers. These cases are surfaced through internal deployment monitoring, which requires private traffic and is out of reach for open-weight models and independent evaluators. Automated alignment audits are the natural alternative, but capable models increasingly recognise the synthetic setup and adjust their behaviour. We introduce Continuation Audits, a pipeline that grounds the auditor on a prefix drawn from a real coding-agent transcript and directs it to continue the trajectory toward a seeded behaviour. Because the prefix is drawn from a real session, the auditor only needs to maintain a realistic setting rather than manufacturing it. We validate the method on SWE-Chat prefixes: on a paired subset of 90 audits a judge cannot reliably distinguish continuations from their source sessions (realism win rate 0.42 vs.\ 0.43), and across all 900 audits verbalized eval-awareness does not exceed the rate observed in the unaudited real sessions. Applying the pipeline to three recent models across three seeds, we find each model leads a different seed --- DeepSeek~V4~Pro on colleague-credentials misuse, GPT-5.6~Terra on file-permission bypasses, and Kimi~K3 on treating diagnostic questions as instructions. Kimi~K3 additionally continues to bypass file-permission protections after an explicit CLAUDE.md prohibition while the other two stop entirely, corroborating Moonshot&#x27;s own report of excessive proactiveness.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Frontier coding agents increasingly exhibit overeagerness, taking surprising, sometimes reckless actions beyond a user&#x27;s mandate --- reported in recent system cards from frontier model developers.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Who Is Behind the Harness? Verifying Model Identity in Coding Agents through Behavioral Fingerprinting</div>
+<div class="meta-line">Authors: Chuyi Wang, Xiaohui Xie, Tongze Wang, Fangchen Luo, Yong Cui</div>
+<div class="meta-line">First: 2026-09-23T09:12:46+00:00 · Latest: 2026-11-18T13:37:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.28559v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.28559v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">LLMs increasingly operate through coding-agent harnesses that inspect repositories, invoke tools, and modify files. Substituting the model behind such an agent can therefore change security-relevant decisions, including whether it verifies changes or recovers safely from failures. Existing LLM fingerprints largely infer identity from direct text or token distributions. In coding agents, these signals are mediated by system instructions, controller logic, tools, and execution feedback, limiting their transfer.
+  We present LIDAR (LLM Identification from Decisions and Actions at Runtime), an active black-box fingerprinting method for coding-agent execution. Three coding probe pairs expose post-edit verification, transient-failure recovery, and specification--test conflict resolution under controlled changes. LIDAR represents the resulting trajectories with complementary instance-level and distribution-level features and compares them with clean references using a lightweight probabilistic identifier. It requires no access to model weights, logits, or provider internals.
+  We evaluate 24 models from eight families on OpenCode, OpenHands, and mini-swe-agent, fitting separate references for each harness. Closed-set Top-1 accuracy ranges from 91.39\% to 98.89\% across the three harnesses, exceeding all three baselines in each setting. When the audit also includes unregistered models from the same families, balanced accuracy ranges from 79.58\% to 80.42\%. These results show that agent execution behavior provides model-identity evidence beyond final outputs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">LLMs increasingly operate through coding-agent harnesses that inspect repositories, invoke tools, and modify files.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Scrouting: Cost-Aware Routing of Coding Agents by Scouting the Repository First</div>
+<div class="meta-line">Authors: Ishaan Bhola, Adithyan Krishnan, Mukunda NS, Dhruv Jaglan</div>
+<div class="meta-line">First: 2026-08-05T13:11:31+00:00 · Latest: 2026-11-18T13:32:43+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.04804v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.04804v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Frontier language models can resolve repository-level software issues, but each attempt is expensive, and existing routers select a model from the issue text alone. We present SuperScout, which routes after scouting the repository: a 7B searcher, SuperScout-7B, first explores the repository and produces a structured handoff whose reproduction claims are sandbox-verified, with false claims stripped before delivery. The searcher&#x27;s hidden states, together with the task text, then feed a resume-based router that dispatches the task to one of four frontier fixers. Adding a new fixer requires no retraining. On the full Python slice of SWE-bench Pro (266 tasks) under the benchmark&#x27;s official capped budget tier, SuperScout matches the best single model&#x27;s solve rate (159 of 266 for SuperScout, 158 for the best model) at about a fifth of the total cost per solve, and the reported configuration sits above the random traffic-splitting baseline. A no-router ablation, always the cheapest fixer with the handoff, ties the routed system on this benchmark, so the handoff rather than the routing decision carries the result. A paired calibration study points to the mechanism: the handoff appears to redistribute rather than add solving ability, lifting the three cheaper fixers while slightly hurting the strongest, though at $N=99$ the per-fixer effects are directional only; the searcher&#x27;s hidden states improve cost routing on the calibration labels while the handoff&#x27;s own text does not. The searcher&#x27;s compute adds less than half a cent of GPU time per task.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Frontier language models can resolve repository-level software issues, but each attempt is expensive, and existing routers select a model from the issue text alone.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">What Does a Harness Buy? Tokens, Mostly</div>
+<div class="meta-line">Authors: Yangze Liu, Zhongyi Han</div>
+<div class="meta-line">First: 2026-10-03T10:47:10+00:00 · Latest: 2026-11-18T13:24:25+00:00</div>
+<div class="meta-line">Comments: 31 pages, 9 figures. v2: seven models, reruns of every model, two non-SWE benchmarks; revised conclusions on pass rate and cost. Code and data: https://github.com/YangzeLiu/what-does-a-harness-buy</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.04433v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.04433v2">PDF</a> · <a href="https://github.com/YangzeLiu/what-does-a-harness-buy">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A coding agent is a language model inside a harness: the system prompt, the tools, and the context management that let a chat model work in a repository. Most of the engineering on these agents goes into the harness, and vendors and leaderboards credit it with score gains. Earlier studies have fixed the model and swapped the harness, but have not measured whether the swap changes the pass rate more than running the same harness again. We run seven models through three production harnesses, Claude Code, mini-SWE-agent, and OpenCode, on SWE-bench Verified and two benchmarks of other kinds, and rerun them unchanged. No harness leads consistently across models. Where the data can bound the difference between two harnesses, the bound is 2 to 5 points, and a harness swap changes about as many task outcomes as a rerun. The exceptions are harness effects in particular pairings of model and harness, whose direction changes with the model: OpenCode trails by 8 to 9 points on one model and leads by 14 on another. Cost differences between harnesses also depend on the model, from under 10% to 3 to 4 times. Which harness is better therefore has no answer apart from the model, and a harness difference should be reported next to a rerun.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A coding agent is a language model inside a harness: the system prompt, the tools, and the context management that let a chat model work in a repository.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Born for the Task: Rethinking Quantum Chemistry with Foresighted Agentic Computing</div>
+<div class="meta-line">Authors: Haozhi Han, Junjie Yang, Ruge Zhang, Zihe Huang, Pengyi Xu, Bo Zhang, Xianyi Zhang, Yunquan Zhang, Ting Cao, Yunxin Liu, Yifeng Chen, Kun Li</div>
+<div class="meta-line">First: 2026-11-17T15:05:38+00:00 · Latest: 2026-11-18T13:07:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.22897v2">Abs</a> · <a href="https://arxiv.org/pdf/2611.22897v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Quantum chemistry relies on general-purpose software, whose generality leaves many large-scale calculations beyond practical resource budgets. Coding agents make task-specific programs cheap to write, but not efficient ones easy to find: whether a computational strategy is accurate and fast enough becomes clear only after it actually runs at the target scale. We introduce MakoBORN, a foresighted agentic computing framework that synthesizes high performance quantum chemistry programs on demand. MakoBORN anticipates the behavior of each strategy before execution, extrapolating its error from representative small systems and predicting its runtime from the target-scale workload and measured hardware throughputs. Building on these predictions, MakoBORN unfolds the preset schemes of existing packages into independently configurable algorithmic components, selects the fastest strategy within the error tolerance from the predicted accuracy-runtime Pareto frontier, and guides coding agents to compile it with component-level performance predictions. For a Hartree-Fock calculation with 50,024 basis functions, MakoBORN finishes in 1.41 h on a single CPU node, 77$\times$ faster than the estimated runtime of a general-purpose baseline and still 9.8$\times$ faster with development time included. On a single GPU, MakoBORN completes the ubiquitin calculation in 2.1 h, the same order of runtime as the GPU-accelerated package Mako on 64 GPUs, and shortens the B-DNA duplex calculation from an estimated two months to 8.1 h (173$\times$).</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Quantum chemistry relies on general-purpose software, whose generality leaves many large-scale calculations beyond practical resource budgets.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MemeLogos: Knowledge-Driven Retrieval-Augmented Reasoning for Harmful Meme Detection</div>
+<div class="meta-line">Authors: Hexiang Gu, Saihui Hou, Changlan Liu, Min Ren, Huijia Wu, Hongxun Gu, Zhaofeng He</div>
+<div class="meta-line">First: 2026-10-11T09:02:32+00:00 · Latest: 2026-11-18T12:52:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.15463v3">Abs</a> · <a href="https://arxiv.org/pdf/2610.15463v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">With the rapid proliferation of social media, harmful memes have become a growing threat to online ecosystems. Their harmfulness is often implicitly conveyed through complex interactions among visual, textual, and contextual cues, making accurate detection challenging. Recent studies have introduced Retrieval-Augmented Generation (RAG) and external knowledge into harmful meme detection. However, existing methods mainly retrieve similar instances or auxiliary information, limiting their ability to capture reusable harmfulness knowledge and underlying reasoning mechanisms, and thus constraining both detection performance and interpretability. To address these challenges, we propose MemeLogos, a knowledge-driven retrieval-augmented reasoning framework for harmful meme detection. MemeLogos abstracts recurring harmfulness patterns and reasoning structures from diverse harmful cases into reusable knowledge units and organizes them into a dedicated star-shaped knowledge graph. By combining structured knowledge retrieval with an explicit multi-stage reasoning process inspired by cognitive mechanisms, MemeLogos leverages retrieved knowledge to guide harmfulness reasoning, improving both detection reliability and interpretability. Extensive experiments show that MemeLogos consistently outperforms existing harmful meme detection methods while generating more coherent and interpretable reasoning, demonstrating the effectiveness of structured harmfulness knowledge for multimodal content understanding.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">With the rapid proliferation of social media, harmful memes have become a growing threat to online ecosystems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Hearsay: Who Can Audit the Record a Deployed Agent Harness Writes?</div>
+<div class="meta-line">Authors: Jiahong Dai, Zhuochen Yang, Pengyang Shao, Kelvin Ng, Zhongyi Liu, Chengquan Ju, Yuting He, Bo Hu</div>
+<div class="meta-line">First: 2026-09-26T11:37:06+00:00 · Latest: 2026-11-18T12:50:47+00:00</div>
+<div class="meta-line">Comments: 50 pages (10-page main text), 8 figures. Under review. v2: re-organized around one question; the second writer is now evaluated one unseen record at a time, on held-out records and under rules committed before the records existed; title changed. Code and data: https://anonymous.4open.science/r/hearsay-4E7C</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.32495v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.32495v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The record of an agent&#x27;s run is written by the harness that drives the agent. When the run is later disputed, the auditor was not there and has only this record. We ask whether someone who was not there can check the record, and what decides the answer. It depends on who wrote what a check can rely on: if the harness wrote all of it, the record is only the harness&#x27;s own word, and we call it hearsay. We build Hearsay, a benchmark that examines the record and not the task: five harnesses run fourteen tasks, model examiners from three vendors and a human panel read the records and answer questions about the runs, and every passage they cite is labelled mechanically by who wrote it. We also audit what is deployed: in all sixteen frameworks, the harness is the only writer. With one writer, readers can name the fault from the record, in up to nine runs in ten, but they cannot check the record. The model examiners claim corroboration for 18 to 55 points more of their evidence than the labels support, a gap we then predicted for runs driven by another vendor&#x27;s model and found again. And the best of them notices only half of the alterations we make to a record, while the two that name the fault most often cannot tell what a harness left out. With a second writer, the record can be checked. Our sandbox keeps a ledger of what passes between harness and model, and reading the ledger against the record in both directions shows what the record leaves out and what it adds. We test this as an auditor would use it, on one unseen record at a time. On runs driven by a third vendor&#x27;s model, with every rule committed before the records existed, it reports 64 of 66 alterations and flags none of 84 clean records. On held-out records in five formats it reports 109 of 115. What makes a record evidence is a second writer, not a better reader.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The record of an agent&#x27;s run is written by the harness that drives the agent.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">automodel: A Skill for Agentic Model Discovery</div>
+<div class="meta-line">Authors: Marco Virgolin, Harry Desmond, Ester Bergantin, Giorgio Morales, John W. Sheppard, Luigi Romano, Alessandro Lucantonio</div>
+<div class="meta-line">First: 2026-11-18T12:43:45+00:00 · Latest: 2026-11-18T12:43:45+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24347v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24347v1">PDF</a> · <a href="https://github.com/unlayer-ai/automodel">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The search for better models, whether expressed as analytical equations or neural architectures, has increasingly shifted from manual design toward data-driven automation. While a multitude of algorithms exist, ranging from exhaustive search to AlphaEvolve, recent advances in general-purpose coding agents such as Claude Code and OpenAI Codex raise the question: could providing such systems with a &quot;model discovery recipe&quot; be enough to discover or improve models? We present automodel, an agent skill for general model discovery. With case studies in astrophysics, cardiovascular dynamics, precision agriculture, traffic flow, and vehicle tire dynamics, we show how commercial agents equipped with automodel can successfully identify novel and scientifically-relevant models. Our findings suggest that encoding model-discovery methodology as a portable agent skill can provide a simple, interactive, powerful and broadly applicable alternative to domain-specific automated discovery pipelines. The skill is available at: https://github.com/unlayer-ai/automodel.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The search for better models, whether expressed as analytical equations or neural architectures, has increasingly shifted from manual design toward data-driven automation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reducing Inference Cost of Coding Agents with Timeout Cascades</div>
+<div class="meta-line">Authors: Boxi Zhou, German Sviridov, Dmitrii Ustiugov, Haris Javaid</div>
+<div class="meta-line">First: 2026-11-18T12:26:42+00:00 · Latest: 2026-11-18T12:26:42+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24324v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24324v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">AI coding agents have become one of the most popular applications of large language models. Yet, agentic AI comes at the cost of a tremendous amount of GPU compute resources, which limits its profitability and its viability at scale. In this paper, we investigate whether smaller, cheaper models can cut this cost without sacrificing accuracy.
+  We evaluate 36 popular large and small open-weight models released since 2024 on a software engineering benchmark, and find that recent small models are closing the accuracy gap compared to their large counterparts. We investigate the structure of this gap and find that the gap is highly concentrated around hard tasks that small language models fail to solve while achieving remarkably good accuracy for easy and medium complexity tasks. Following this observation, we show that by utilizing a hybrid inference strategy that tries a small model first and escalates to a large one only when needed, we can achieve up to 33% reduction in total GPU-hour costs and 16.4% on all tasks from SWE-bench Verified, without sacrificing accuracy. Strikingly, this simple cascade nearly matches an oracle-style task router, highlighting a practical path for deploying cost-aware coding agents in production without complex learned task routers and with minimal engineering complexity.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">AI coding agents have become one of the most popular applications of large language models.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">OpenKAGE: Open-Ended Lifelong Learning in the Open World via Knowledge-Sharing Agent-Group Evolution</div>
+<div class="meta-line">Authors: Wenhao Yuan, Longhui Yuan, Zexi Jia, Ningzhe Shi, Jingwei Li, Shipeng Cen, Pengcheng Luo, Jie Zhou, Jinchao Zhang</div>
+<div class="meta-line">First: 2026-11-18T12:11:56+00:00 · Latest: 2026-11-18T12:11:56+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24302v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24302v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Building autonomous agents that continually explore open worlds and acquire new capabilities through experience is a long-standing aspiration in artificial intelligence. Existing research often pursues lifelong learning within predefined tasks, curricula, or objectives, with self-improvement largely confined to individual agents. We introduce OpenKAGE, an agent-group evolution framework for open-ended lifelong learning. Within this framework, agents autonomously explore open worlds and continually acquire new capabilities by accumulating and reusing knowledge from their own interactions and the experience of others. OpenKAGE builds on two key mechanisms: (1) a two-layer knowledge representation, with a memory layer for situated memories and an experience layer for transferable experience and skills that retains the applicability conditions needed for reuse; and (2) a knowledge-sharing mechanism that semantically consolidates textual experience into a continuously evolving shared knowledge graph, while executable skills are shared verbatim. In Minecraft, OpenKAGE supports open-ended lifelong learning, enabling agent groups to sustain exploration and reach advanced technological milestones. Furthermore, the accumulated knowledge can be transferred to a newly initialized agent group on a different backbone model, improving its survival and exploration progress.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Building autonomous agents that continually explore open worlds and acquire new capabilities through experience is a long-standing aspiration in artificial intelligence.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Worth Another Look:Constrained World-Model Planning for Visual Inspection</div>
+<div class="meta-line">Authors: Ziyue Kang, Zixi Qi, Yuchen Dai, Nana Lv, Xirong Cheng, Liang Liu, Ying Li, Haoyan Wei, Haiyang Yao</div>
+<div class="meta-line">First: 2026-11-18T10:26:26+00:00 · Latest: 2026-11-18T10:26:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24187v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24187v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Visual inspection in field robotics and environmental monitoring must localize multiple targets under strict compute and sensing caps. Exhaustive sweeps waste calls on absent classes, while myopic and search-free policies stumble over heterogeneous tariff cliffs or discard viewport edits whose value emerges only after re-querying. We formulate inspection over frozen detectors as neuro-symbolic observation planning under partial observability, decoupling a compact recurrent world model (WM) from exact symbolic feasibility and tariff rules. Receding-horizon beam search with online replanning jointly schedules class queries, crops, enhancements, and termination (stop), paired with slack-aware shadow pricing and legal fallback at larger budgets. Across eight terrestrial, optical, and sonar benchmarks, multi-step lookahead outperforms static schedules and search-free offline RL under tight budgets -- gaining up to 28.4 AP percentage points over static priority on RUOD and 15.1 on ARIS -- while dynamic pricing lifts large-budget performance on all eight domains at 11 ms planning cost. Ultimately, pairing lightweight learned dynamics with exact symbolic constraints turns frozen detectors into adaptive, budget-aware inspection agents without retraining.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Visual inspection in field robotics and environmental monitoring must localize multiple targets under strict compute and sensing caps.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Guarding the Kingdom of Skill-Based Agents in the AI Dynasty of Computation: Control-Flow Integrity for Agent Skills</div>
+<div class="meta-line">Authors: Bonan Ruan, Yuhao Sun, Jiahao Liu, Qixiao Lin, Jian Mao, Zhenkai Liang</div>
+<div class="meta-line">First: 2026-11-18T10:26:09+00:00 · Latest: 2026-11-18T10:26:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24185v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24185v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Control-flow integrity (CFI) confines a program to a control-flow graph fixed ahead of time. Procedural agent skills move this control flow into prompt text, and a large language model (LLM) agent decides at runtime whether each step runs in its reasoning, a tool call, or a script. The procedure&#x27;s control skeleton survives, but its enforceability depends on where each step runs. Many violations, such as overwriting a file before validation, use only operations the skill requires, so permission allowlists admit them. A deviating or prompt-injected model can also evade a monitor by regime migration, for example by claiming that a check passed.
+  We present SkillCFI, which carries CFI over to skill-based agents. Its compiler confines LLM interpretation to compile time and derives the agent&#x27;s instructions and an executable contract from one skill. By a formal enforceability criterion, it enforces obligations whose evidence crosses the tool boundary and rejects a skill whose mandatory obligation leaves nothing to check. A deterministic runtime enforcer admits a tool request only on trusted evidence and refuses unmediated channels such as inline scripts, so admitted traces follow the contract whatever the model proposes.
+  On eight self-written skills, no compiled contract permits more than its source under 24 source mutations. In 770 agent sessions, SkillCFI blocks before dispatch all 240 such violations, which an allowlist admits, and normal tasks complete nearly as often as without it. Listing the next legal steps in a refusal raises recovery from 21% to 65%. Checking takes about 2% of task time, and a compact command form cuts session slowdown from 1.32 times to 1.08 times. None of 53 public skills is accepted as written. The compiler&#x27;s diagnostics point to interfaces rather than workflows and guided seven into enforceable contracts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Control-flow integrity (CFI) confines a program to a control-flow graph fixed ahead of time.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MemoSync: Co-Managing Developer-Agent Metamemory Across Contexts</div>
+<div class="meta-line">Authors: Baiqiao Zhang, Junze Li, Chunyang Luo, Yuying Tang, Wenshuo Zhang, Shiyuan Piao, Dingdong Liu, Shuai Ma, Xiaojuan Ma</div>
+<div class="meta-line">First: 2026-11-18T10:06:51+00:00 · Latest: 2026-11-18T10:06:51+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24165v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24165v1">PDF</a> · <a href="https://github.com/SLEEPYBQ/MemoSync">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">AI coding agents increasingly manage what context carries across sessions and projects, but developers have limited visibility into what these agents store, retrieve, and apply. This opacity creates a metamemory problem: the developer&#x27;s meta-level judgments about what should be remembered are separated from the agent&#x27;s object-level memory operations, disrupting the monitoring and control that keep the two levels aligned. We conducted a formative study with 12 developers and identified what they want to monitor and control across four dimensions of agent memory use. Based on these findings, we designed MemoSync, a co-management system that treats agent memory as a shared, operable representation: the agent proposes memory candidates and reports which items it uses, and the developer reviews, edits, and scopes them. In a between-subjects study (N=132) against two baselines, MemoSync participants achieved significantly higher task performance and the highest mean developer-agent memory alignment. In an exploratory mediation analysis, the alignment advantage was primarily driven by improved monitoring accuracy. Despite performing substantially more monitoring and control actions, participants reported no increase in perceived workload. A week-long deployment with nine developers showed that memory monitoring and control fit into everyday development work. MemoSync is open-sourced at https://github.com/SLEEPYBQ/MemoSync.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">AI coding agents increasingly manage what context carries across sessions and projects, but developers have limited visibility into what these agents store, retrieve, and apply.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Making Mathematical Knowledge Explainable, Accessible and Interoperable Through Large Language Model Integration</div>
+<div class="meta-line">Authors: Jan Range, Björn Schembera, Dominik Göddeke</div>
+<div class="meta-line">First: 2026-07-27T14:53:40+00:00 · Latest: 2026-11-18T10:05:38+00:00</div>
+<div class="meta-line">Comments: Published in Proceedings of the 6th Wikidata Workshop @ ISWC 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.24512v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.24512v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Mathematical models are central to formalizing research problems, yet their documentation often falls short of FAIR principles. Knowledge bases such as the Mathematical Model Database (MathModDB) address this gap by providing curated, semantically rich representations of mathematical models. Built on Wikibase, the same open-source infrastructure underlying Wikidata, MathModDB utilizes Semantic Web technologies to support Linked Open Data, collaborative editing, and the storage of semantically enriched metadata, making it a domain-specific knowledge graph within the broader Wikidata ecosystem. However, access to MathModDB currently requires either navigating a complex web interface or proficiency in SPARQL and Wikibase APIs, posing significant barriers for potential users. In addition, the combination of such curated knowledge bases with actual research data stored, e.g., in Dataverse repository instances, remains a challenge. To overcome these limitations, we propose integrating Large Language Models (LLMs) with MathModDB via a Model Context Protocol (MCP) server that exposes a vector-indexed schema retrieval and Steiner-tree-based join planner, combining dialogue-based natural language interaction with curated, epistemically grounded knowledge. Although instantiated on MathModDB, the architecture can be applied to other Wikibase-based systems. We demonstrate that this approach enables epistemically grounded LLM usage, improves model explainability and accessibility beyond what the standard Wikibase interface offers, and simplifies interoperability with external databases and tools, such as Dataverse data repositories. We illustrate the benefits of combining the accessibility of an LLM with the epistemic safety of a curated knowledge base through the adaptability of the MCP protocol by two use cases.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Mathematical models are central to formalizing research problems, yet their documentation often falls short of FAIR principles.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">EasyOPD: An Easy-to-use On-Policy Distillation Framework for Large Language Models</div>
+<div class="meta-line">Authors: Jie Sun, Mao Zheng, Mingyang Song, Qiyong Zhong, Gengsheng Li, Zhepei Hong, Chang Wu, Pengfei Liu, Junfeng Fang, Xiang Wang</div>
+<div class="meta-line">First: 2026-07-13T02:27:50+00:00 · Latest: 2026-11-18T09:13:52+00:00</div>
+<div class="meta-line">Comments: 10 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.11012v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.11012v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Conventional language-model distillation often relies on fixed teacher-generated data, which may not cover the states encountered by an evolving student policy. On-policy distillation (OPD) instead collects teacher or evaluator supervision on student-generated rollouts. However, existing OPD methods differ substantially in supervision form, tokenizer compatibility, teacher access, and supervision granularity, leading to fragmented implementations that are difficult to reproduce and extend. We present \textsc{EasyOPD}, an on-policy distillation framework built on verl, a distributed reinforcement-learning framework for large language models. \textsc{EasyOPD} separates user-side configuration, method-specific supervision logic, and verl-based execution. Its method modules connect to the shared backend through extension boundaries for loss construction, rollout metadata, reward processing, tokenizer alignment, and teacher-side computation. We instantiate representative methods for three OPD settings -- cross-tokenizer OPD, on-policy self-distillation, and step-wise OPD. Experiments on reasoning, code-generation, scientific-knowledge, and tool-use benchmarks show that these implementations can be executed through the same verl-based backend while retaining their method-specific objectives and task-dependent performance profiles. We release \textsc{EasyOPD} with runnable YAML configurations, documentation, and an installable demonstration package and video.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Conventional language-model distillation often relies on fixed teacher-generated data, which may not cover the states encountered by an evolving student policy.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">3D GameDev Arena: Benchmarking Coding Agents That Plan, Build, and Playtest extreme Long-Horizon Browser Games</div>
+<div class="meta-line">Authors: Bizhe Bai, Jiliang Jian, Yuqing Yan, Tao Chen, Ying Wen</div>
+<div class="meta-line">First: 2026-11-18T09:03:53+00:00 · Latest: 2026-11-18T09:03:53+00:00</div>
+<div class="meta-line">Comments: 23 Pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.24073v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.24073v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents now resolve repository issues and generate compact playable games, but whether they can build a large 3D game from scratch remains open. Such games tightly couple mechanics, scenes, assets, and interaction logic, and their quality rests on player enjoyment, which existing benchmarks rarely assess. Thus, we introduce 3D GameDev Arena, a first extreme long-horizon benchmark of 108 from-scratch game-development tasks across 14 genres. Given only a text specification and UI/UX reference images, a fully automated plan--implement--test--repair pipeline builds each task into a self-contained browser game. Runs average $\sim$1,000 LLM calls ; the longest uses 14,407 calls, 2.13B tokens, and 608 assets. Evaluation spans (1) objective code-level functional acceptance against the game specification, (2) agent-based QA and playtesting of 3D presentation and playability, and (3) blind pairwise Bradley-Terry human preference in a public arena. The preliminary findings indicate that long-horizon 3D game development remains far from solved, and code-level correctness alone does not dictate player preference. The public arena is hosted online.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents now resolve repository issues and generate compact playable games, but whether they can build a large 3D game from scratch remains open.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SCAFFOLD: Toward Warrant-Preserving Evidence Transport for Reusable LLM-Agent Skills</div>
+<div class="meta-line">Authors: Nami Cho, Shailja Gupta</div>
+<div class="meta-line">First: 2026-11-18T07:33:15+00:00 · Latest: 2026-11-18T07:33:15+00:00</div>
+<div class="meta-line">Comments: 8 pages, 2 figures, 4 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23990v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23990v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">An agent skill that succeeded yesterday may be executable today without being justified for reuse today. Tests may cover only observable contract clauses, outcome oracles may be absent, evaluations may inherit the same erroneous specification, and permissions or dependencies may change between validation and invocation. We argue that the appropriate unit of prospective trust is a Warranted Reuse Claim (WRC): a defeasible, claim-specific authorization tied to a versioned skill, target context, evidence, assumptions, and identified defeaters. The paper sharpens this position through Warrant-Preserving Evidence Transport (WPET), a proposed discipline for deciding which historical evidence remains admissible after context change. It distinguishes evidence admissibility from truth of the supported safety or effectiveness claim; states a conditional preservation result and its limits; specifies three-valued applicability and asymmetric context-transfer judgments; and illustrates how provenance dependence and policy-invalidating changes alter authorization. We explicitly relate the proposal to assurance cases, contracts, and skill-library maintenance rather than claiming novelty for their ingredients. A falsifiable longitudinal evaluation would compare WRC-guided policies with strong version-aware baselines at matched coverage, utility, and review cost. This paper contributes a formalized problem statement, testable design obligations, and reporting protocol, not an implemented verifier, empirical superiority result, or proof of universal agent safety.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">An agent skill that succeeded yesterday may be executable today without being justified for reuse today.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Where Is the Cost of Third-Party API Routers in Agentic Software Development?</div>
+<div class="meta-line">Authors: Donghao Fu, Jingxin Li, Xue Jiang, Yihong Dong</div>
+<div class="meta-line">First: 2026-07-26T12:15:09+00:00 · Latest: 2026-11-18T06:22:00+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.23624v5">Abs</a> · <a href="https://arxiv.org/pdf/2607.23624v5">PDF</a> · <a href="https://github.com/Riyasushin/SIDEL">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Third-party API routers have become a common layer that unifies access across increasingly diverse LLM providers. In coding-agent workflows, high-autonomy operation is widely adopted because it reduces interaction overhead. As a result, a third-party API router, which sits between the agent and the upstream provider, inevitably occupies the trusted path. It can inspect and modify every request and response, yet no mechanism verifies alignment between the provider&#x27;s output and the repository-level actions ultimately executed by the agent. Consequently, client-side permission mechanisms may become ineffective in practice. Whether this control gap produces real, hard-to-detect effects on software development tasks remains empirically unmeasured. In this paper, we conduct an empirical study of router-side injection in coding agents, examining four intervention levels of increasing subtlety: Response Substitution (L1), Response Append (L2), LLM-Polished Injection (L3), and LLM-Polished with Distribution Alignment Injection (L4). Moreover, we develop SIDEL, a framework for trace recording, replay, injection, and defense evaluation, with a curated dataset of 400 samples. We evaluate four representative coding agents, and further evaluate whitelist-based execution control and LLM review. Router-side intervention substantially alters repository-level actions and remains difficult for existing client-side safeguards to detect. Without additional mitigations, all evaluated agents achieved a defense success rate of 0 percent across all injection levels. Client-side mitigations and reactive reviews improve resistance but do not fully restore end-to-end control, motivating provider-side output-integrity guarantees. Our code is available at https://github.com/Riyasushin/SIDEL.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Third-party API routers have become a common layer that unifies access across increasingly diverse LLM providers.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Inference-Time Scaling in Agentic Hardware Verification Workflows: A Multi-Strategy Characterization Across Protocol Complexity</div>
+<div class="meta-line">Authors: Vikash Kumar</div>
+<div class="meta-line">Venue: 2026 IEEE International Conference on LLM-Aided Design (ICLAD)</div>
+<div class="meta-line">First: 2026-11-18T05:58:20+00:00 · Latest: 2026-11-18T05:58:20+00:00</div>
+<div class="meta-line">Comments: Published in IEEE ICLAD 2026. Copyright 2026 IEEE</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23905v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23905v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Inference-time scaling, allocating more compute during generation rather than pre-training, has demonstrated dramatic quality improvements for LLM reasoning tasks. Its behaviour in structured hardware verification code generation, where outputs must satisfy compiler correctness, protocol semantics, and functional coverage constraints simultaneously, is less understood. We present a systematic, simulator-grounded study of inference-time compute scaling for agentic UVM testbench synthesis targeting AMBA protocol bridges. Four inference strategies---zero-shot (\$0.04), raw-feedback iterative (\$0.81), structured inner-loop (\$0.95), and full dual-loop agentic synthesis (\$1.06)---are evaluated across four AMBA targets (Protocol Complexity Index 11.8--22.6) using the Protocol Verification Completeness (PVC) metric, functional coverage, and a six-class UVM error taxonomy (E1--E6). Our central finding is that structured diagnostic feedback acts as an inference-time compute multiplier: the structured inner loop yields roughly $15\times$ more PVC per inference dollar than raw EDA-tool feedback (marginal efficiency, S1$\to$S2 vs. S0$\to$S1). The mechanism is fault targeting, not token reduction: raw compiler feedback drives the testbench to compile but cannot surface functional protocol faults that leave the code syntactically valid, whereas structured E1--E6 bundles diagnose and resolve them. All outputs are judged by a cycle-accurate Mentor Questa toolchain rather than by model self-assessment; the dual-loop strategy reaches PVC $\geq$ 0.95 with zero scoreboard errors on every target, and the generated environments surfaced a latent RTL bug in two of the four reference designs. These results establish a principled compute-quality trade-off curve for LLM-aided verification environment generation and motivate inference-budget-aware deployment strategies for industrial EDA workflows.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Inference-time scaling, allocating more compute during generation rather than pre-training, has demonstrated dramatic quality improvements for LLM reasoning tasks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">In Situ Training of Optical Neural Networks by Coding Agents</div>
+<div class="meta-line">Authors: Ilker Oguz, Colin Christian, Christophe Moser, Demetri Psaltis, Gordon Wetzstein</div>
+<div class="meta-line">First: 2026-11-18T05:29:13+00:00 · Latest: 2026-11-18T05:29:13+00:00</div>
+<div class="meta-line">Comments: 14 pages, 4 figures. Our project website is at https://ioguz.github.io/optics-as-code/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23875v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23875v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://ioguz.github.io/optics-as-code/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Optical neural networks promise fast, energy-efficient computing, but every device departs from its design and must be trained with the hardware. In situ training relies on an expert-built calibrated digital model of each device or on gradient-free trial and error. Coding agents, large language models that write and run programs, have shown an emergent ability to understand and edit the weights of digital neural networks. Here we introduce optics as code, a method in which a coding agent trains an optical neural network from measurements alone, through a harness that returns camera images of its probes and requires a hypothesis per request. We discovered that the agent forms a physical understanding of the optics and reparametrizes the network with interpretable optical elements tuned on the hardware. It outperforms gradient-free methods in classification and image encoding, approaching backpropagation through a calibrated model at a fraction of the cost. Needing neither per-device calibration nor gradients through the hardware, and improving with more capable models, optics as code offers a practical route to large, scalable optical neural networks and a general tool for calibrating and optimizing optical experiments.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Optical neural networks promise fast, energy-efficient computing, but every device departs from its design and must be trained with the hardware.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Bad Genius: Counterfactual-Guided Harness Evolution Beyond Task-Specific Shortcuts</div>
+<div class="meta-line">Authors: Guojun Zhu, Xunheng Huang, Peng Yin, Jiahui Xie, Sanguo Zhang, Doudou Zhou</div>
+<div class="meta-line">First: 2026-09-16T09:21:33+00:00 · Latest: 2026-11-18T05:17:43+00:00</div>
+<div class="meta-line">Comments: 42 pages, 6 figures, including references and supplementary material</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.18366v4">Abs</a> · <a href="https://arxiv.org/pdf/2609.18366v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">An optimized agent harness can improve on held-out tasks by relying on formatting conventions that those tasks share with the rest of the benchmark. We introduce Counterfactual Harness Search and Evolution (CHASE) to test whether harness improvements survive changes to the evaluation protocol. A Proposer edits the harness around a fixed foundation model. A Challenger then searches for a protocol change that preserves the tasks but reduces the updated harness&#x27;s gain over the initial harness. Executable checks test whether the transformation preserves task semantics. If the gain loss is confirmed on held-out tasks, CHASE adds the transformation to an archive that constrains subsequent harness updates. We give conditions under which this finite archive bounds the gain loss on an ideal benchmark with shortcuts removed. We evaluate CHASE on Syn-Ledger, OfficeQA, FinanceBench, and SWE-Bench Pro V2. On Syn-Ledger, removing the known shortcuts yields 38.30% accuracy for CHASE and 18.27% for HarnessEvolve. On the 21 certification tasks from SWE-Bench Pro V2 HARD-51, changing the issue formatting and tool-output field order reduces HarnessEvolve&#x27;s gain over the initial harness from 8.57 to 3.81 percentage points. The final CHASE harness retains 10.48 points of its 11.43-point gain under the same change.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">An optimized agent harness can improve on held-out tasks by relying on formatting conventions that those tasks share with the rest of the benchmark.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Asking but Missing: Decision Coverage in Natural-Language Data Querying</div>
+<div class="meta-line">Authors: Hangle Hu, Chenyu Hou, Bin Cao, Jing Fan, Wei Luo</div>
+<div class="meta-line">First: 2026-11-18T05:13:13+00:00 · Latest: 2026-11-18T05:13:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23864v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23864v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models are increasingly used to translate natural language questions about structured data into executable programs. A fundamental challenge is recognizing when a question admits multiple computational interpretations and identifying the decisions needed to resolve them. We investigate whether language models recognize these unresolved decisions before generating code, or silently adopt assumptions that may lead to incorrect results. We refer to the latter behavior as Underspecified Decision Completion (UDC). To distinguish different causes of UDC, we introduce Grounded Code Generation (GCG), a diagnostic protocol that separates the identification of unresolved decisions, their resolution using evidence, and their translation into executable code. By examining each stage separately, we can determine where the decisions responsible for incorrect results were first missed or mishandled. We evaluate this framework on BIRD-Pandas with twelve models. The results show that answering clarification questions consistently improves execution accuracy, yet substantial errors remain. Our findings suggest that the main difficulty lies not in answering clarification questions, but in recognizing which questions need to be asked in the first place.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models are increasingly used to translate natural language questions about structured data into executable programs.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">MOLT: A Hugging Face-Native, Minimal, and Scalable Framework for Agentic Reinforcement Learning</div>
+<div class="meta-line">Authors: Jian Hu, Huiying Li, Hao Zhang, Binfeng Xu, Yifan Zhang, Shaokun Zhang, Hemil Desai, Michael Demoret, Pavlo Molchanov, Jan Kautz, Yi Dong</div>
+<div class="meta-line">First: 2026-07-22T18:06:15+00:00 · Latest: 2026-11-18T05:03:42+00:00</div>
+<div class="meta-line">Comments: Technical report. Code: https://github.com/NVIDIA-NeMo/labs-molt. Documentation: https://nvidia-nemo.github.io/labs-molt/guide/. Demonstration video: https://youtu.be/3DqXGFIce0o</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.21653v4">Abs</a> · <a href="https://arxiv.org/pdf/2607.21653v4">PDF</a> · <a href="https://github.com/NVIDIA-NeMo/labs-molt">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a> · <a href="https://nvidia-nemo.github.io/labs-molt/guide/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Agentic reinforcement learning (RL) research iterates quickly on agents, rewards, and learning algorithms, while policies have grown to hundreds of billions of parameters and beyond. Existing open frameworks force a choice: those that are easy to modify do not scale to the largest models, and those that scale rely on Megatron, which needs dedicated bridge code for every model family and several times more framework code. We present MOLT, an open-source framework built for research that is Hugging Face-native, minimal, and scalable. Its code is easy to modify: the entire RL path is approximately 9.2K lines of Python with one training backend and one rollout engine, so a researcher or an AI coding agent can read it in full and edit the code that actually runs. A Hugging Face checkpoint is loaded directly into a PyTorch FSDP2 trainer with tensor, expert, and context parallelism, so a new model family needs no bridge, and the same code scales from a 4B model to a 753B one. Existing OpenAI- and Anthropic-SDK agents are trained by redirecting their client, with automatic handling of agents that rewrite their own context; training is fully asynchronous; and trajectory data stay in a distributed object store. With MOLT, a 30B mixture-of-experts tool agent trains stably for 1,464 asynchronous updates, a visual computer-use agent improves on OSWorld, asynchronous training is 2.40 times faster than synchronous training, and pipeline throughput reaches 92% of a Megatron-based stack. Its trainer, NeMo AutoModel, trains models of one to 2.8 trillion parameters.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Agentic reinforcement learning (RL) research iterates quickly on agents, rewards, and learning algorithms, while policies have grown to hundreds of billions of parameters and beyond.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RoboBuilder: Agentic Robot Co-Design with Real-world Video Feedback in the Loop</div>
+<div class="meta-line">Authors: Ghadi Nehme, Dahyun Nam, Akshay Govind Srinivasan, Faez Ahmed</div>
+<div class="meta-line">First: 2026-11-18T05:02:07+00:00 · Latest: 2026-11-18T05:02:07+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23855v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23855v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Can AI agents design robots that work in the real world? We introduce RoboBuilder, a benchmark in which coding agents co-design a robot&#x27;s hardware and program from standard parts, motors and a custom 3D-printed part, and every design that passes in simulation is built and tested on a physical course. Simulation alone is not enough: under public part data, none of 15 initial passing designs crossed the real course, so an agent learns the simulator from measurements it requests and videos of real runs. Across four frontier coding agents, ten obstacles at three difficulty levels, 16,427 simulations of 12,774 distinct robots and 135 physical robots built in an estimated 240 hours, agents solve nearly all easy obstacles and invent mechanisms our search baselines do not reach, but falter at harder levels, when one robot must cross every obstacle, and in the real world, where 66% of simulated passes hold across all levels. Closing the loop helps: shown a video of its real failure, an agent redesigns the robot, sometimes correcting its simulator, and removes 72% of level-1 and level-2 failures. RoboBuilder measures progress toward agents that engineer real machines. Project Page: https://ghadinehme.com/robobuilder.github.io/</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Can AI agents design robots that work in the real world?</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Metrics-in-the-Loop: Complexity Feedback Reshapes Agent-Written Code</div>
+<div class="meta-line">Authors: Nicolas Chapados, Jean-François Gagné, Nouha Dziri</div>
+<div class="meta-line">First: 2026-11-18T04:19:48+00:00 · Latest: 2026-11-18T04:19:48+00:00</div>
+<div class="meta-line">Comments: Agent Evaluation Science Symposium, Fall 2026, New York City</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23817v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23817v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents now write whole codebases in long autonomous runs, guided mainly by whether their tests pass. Yet passing tests alone does not reveal accumulating complexity or gaps in test coverage, which then persist as agents extend their own code. We introduce metrics-in-the-loop, an inference-time intervention that gives agents in-flight feedback: cheap, automatically computed code metrics injected into the agent&#x27;s context during the trajectory. After each code-changing agent turn, we insert short feedback messages naming changed functions whose cyclomatic complexity exceeds a limit (complexity feedback) or changed lines that are skipped by tests (coverage feedback), giving the agent the opportunity to refactor code or strengthen tests before continuing. We run extensive experiments and ablations comparing several interventions across three long-horizon coding benchmarks and four strong models. We find that complexity feedback significantly reduces erosion, a measure of complexity concentration of code, without affecting held-out correctness of the code. Broadly, our experiments investigate a practical form of agent &quot;re-railing&quot;, where timely, actionable measurements redirect agents before weaknesses become the foundation they keep building on. As agents scale to codebases with millions of lines, such interventions become critical to sustaining effective development and long-term code maintainability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents now write whole codebases in long autonomous runs, guided mainly by whether their tests pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AgentAbstain: Do LLM Agents Know When Not to Act?</div>
+<div class="meta-line">Authors: Xun Liu, Yi Evie Zhang, Vira Kasprova, Parisa Rabbani, Pardis Sadat Zahraei, Tianyu Zhang, Ali Ebrahimpour-Boroojeny, Varun Chandrasekaran</div>
+<div class="meta-line">First: 2026-07-11T00:57:36+00:00 · Latest: 2026-11-18T03:51:43+00:00</div>
+<div class="meta-line">Comments: 65 pages, 13 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.10059v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.10059v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Agent systems based on large language models (LLMs) are increasingly deployed for autonomous tasks, yet existing evaluations mostly focus on task success rather than whether agents know when to abstain. This gap poses real risks: under ambiguity, conflicting constraints, or tool failures, agents may execute unintended and irreversible actions. To close this gap, we present the first systematic evaluation framework for agentic abstention: the calibrated ability of tool-using LLM agents to recognize when not to act. At its core, AgentAbstain is a paired-task benchmark built on an agent-native taxonomy of 8 abstention scenarios across pre-execution reasoning and runtime discovery. It contains 263 paired tasks across 42 executable sandbox environments, where each pair consists of a should-act task and a should-abstain variant produced through a controlled perturbation to the instruction, tool, or environment state. To scale this paired design and resist data contamination, we propose AbstainGen, a fully automated pipeline that synthesizes sandbox environments and generates paired tasks end-to-end, validated by deterministic replay and semantic LLM judges; fresh task instances can be regenerated on demand, and three independent annotators rate 94-98% of sampled tasks as well-designed. Across 17 frontier LLMs in 4 agent harnesses, the best agent (Gemini 3.1 Pro) achieves only 59.5% paired accuracy (correct on both the act and abstain sides of each paired task). More importantly, abstention capability is largely independent of general task-solving capability, indicating that scaling task-solving alone will not close this gap. We further identify failure modes such as post-hoc abstention, in which agents execute irreversible actions before recognizing abstention triggers. Our code and dataset are open-sourced at agentabstain.github.io.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Agent systems based on large language models (LLMs) are increasingly deployed for autonomous tasks, yet existing evaluations mostly focus on task success rather than whether agents know when to abstain.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ProteinGeoBench: Frontier Structural-Biology Agents Are Fluent at Lookup but Lost in Geometry</div>
+<div class="meta-line">Authors: Matt Turk, Brandon L. Neel, Diana M. Lopez, Zachary D. Smith, Grace N. Johnecheck, James B. Golden</div>
+<div class="meta-line">First: 2026-10-19T17:55:38+00:00 · Latest: 2026-11-18T02:39:21+00:00</div>
+<div class="meta-line">Comments: 24 pages, 2 figures, 10 tables. Benchmark and tasks: https://github.com/Protege-AI/ProteinGeoBench</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.26829v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.26829v2">PDF</a> · <a href="https://github.com/Protege-AI/ProteinGeoBench">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">ProteinGeoBench is a set of 131 tasks that give an agent protein structure files and ask it to look up recorded facts, check sequences, calculate geometry from atom coordinates or reason about structures. We ran four frontier models on every task several times (4,249 runs) and 26 models on a subset. A single overall score hides two different skills. Three of the four frontier models are best at looking up facts and worst at calculating from coordinates: Claude Opus 5 scores 0.907 on lookup and 0.716 on calculation. Gemini 3.1 Pro is the exception. Geometry is overrepresented among the hardest tasks. Half of the twelve tasks that all four models fail are calculations, although calculations are a fifth of the suite, and eight of the twelve were solved by none of the 26 models. The three leading models are within 0.031 of one another, too close to order, and with one run per task a different model ranks first in 24% of bootstrap resamples. Reports should therefore give scores by task type and the number of runs per task. They should also state the agent harness, the software that runs the model, and its network access, because both change scores. On a 15-task subset, blocking eight structural databases lowered scores, and removing network access lowered them more. Replacing our harness with each provider&#x27;s own command-line agent moved scores by up to 0.09 in either direction. Across the 26 models, those that scored higher on the other tasks also scored higher on calculation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">ProteinGeoBench is a set of 131 tasks that give an agent protein structure files and ask it to look up recorded facts, check sequences, calculate geometry from atom coordinates or reason about structures.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">TCC-RAG: Temporal Causal Chain-Guided RAG for Temporal Knowledge Graph Question Answering</div>
+<div class="meta-line">Authors: Xinxun Zhang, Yuxiang Wang, Shanshan Feng, Jun Zhang, Tieyun Qian, Binhang Yuan, Kai Yin, Xiao Yan, Jiawei Jiang</div>
+<div class="meta-line">First: 2026-10-28T07:03:44+00:00 · Latest: 2026-11-18T01:47:48+00:00</div>
+<div class="meta-line">Comments: 14 pages, 6 figures, ICDE2027 Research Track</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38366v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.38366v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent advances in large language models (LLMs) have spurred growing interest in temporal knowledge graph question answering (TKGQA). Most existing methods rely on semantic retrieval augmented generation (RAG), which suffers from fundamental limitations in complex temporal reasoning. On the one hand, semantic-based RAG methods struggle to capture the multi-hop causal knowledge required for complex temporal reasoning. On the other hand, these methods introduce excessive redundant knowledge, trapping LLMs in spurious reasoning chains that potentially result in erroneous answers. To address these problems, we propose a Temporal Causal Chain-guided RAG (TCC-RAG) to retrieve a concise yet sufficient set of causal knowledge to support complex temporal reasoning. Specifically, we reformulate the temporal knowledge graph into a multi-view causal cue graph, with causal cues inducing connections that explicitly encode temporal evolution and causal dynamics. Based on the causal cue graph, we construct a query-specific temporal causal chain to guide the retrieval process, enabling the model to focus on a concise set of causally relevant knowledge. Finally, we introduce a causal evidence filter to refine the retrieved knowledge, ensuring its causal consistency with the underlying temporal logic of the query. Experiments show that TCC-RAG achieves substantial performance gains of 10.72% and 8.40% on two TKGQA benchmarks, and delivers a remarkable 62.97% improvement for multi-step temporal reasoning.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent advances in large language models (LLMs) have spurred growing interest in temporal knowledge graph question answering (TKGQA).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Option-GRPO: Hierarchical RL Against AI Slop in Code Generation for Unseen SDKs</div>
+<div class="meta-line">Authors: Prashank Kadam</div>
+<div class="meta-line">First: 2026-11-17T23:52:34+00:00 · Latest: 2026-11-17T23:52:34+00:00</div>
+<div class="meta-line">Comments: Accepted to Findings of EACL 2027. 27 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23633v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23633v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language models increasingly produce AI slop in generated code: verbose, redundant, non-idiomatic implementations that pass functional checks but bloat codebases. The problem compounds on SDKs released after the model&#x27;s training cutoff, where the model has neither idiomatic priors nor compositional understanding. We present Option-GRPO, a hierarchical reinforcement learning framework that adapts a code LLM to an unseen SDK from its source code alone, without human-written usage examples or test cases, and that explicitly optimizes for both functional correctness and code elegance. Our key insight is that SDK source code contains compositional structure that defines a hierarchy of reusable code patterns (code options) which simultaneously serve as the building blocks of a curriculum and the action space for efficient policy optimization. We show that code options induce a valid semi-Markov decision process, give conditional bounds under which shorter option description length implies more concise and, in expectation, more API-efficient programs, and analyze under stated assumptions how the option hierarchy improves credit assignment by a factor of $\sqrt{T/K}$. Using Group Relative Policy Optimization (GRPO) with execution-based rewards at each curriculum level, Option-GRPO discovers SDK idioms, composes them into patterns, and assembles patterns into complete programs. Experiments on 12 unseen SDKs with a 32B-parameter base model demonstrate 61.4% pass@1, outperforming flat GRPO by 8.7 points, ExploraCoder by 11.2 points, and ReCode by 6.3 points. Option-GRPO produces solutions that use 34.7% fewer API calls and are 27% shorter than flat-GRPO outputs while maintaining higher correctness, directly attacking the slop problem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language models increasingly produce AI slop in generated code: verbose, redundant, non-idiomatic implementations that pass functional checks but bloat codebases.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Weight Space Programming for Vision Language Model Repair</div>
+<div class="meta-line">Authors: Avinash Goutham Aluguvelly</div>
+<div class="meta-line">First: 2026-11-17T23:07:36+00:00 · Latest: 2026-11-17T23:07:36+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23615v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23615v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In weight-space programming, a language model edits a network&#x27;s weights directly, without gradients. We ask what a successful repair of this kind relies on. We plant faults in the weights of two vision-language models, SmolVLM-256M and LFM2-VL-450M, and check each edit made by a coding agent against the original weights. Without being told where to look, the agent finds rescaled rows in the projector and noise in the vision encoder of both models, infers the unknown scale factors, restores most or all of the rescaled weights to their exact original values, and returns accuracy to near its original level; programs that it writes from such weights repair unseen checkpoints of the same model without feedback. These repairs depend on a trace of how the faults were computed. The original weights have 16-bit precision, and faults computed in 32-bit arithmetic leave low bits that only the damaged weights carry. Rounding those bits away leaves each model&#x27;s answers to our test questions unchanged, and the agent, unaided, then restores no weight exactly: on SmolVLM it no longer finds the damage, and in a single session on LFM2-VL its only gain comes from rescaling answer-token embeddings, which changes how often the model answers yes. Marking the damaged weights again in their low bits brings the edits back to them. Rounded weights still hold statistical evidence of the rescaling, in the distribution of stored values and in row norms, and one sentence in the prompt that names such a statistic directs the agent&#x27;s edits to the damaged rows on both models. Swapped rows or columns, which leave the set of stored values unchanged, are not found unaided on either model within our session budgets. We recommend that studies of weight repair report the number format of the weights and include a rounded control.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In weight-space programming, a language model edits a network&#x27;s weights directly, without gradients.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Reliability by Architecture: Agentic Workflows for Validated Multi-Physics Simulation from Natural Language</div>
+<div class="meta-line">Authors: Søren Taverniers, Eric Darve, Hamdi A. Tchelepi</div>
+<div class="meta-line">First: 2026-11-17T20:25:26+00:00 · Latest: 2026-11-17T20:25:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23473v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23473v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Preparing, executing, and validating strongly coupled multi-physics simulations require expert time. Agentic workflows use large language models (LLMs) to coordinate them from natural-language descriptions, but reliability requires checks of physical consistency and fidelity to the problem description. Our agentic harness implements explicit task allocation: LLMs interpret user requests and simulator diagnostics, generate input components not covered by predefined construction rules, and propose repairs, while deterministic routines construct supported components and check inputs, edits, and results. We evaluate CO2-storage problems using the multi-physics simulator GEOS, from compositional flow to flow-poromechanics with frictional fault contact. In 80 attempts on two flow problems, grounding raises the proportion of structurally valid inputs from 5/20 to 20/20, but acceptance reaches 20/20 only with complete rule-based input preparation. With identical inputs, local repairs correct three seeded defects while preserving valid inputs. Supporting tests identify simulations passing physics checks despite differing from the problem description or reference results.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Preparing, executing, and validating strongly coupled multi-physics simulations require expert time.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Interaction-as-a-Judge</div>
+<div class="meta-line">Authors: Wayne Chi, I-Hung Hsu, Li Chen, Wei-Lin Chiang, Ion Stoica, Anastasios Nikolas Angelopoulos, Ameet Talwalkar, Chris Donahue, Cho-Jui Hsieh</div>
+<div class="meta-line">First: 2026-10-13T07:49:50+00:00 · Latest: 2026-11-17T19:18:55+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.17895v4">Abs</a> · <a href="https://arxiv.org/pdf/2610.17895v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents are tasked with producing sophisticated interactive applications such as websites, desktop applications, and games. While humans assess these applications interactively, current automated LLM evaluations primarily focus on code analysis and unit tests. This mismatch can cause LLM judges to miss failures that are immediately apparent to human users. We study Interaction-as-a-Judge, an evaluation paradigm where computer-use agents (CUAs) directly interact with an application. We demonstrate that Interaction-as-a-Judge can improve both evaluation and generation of interactive applications. To this end, we collect and release two complementary datasets: $6,858$ pairs of applications with human preferences and corresponding agent traces, and $222$ applications with human-verified requirement labels. Relative to standard non-interactive approaches, we find that Interaction-as-a-Judge improves evaluation in terms of predicting human preferences ($65.6\% \to 69.1\%$) and requirement verification ($77.0\% \to 81.6\%$). We also observe scaling benefits: across both preference alignment and requirement verification, higher-quality interactions improve performance. Finally, through both inference- and training-time experiments, we demonstrate that Interaction-as-a-Judge can also improve the quality of generated artifacts. At inference time, Interaction-as-a-Judge repairs $75.5\%$ of broken requirements within five attempts, compared to $55.4\%$ for code-only self-feedback. At training time, using Interaction-as-a-Judge as a reward signal improves win-rate over the base model by $6.7$pp while reducing both generated code length by $35.7\%$ and build failure rates by $7.2$pp compared to a code-only reward signal.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents are tasked with producing sophisticated interactive applications such as websites, desktop applications, and games.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Where the Tokens Go: Heat, Entropy and Error in Agentic Coding</div>
+<div class="meta-line">Authors: Alán Aspuru-Guzik, Varinia Bernales</div>
+<div class="meta-line">First: 2026-11-17T19:00:02+00:00 · Latest: 2026-11-17T19:00:02+00:00</div>
+<div class="meta-line">Comments: 43 pages, 10 figures, 11 tables; includes supplementary information with 3 further figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23375v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23375v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents are billed by the token, yet software engineering says nothing about what a token actually buys. Here we introduce a theory of software thermodynamics. The theory draws analogues from classical and stochastic thermodynamics, extends them, and applies them to modern agentic coding. We count the tokens an agent generates as its cost and divide that cost into work and heat. The test suite acts as a software Maxwell&#x27;s daemon that judges every coding change. We test the theory with an analogue of the experiments in which a single molecule is pulled open and let fold again: an agent makes a change to a repository (coding) and then undoes it (uncoding), many times over, and we count the tokens of every model call. The cycle returns the requested edits to where they began, with each direction started from a stored reference tree, and the spread of its cost over repeated cycles defines a software temperature, which rose with the sampling temperature of the model. About 80 per cent of the tokens of a successful run are generated in model calls that leave the requested change where it was, and we call these tokens heat. The free energy of a change, which we estimate by analogy with the equality of Jarzynski, is 14 to 22 per cent of the mean cost of a successful coding run. Coding costs 1.1 to 1.5 times as much as uncoding. The daemon is imperfect: the verdict of a test suite varies with its environment, and a suite that accepts a broken change has a cost in tokens. The practical implication of the proposed theory could be new tools for analysing and optimising coding agents through the lens of thermodynamics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents are billed by the token, yet software engineering says nothing about what a token actually buys.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Mingbird: A Local-First Agent Harness Enabling Small Open Models to Complete Real Tasks</div>
+<div class="meta-line">Authors: Hao Wang, Ting Huang</div>
+<div class="meta-line">First: 2026-10-01T16:32:07+00:00 · Latest: 2026-11-17T18:43:13+00:00</div>
+<div class="meta-line">Comments: 67 pages, 30 tables, 4 figures. v2: substantially revised (18 mechanisms, the 288-cell v1.5.0 matrix, five evaluations). Code, benchmark protocol, scoring code and all per-cell results: https://github.com/Mingbird/Mingbird-agent</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.02001v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.02001v2">PDF</a> · <a href="https://github.com/Mingbird/Mingbird-agent">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Small open-weight language models now run on a laptop, but they fail at multi-step work in ways a large model does not: they stop with the files missing, repeat one action until the budget ends, and report success without checking. At the one-to-nine-billion-parameter tier the harness supplies almost all of the procedural control that a large model supplies for itself.We present Mingbird, an open-source harness for that tier on a consumer graphics card: 12k lines of Python, a 628-test suite, and eighteen mechanisms for context economy, completion, time budget and the host boundary, plus a crawl guard outside those four groups. Its design point is completion control: the harness runs executable checks on the working directory and refuses a claim of completion when they fail.Five evaluations accompany it. A configuration-surface audit finds four defects that the 625-test suite of v3.1.1 missed, each because a test checked a property adjacent to the one that broke. A ten-task probe suite gives each mechanism a reason to fire and reports where the change reaches the artifact, including one mechanism that cuts the signal it protects. Disabling five of six completion-time checks costs 0.152 of the artifact score on eighteen held-out tasks, three replications per cell (95% CI [+0.064, +0.246], Holm p = 0.014). On a 288-cell matrix the harness reaches 0.886 against 0.631, 0.479 and 0.405 for three open scaffolds, and on τ 2 -bench it ranks first or tied first in all three domains against the arms evaluated.Tasks, scorer, source and every per-cell result are public.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Small open-weight language models now run on a laptop, but they fail at multi-step work in ways a large model does not: they stop with the files missing, repeat one action until the budget ends, and report success without checking.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Inference after coding agents</div>
+<div class="meta-line">Authors: Florian Gunsilius, David Van Dijcke, Kaspar Wüthrich</div>
+<div class="meta-line">First: 2026-11-17T18:22:01+00:00 · Latest: 2026-11-17T18:22:01+00:00</div>
+<div class="meta-line">Comments: 35 pages, 7 figures, 1 table</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23174v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23174v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Empirical research is changing rapidly as AI coding agents are becoming increasingly proficient in every step of it, from writing code to manipulating data. We argue that while the potential of coding agents for science is vast, their use in hypothesis testing poses a substantial threat to classical inference, as these agents enable a supercharged form of selective inference. In particular, we argue that coding agents carrying out empirical research introduce a new type of post-selection inference that combines human-like, open-ended search over an implicit space of estimators with programmatic replayability of both the selection and the estimation process. Indeed, we find that on simulated data with zero effects, four frontier agents report significant p-values between 54% and 98% of the time when asked to produce a compelling finding. We propose a simple procedure for detecting and correcting these distortions. After an agent has completed its analysis, we reset and replay it on subsamples of the data to estimate the agent&#x27;s relative probability of selecting that analysis when it looks statistically favorable. For agents with stable selection behavior, the resulting corrected test is asymptotically valid and consistent conditional on selection. Importantly, the correction is learned from the black-box agent&#x27;s actual choices rather than a model of how it searches, so it remains valid even as AI technology continues to evolve rapidly. In simulations, the correction robustly lowers the high false rejection rates to near the nominal 5%. We illustrate the method on applications from two published papers.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Empirical research is changing rapidly as AI coding agents are becoming increasingly proficient in every step of it, from writing code to manipulating data.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Deployment-Oriented and Resource-Efficient Neuro-Symbolic Framework for Explainable DDoS Detection in Operational Technology Networks</div>
+<div class="meta-line">Authors: Mikiyas Alemayehu, Mohamed Chahine Ghanem, Kevin Curran, Hamza Kheddar, Ioanna Dionysiou, Elhadj Benkhelifa, J. J. Garcia-Luna-Aceves</div>
+<div class="meta-line">First: 2026-08-17T16:18:15+00:00 · Latest: 2026-11-17T17:28:47+00:00</div>
+<div class="meta-line">Comments: 15 Version 2</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.16769v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.16769v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper presents a hybrid neural-symbolic detector of distributed denial-of-service (DDoS) attacks on the availability of operational technology (OT) networks, designed for their resource-constrained gateways, and an evaluation matched to deployment. A compact gated recurrent unit (GRU) is fused at score level with a shallow, readable decision tree, and weight and threshold are selected on validation data under an explicit false-positive budget, whose attainment in finite samples is analysed. The evaluation on CIC-DDoS2019, Edge-IIoTset and CICIoT23 uses contiguous or capture-held-out partitions, dependence-aware intervals, and precision and alert load at operational prevalence. Over ten seeds at a 1% budget, the hybrid&#x27;s false-negative rate on CIC-DDoS2019 is 0.08%, against 0.26% for the GRU and 0.17% for the tree. With a day of mostly unseen attack families held out, the tree alone carries the decision. Audits bound these claims: Edge-IIoTset is saturated by duplicates, no benchmark as used provides interleaved traffic in capture order, and an unconstrained tree is more accurate on two of them, so the case for the hybrid rests on short, stable rules and a measured footprint. On a Siemens SIMATIC IoT2050 gateway, tested with Modbus/TCP and MQTT floods, the INT8 model needs 2.9 ms per window, 31 MB of memory and 3.5 mJ per inference.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper presents a hybrid neural-symbolic detector of distributed denial-of-service (DDoS) attacks on the availability of operational technology (OT) networks, designed for their resource-constrained gateways, and an evaluation matched to deployment.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Values Shape What Self-Improving Coding Agents Build</div>
+<div class="meta-line">Authors: Jason Liang, Dylan Waldner, Risto Miikkulainen</div>
+<div class="meta-line">First: 2026-11-17T16:56:46+00:00 · Latest: 2026-11-17T16:56:46+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.23067v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.23067v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Self-improving agents are typically optimized for the results they produce, with less attention to how they produce them. Their instructions give designers limited ways to shape how they work, especially when the task is open-ended. This paper studies whether a short value statement in an agent&#x27;s persistent instruction file changes not only how well the agent performs but also what it builds. Four higher-order value types in Schwartz&#x27;s theory of basic human values were evaluated: openness to change, conservation, self-enhancement, and self-transcendence. Across diverse coding tasks, the values were held fixed within each run over multiple iterations of self-improvement. Three findings emerged: (1) Values matter for performance across a diverse set of tasks. The openness values increase performance on held-out data, whereas the opposite conservation values result in scores below those of an agent given no values. (2) Values change what agents build, producing solution algorithms that differ in size, complexity and approach. (3) Human oversight is still needed for designing values. Allowing the agent to revise its own values narrows the differences between sets of values, and values distilled from the AI literature provide no detectable gain over having no values. Properly designed values can thus influence what a self-improving coding agent builds and, where the task permits, how well it performs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Self-improving agents are typically optimized for the results they produce, with less attention to how they produce them.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">CodeReel: Accelerating Code-to-Video Agents with Exact Frame Reuse and Blocking-Aware Scheduling</div>
+<div class="meta-line">Authors: Junyi Shen, Yao Lu</div>
+<div class="meta-line">First: 2026-11-17T15:52:15+00:00 · Latest: 2026-11-17T15:52:15+00:00</div>
+<div class="meta-line">Comments: 19 pages, 8 figures, 14 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.22967v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.22967v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents make videos by writing and refining programs in a build--inspect--edit loop. A finished film costs a median of $2.85 in model calls and 11 minutes, over a third of that time in builds that block the agent. We find that much of this time is avoidable, for two reasons. First, 37.5% of the frames of a session&#x27;s later films were drawn before, many shifted in time or inside an edited scene. Second, half of the builds stop at a check, where the agent needs only the verdict, but which builds stop is unknown until the checks finish. We present CodeReel, a training-free execution layer behind agents&#x27; existing commands. Exact frame reuse keys each frame by its drawing commands, regardless of its position in time, and reuses each frame whose key recurs. Blocking-aware scheduling runs the checks first and starts the render alongside them, at idle priority, unless the session&#x27;s recent builds make a pass unlikely. Scheduling spends CPU to answer sooner and reuse returns it; exact keys let later versions use frames rendered for a failed one as the agent thinks. We introduce EditLoop, a benchmark of replayable agent sessions whose films are checked against renders from scratch. On it, CodeReel cuts the agent&#x27;s wait by 36.3% against Rebuild, a warm pipeline with parallel rendering, and by 57.9% against Sequential, today&#x27;s step-by-step pipeline. On time-shifting edits its reuse renders 43.9%, close to the 43.0% whose pixels are new, while Manim-style caching renders 99.8%. With real agents, the median wait per build is 0.62x Rebuild&#x27;s in Claude Code, on topics never used in development, and 0.67x in Codex CLI. The gain holds for five models and two frameworks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents make videos by writing and refining programs in a build--inspect--edit loop.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Done, But Still Working: Anytime Evaluation of When Coding Agents Should Stop</div>
+<div class="meta-line">Authors: Zerui Yang, Quan Xue, Miaomiao Dong, Chaorui Zhang, Xuanyu Zheng, Xiyuan Wang, Haolin Ruan, Xueyan Niu, Guangcheng Song, Weixi Zhang, Wei Han, Bo Bai</div>
+<div class="meta-line">First: 2026-11-17T15:07:35+00:00 · Latest: 2026-11-17T15:07:35+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.22901v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.22901v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coding agents often continue working after their own tests pass. Does this additional work improve the patch, and how much could be saved by stopping earlier? We study these questions through anytime evaluation: replaying recorded runs, scoring intermediate patches with hidden tests, and measuring the cost incurred at each step. For policies that only stop a run or select an earlier patch, this allows paired comparisons without generating new trajectories, provided replay preserves the relevant states. Across about 6,000 runs of eight open models in two scaffolds on SWE-bench Verified, we find substantial differences in the value of continued work. The hindsight saving available at passing self-tests ranges from under 1% to 57%, depending on the model and scaffold. A rule that stops after the same patch passes twice saves 23% in a preregistered replication, but the preregistered quality test does not establish non-inferiority. We explain these differences by measuring how often a rule fires, how often the patch changes afterwards, and whether those changes repair or break it. Fine-tuning agents to imitate the rule saves 30% over six seeds, while quality preservation remains uncertain. Our results help identify both the opportunities and the risks of early stopping.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coding agents often continue working after their own tests pass.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents</div>
+<div class="meta-line">Authors: Peidong Wang, Ying Chang, Zhiming Ma, Lirong Che, Zihao Liu, Xiaocui Yang, Shi Feng, Daqi Liu, Yuzhe Yang, Xu Cao, Chuang Wang, Jian Su, Daling Wang</div>
+<div class="meta-line">First: 2026-10-14T16:51:09+00:00 · Latest: 2026-11-17T14:20:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.20474v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.20474v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Failures in long-horizon embodied tasks can arise from how a vision-language-action model (VLA) is called or from its execution capabilities. We introduce AdaRSI, an on-demand recursive self-improvement framework in which a coding agent first refines its tools and procedures, then adapts sub-steps that remain unreliable after testing alternative instructions and approaches. The agent collects demonstrations, tests their utility through temporary fine-tuning probes, and pools accepted data across tasks to train a specialist VLA that works alongside the original executor. At the end of each development round, its records are summarized into shared experience that guides subsequent diagnosis and data collection. On unseen composite tasks in RoboCasa365, AdaRSI raises success from 4.6% to 13.3%. On perturbed LIBERO-Pro 2.0 tasks, success rises from 32.9% to 49.1%. On RoboCasa365&#x27;s Composite-Unseen suite, it achieves higher success than adapting every manipulation sub-step, using 34% of the GPU time and 36% of the demonstrations. On a real robot, the agent autonomously collects demonstrations and adapts the executor to recover fallen bottles, improving task completion.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Failures in long-horizon embodied tasks can arise from how a vision-language-action model (VLA) is called or from its execution capabilities.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261118_1858.html">20261118_1858</a>
+<a href="archive/20261117_1922.html">20261117_1922</a>
+<a href="archive/20261116_1823.html">20261116_1823</a>
+<a href="archive/20261113_1822.html">20261113_1822</a>
+<a href="archive/20261112_1829.html">20261112_1829</a>
+<a href="archive/20261111_1803.html">20261111_1803</a>
+<a href="archive/20261110_1842.html">20261110_1842</a>
+<a href="archive/20261109_1838.html">20261109_1838</a>
+<a href="archive/20261106_1809.html">20261106_1809</a>
+<a href="archive/20261105_1805.html">20261105_1805</a>
+<a href="archive/20261104_1811.html">20261104_1811</a>
+<a href="archive/20261103_1818.html">20261103_1818</a>
+<a href="archive/20261102_1818.html">20261102_1818</a>
+<a href="archive/20261030_1719.html">20261030_1719</a>
+<a href="archive/20261029_1708.html">20261029_1708</a>
+<a href="archive/20261028_1710.html">20261028_1710</a>
+<a href="archive/20261028_1323.html">20261028_1323</a>
+<a href="archive/20261027_1224.html">20261027_1224</a>
+<a href="archive/20261023_1041.html">20261023_1041</a>
+<a href="archive/20261020_1708.html">20261020_1708</a>
+<a href="archive/20261014_1633.html">20261014_1633</a>
+<a href="archive/20261013_1820.html">20261013_1820</a>
+<a href="archive/20261009_1817.html">20261009_1817</a>
+<a href="archive/20261008_1816.html">20261008_1816</a>
+<a href="archive/20261007_1803.html">20261007_1803</a>
+<a href="archive/20261006_1757.html">20261006_1757</a>
+<a href="archive/20261005_1812.html">20261005_1812</a>
+<a href="archive/20261001_1757.html">20261001_1757</a>
+<a href="archive/20260930_1730.html">20260930_1730</a>
+<a href="archive/20260929_1738.html">20260929_1738</a>
+<a href="archive/20260928_1733.html">20260928_1733</a>
+<a href="archive/20260925_1641.html">20260925_1641</a>
+<a href="archive/20260924_1618.html">20260924_1618</a>
+<a href="archive/20260923_1626.html">20260923_1626</a>
+<a href="archive/20260922_1624.html">20260922_1624</a>
+<a href="archive/20260921_1645.html">20260921_1645</a>
+<a href="archive/20260918_1606.html">20260918_1606</a>
+<a href="archive/20260917_1632.html">20260917_1632</a>
+<a href="archive/20260916_1627.html">20260916_1627</a>
+<a href="archive/20260915_1632.html">20260915_1632</a>
+<a href="archive/20260914_1726.html">20260914_1726</a>
+<a href="archive/20260911_1556.html">20260911_1556</a>
+<a href="archive/20260910_1600.html">20260910_1600</a>
+<a href="archive/20260909_1600.html">20260909_1600</a>
+<a href="archive/20260908_1556.html">20260908_1556</a>
+<a href="archive/20260907_1606.html">20260907_1606</a>
+<a href="archive/20260904_1552.html">20260904_1552</a>
+<a href="archive/20260903_1556.html">20260903_1556</a>
+<a href="archive/20260902_1547.html">20260902_1547</a>
+<a href="archive/20260901_1629.html">20260901_1629</a>
+<a href="archive/20260831_1732.html">20260831_1732</a>
+<a href="archive/20260828_2312.html">20260828_2312</a>
+<a href="archive/20260827_2200.html">20260827_2200</a>
+<a href="archive/20260827_1143.html">20260827_1143</a>
+<a href="archive/20260826_1232.html">20260826_1232</a>
+<a href="archive/20260825_1232.html">20260825_1232</a>
+<a href="archive/20260824_1521.html">20260824_1521</a>
+<a href="archive/20260824_1500.html">20260824_1500</a>
+<a href="archive/20260821_0338.html">20260821_0338</a>
+<a href="archive/20260820_0335.html">20260820_0335</a>
+<a href="archive/20260819_0338.html">20260819_0338</a>
+<a href="archive/20260818_0335.html">20260818_0335</a>
+<a href="archive/20260817_0328.html">20260817_0328</a>
+<a href="archive/20260816_0328.html">20260816_0328</a>
+<a href="archive/20260815_0352.html">20260815_0352</a>
+<a href="archive/20260814_0359.html">20260814_0359</a>
+<a href="archive/20260813_0403.html">20260813_0403</a>
+<a href="archive/20260812_0404.html">20260812_0404</a>
+<a href="archive/20260811_0357.html">20260811_0357</a>
+<a href="archive/20260810_0341.html">20260810_0341</a>
+<a href="archive/20260809_0338.html">20260809_0338</a>
+<a href="archive/20260808_0356.html">20260808_0356</a>
+<a href="archive/20260807_0844.html">20260807_0844</a>
+<a href="archive/20260806_0437.html">20260806_0437</a>
+<a href="archive/20260805_0439.html">20260805_0439</a>
+<a href="archive/20260804_0437.html">20260804_0437</a>
+<a href="archive/20260803_0416.html">20260803_0416</a>
+<a href="archive/20260802_0414.html">20260802_0414</a>
+<a href="archive/20260801_0426.html">20260801_0426</a>
+<a href="archive/20260731_0421.html">20260731_0421</a>
+<a href="archive/20260730_0416.html">20260730_0416</a>
+<a href="archive/20260727_0416.html">20260727_0416</a>
+<a href="archive/20260726_0414.html">20260726_0414</a>
+<a href="archive/20260725_0432.html">20260725_0432</a>
+<a href="archive/20260724_0419.html">20260724_0419</a>
+<a href="archive/20260723_0418.html">20260723_0418</a>
+<a href="archive/20260722_0423.html">20260722_0423</a>
+<a href="archive/20260721_0427.html">20260721_0427</a>
+<a href="archive/20260720_0411.html">20260720_0411</a>
+<a href="archive/20260719_0407.html">20260719_0407</a>
+<a href="archive/20260718_0413.html">20260718_0413</a>
+<a href="archive/20260717_0408.html">20260717_0408</a>
+<a href="archive/20260716_0417.html">20260716_0417</a>
+<a href="archive/20260715_0420.html">20260715_0420</a>
+<a href="archive/20260714_0421.html">20260714_0421</a>
+<a href="archive/20260713_0409.html">20260713_0409</a>
+<a href="archive/20260712_0409.html">20260712_0409</a>
+<a href="archive/20260711_0439.html">20260711_0439</a>
+<a href="archive/20260710_0454.html">20260710_0454</a>
+<a href="archive/20260709_0426.html">20260709_0426</a>
+<a href="archive/20260708_0455.html">20260708_0455</a>
+<a href="archive/20260707_0456.html">20260707_0456</a>
+<a href="archive/20260706_0421.html">20260706_0421</a>
+<a href="archive/20260705_0415.html">20260705_0415</a>
+<a href="archive/20260704_0421.html">20260704_0421</a>
+<a href="archive/20260703_0425.html">20260703_0425</a>
+<a href="archive/20260702_0452.html">20260702_0452</a>
+<a href="archive/20260701_0502.html">20260701_0502</a>
+<a href="archive/20260630_0454.html">20260630_0454</a>
+<a href="archive/20260629_0420.html">20260629_0420</a>
+<a href="archive/20260628_0423.html">20260628_0423</a>
+<a href="archive/20260627_0450.html">20260627_0450</a>
+<a href="archive/20260626_0502.html">20260626_0502</a>
+<a href="archive/20260625_0455.html">20260625_0455</a>
+<a href="archive/20260624_0505.html">20260624_0505</a>
+<a href="archive/20260623_0535.html">20260623_0535</a>
+<a href="archive/20260622_0445.html">20260622_0445</a>
+<a href="archive/20260621_0422.html">20260621_0422</a>
+<a href="archive/20260620_0442.html">20260620_0442</a>
+<a href="archive/20260619_0531.html">20260619_0531</a>
+<a href="archive/20260618_0519.html">20260618_0519</a>
+<a href="archive/20260617_0545.html">20260617_0545</a>
+<a href="archive/20260616_0549.html">20260616_0549</a>
+<a href="archive/20260615_0423.html">20260615_0423</a>
+<a href="archive/20260614_0423.html">20260614_0423</a>
+<a href="archive/20260613_0505.html">20260613_0505</a>
+<a href="archive/20260612_0528.html">20260612_0528</a>
+<a href="archive/20260611_0528.html">20260611_0528</a>
+<a href="archive/20260610_0504.html">20260610_0504</a>
+<a href="archive/20260609_0514.html">20260609_0514</a>
+<a href="archive/20260608_0421.html">20260608_0421</a>
+<a href="archive/20260607_0418.html">20260607_0418</a>
+<a href="archive/20260606_0451.html">20260606_0451</a>
+<a href="archive/20260604_0557.html">20260604_0557</a>
+<a href="archive/20260603_0556.html">20260603_0556</a>
+<a href="archive/20260602_0615.html">20260602_0615</a>
+<a href="archive/20260601_0419.html">20260601_0419</a>
+<a href="archive/20260531_0414.html">20260531_0414</a>
+<a href="archive/20260530_0512.html">20260530_0512</a>
+<a href="archive/20260529_0515.html">20260529_0515</a>
+<a href="archive/20260527_0459.html">20260527_0459</a>
+<a href="archive/20260526_0426.html">20260526_0426</a>
+<a href="archive/20260525_0417.html">20260525_0417</a>
+<a href="archive/20260524_0411.html">20260524_0411</a>
+<a href="archive/20260523_0445.html">20260523_0445</a>
+<a href="archive/20260522_0454.html">20260522_0454</a>
+<a href="archive/20260521_0508.html">20260521_0508</a>
+<a href="archive/20260520_0449.html">20260520_0449</a>
+<a href="archive/20260519_0442.html">20260519_0442</a>
+<a href="archive/20260518_0409.html">20260518_0409</a>
+<a href="archive/20260517_0425.html">20260517_0425</a>
+<a href="archive/20260516_0436.html">20260516_0436</a>
+<a href="archive/20260515_0457.html">20260515_0457</a>
+<a href="archive/20260514_0507.html">20260514_0507</a>
+<a href="archive/20260513_0503.html">20260513_0503</a>
+<a href="archive/20260512_0505.html">20260512_0505</a>
+<a href="archive/20260511_0418.html">20260511_0418</a>
+<a href="archive/20260510_0414.html">20260510_0414</a>
+<a href="archive/20260509_0426.html">20260509_0426</a>
+<a href="archive/20260508_0435.html">20260508_0435</a>
+<a href="archive/20260507_0454.html">20260507_0454</a>
+<a href="archive/20260506_0427.html">20260506_0427</a>
+<a href="archive/20260505_0436.html">20260505_0436</a>
+<a href="archive/20260504_0410.html">20260504_0410</a>
+<a href="archive/20260503_0414.html">20260503_0414</a>
+<a href="archive/20260502_0426.html">20260502_0426</a>
+<a href="archive/20260501_0429.html">20260501_0429</a>
+<a href="archive/20260430_0430.html">20260430_0430</a>
+<a href="archive/20260429_0437.html">20260429_0437</a>
+<a href="archive/20260428_0429.html">20260428_0429</a>
+<a href="archive/20260427_0405.html">20260427_0405</a>
+<a href="archive/20260426_0404.html">20260426_0404</a>
+<a href="archive/20260425_0410.html">20260425_0410</a>
+<a href="archive/20260424_0430.html">20260424_0430</a>
+<a href="archive/20260423_0426.html">20260423_0426</a>
+<a href="archive/20260422_0424.html">20260422_0424</a>
+<a href="archive/20260421_0418.html">20260421_0418</a>
+<a href="archive/20260420_0359.html">20260420_0359</a>
+<a href="archive/20260419_0358.html">20260419_0358</a>
+<a href="archive/20260418_0415.html">20260418_0415</a>
+<a href="archive/20260417_0421.html">20260417_0421</a>
+<a href="archive/20260416_0425.html">20260416_0425</a>
+<a href="archive/20260415_0426.html">20260415_0426</a>
+<a href="archive/20260414_0423.html">20260414_0423</a>
+<a href="archive/20260413_0352.html">20260413_0352</a>
+<a href="archive/20260412_0347.html">20260412_0347</a>
+<a href="archive/20260411_0356.html">20260411_0356</a>
+<a href="archive/20260410_0412.html">20260410_0412</a>
+<a href="archive/20260409_0411.html">20260409_0411</a>
+<a href="archive/20260407_0404.html">20260407_0404</a>
+<a href="archive/20260406_0347.html">20260406_0347</a>
+<a href="archive/20260405_0344.html">20260405_0344</a>
+<a href="archive/20260404_0350.html">20260404_0350</a>
+<a href="archive/20260403_0400.html">20260403_0400</a>
+<a href="archive/20260401_0408.html">20260401_0408</a>
+<a href="archive/20260331_0407.html">20260331_0407</a>
+<a href="archive/20260329_0347.html">20260329_0347</a>
+<a href="archive/20260328_0350.html">20260328_0350</a>
+<a href="archive/20260326_0357.html">20260326_0357</a>
+<a href="archive/20260325_0405.html">20260325_0405</a>
+<a href="archive/20260324_0400.html">20260324_0400</a>
+<a href="archive/20260323_0342.html">20260323_0342</a>
+<a href="archive/20260322_0340.html">20260322_0340</a>
+<a href="archive/20260321_0347.html">20260321_0347</a>
+<a href="archive/20260320_0356.html">20260320_0356</a>
+<a href="archive/20260319_0358.html">20260319_0358</a>
+<a href="archive/20260318_0405.html">20260318_0405</a>
+<a href="archive/20260317_0401.html">20260317_0401</a>
+<a href="archive/20260316_0343.html">20260316_0343</a>
+<a href="archive/20260315_0341.html">20260315_0341</a>
+<a href="archive/20260314_0344.html">20260314_0344</a>
+<a href="archive/20260313_0352.html">20260313_0352</a>
+<a href="archive/20260312_0352.html">20260312_0352</a>
+<a href="archive/20260311_0347.html">20260311_0347</a>
+<a href="archive/20260310_0350.html">20260310_0350</a>
+<a href="archive/20260309_0338.html">20260309_0338</a>
+<a href="archive/20260308_0337.html">20260308_0337</a>
+<a href="archive/20260307_0347.html">20260307_0347</a>
+<a href="archive/20260306_0402.html">20260306_0402</a>
+<a href="archive/20260305_0348.html">20260305_0348</a>
+<a href="archive/20260304_0348.html">20260304_0348</a>
+<a href="archive/20260303_0348.html">20260303_0348</a>
+<a href="archive/20260302_0336.html">20260302_0336</a>
+<a href="archive/20260301_0339.html">20260301_0339</a>
+<a href="archive/20260228_0348.html">20260228_0348</a>
+<a href="archive/20260227_0354.html">20260227_0354</a>
+<a href="archive/20260226_0402.html">20260226_0402</a>
+<a href="archive/20260225_0404.html">20260225_0404</a>
+<a href="archive/20260224_0406.html">20260224_0406</a>
+<a href="archive/20260223_0338.html">20260223_0338</a>
+<a href="archive/20260222_0339.html">20260222_0339</a>
+<a href="archive/20260221_0345.html">20260221_0345</a>
+<a href="archive/20260220_0348.html">20260220_0348</a>
+<a href="archive/20260219_0358.html">20260219_0358</a>
+<a href="archive/20260218_0358.html">20260218_0358</a>
+<a href="archive/20260217_0343.html">20260217_0343</a>
+<a href="archive/20260216_0339.html">20260216_0339</a>
+<a href="archive/20260215_0338.html">20260215_0338</a>
+<a href="archive/20260213_0401.html">20260213_0401</a>
+<a href="archive/20260212_0404.html">20260212_0404</a>
+<a href="archive/20260210_0409.html">20260210_0409</a>
+<a href="archive/20260208_0339.html">20260208_0339</a>
+<a href="archive/20260207_0349.html">20260207_0349</a>
+<a href="archive/20260206_0347.html">20260206_0347</a>
+<a href="archive/20260205_0346.html">20260205_0346</a>
+<a href="archive/20260204_0354.html">20260204_0354</a>
+<a href="archive/20260202_0337.html">20260202_0337</a>
+<a href="archive/20260201_0333.html">20260201_0333</a>
+<a href="archive/20260131_0345.html">20260131_0345</a>
+<a href="archive/20260130_0341.html">20260130_0341</a>
+<a href="archive/20260129_0344.html">20260129_0344</a>
+<a href="archive/20260128_0341.html">20260128_0341</a>
+<a href="archive/20260127_0338.html">20260127_0338</a>
+<a href="archive/20260126_0330.html">20260126_0330</a>
+<a href="archive/20260125_0329.html">20260125_0329</a>
+<a href="archive/20260124_0337.html">20260124_0337</a>
+<a href="archive/20260123_0337.html">20260123_0337</a>
+<a href="archive/20260122_0343.html">20260122_0343</a>
+<a href="archive/20260121_0424.html">20260121_0424</a>
+<a href="archive/20260119_0329.html">20260119_0329</a>
+<a href="archive/20260118_0327.html">20260118_0327</a>
+<a href="archive/20260117_0332.html">20260117_0332</a>
+<a href="archive/20260116_0339.html">20260116_0339</a>
+<a href="archive/20260115_0334.html">20260115_0334</a>
+<a href="archive/20260114_0333.html">20260114_0333</a>
+<a href="archive/20260113_0334.html">20260113_0334</a>
+<a href="archive/20260112_0331.html">20260112_0331</a>
+<a href="archive/20260111_0329.html">20260111_0329</a>
+<a href="archive/20260110_0333.html">20260110_0333</a>
+<a href="archive/20260109_0334.html">20260109_0334</a>
+<a href="archive/20260108_0335.html">20260108_0335</a>
+<a href="archive/20260107_0330.html">20260107_0330</a>
+<a href="archive/20260106_0336.html">20260106_0336</a>
+<a href="archive/20260105_0328.html">20260105_0328</a>
+<a href="archive/20260104_0328.html">20260104_0328</a>
+<a href="archive/20260103_0325.html">20260103_0325</a>
+<a href="archive/20260102_0339.html">20260102_0339</a>
+<a href="archive/20260101_0329.html">20260101_0329</a>
+<a href="archive/20251231_0333.html">20251231_0333</a>
+<a href="archive/20251230_0332.html">20251230_0332</a>
+<a href="archive/20251229_0329.html">20251229_0329</a>
+<a href="archive/20251228_0332.html">20251228_0332</a>
+<a href="archive/20251227_0329.html">20251227_0329</a>
+<a href="archive/20251226_0330.html">20251226_0330</a>
+<a href="archive/20251225_0329.html">20251225_0329</a>
+<a href="archive/20251224_0331.html">20251224_0331</a>
+<a href="archive/20251223_0332.html">20251223_0332</a>
+<a href="archive/20251222_0328.html">20251222_0328</a>
+<a href="archive/20251221_0329.html">20251221_0329</a>
+<a href="archive/20251220_0330.html">20251220_0330</a>
+<a href="archive/20251219_0330.html">20251219_0330</a>
+<a href="archive/20251218_0345.html">20251218_0345</a>
+<a href="archive/20251217_0332.html">20251217_0332</a>
+<a href="archive/20251216_0333.html">20251216_0333</a>
+<a href="archive/20251215_0333.html">20251215_0333</a>
+<a href="archive/20251214_0327.html">20251214_0327</a>
+<a href="archive/20251212_0333.html">20251212_0333</a>
+<a href="archive/20251211_0331.html">20251211_0331</a>
+<a href="archive/20251210_0332.html">20251210_0332</a>
+<a href="archive/20251209_0331.html">20251209_0331</a>
+<a href="archive/20251208_0328.html">20251208_0328</a>
+<a href="archive/20251207_0327.html">20251207_0327</a>
+<a href="archive/20251206_0330.html">20251206_0330</a>
+<a href="archive/20251205_0331.html">20251205_0331</a>
+<a href="archive/20251204_0331.html">20251204_0331</a>
+<a href="archive/20251203_0333.html">20251203_0333</a>
+<a href="archive/20251202_0335.html">20251202_0335</a>
+<a href="archive/20251201_0328.html">20251201_0328</a>
+<a href="archive/20251130_0327.html">20251130_0327</a>
+<a href="archive/20251129_0328.html">20251129_0328</a>
+<a href="archive/20251128_0327.html">20251128_0327</a>
+<a href="archive/20251127_0327.html">20251127_0327</a>
+<a href="archive/20251126_0329.html">20251126_0329</a>
+<a href="archive/20251125_0327.html">20251125_0327</a>
+<a href="archive/20251124_0327.html">20251124_0327</a>
+<a href="archive/20251123_0326.html">20251123_0326</a>
+<a href="archive/20251122_0328.html">20251122_0328</a>
+<a href="archive/20251121_0328.html">20251121_0328</a>
+<a href="archive/20251120_0329.html">20251120_0329</a>
+<a href="archive/20251119_0328.html">20251119_0328</a>
+<a href="archive/20251118_0328.html">20251118_0328</a>
+<a href="archive/20251117_0326.html">20251117_0326</a>
+<a href="archive/20251116_0325.html">20251116_0325</a>
+<a href="archive/20251115_0327.html">20251115_0327</a>
+<a href="archive/20251114_0328.html">20251114_0328</a>
+<a href="archive/20251113_0330.html">20251113_0330</a>
+<a href="archive/20251112_0329.html">20251112_0329</a>
+<a href="archive/20251111_0328.html">20251111_0328</a>
+<a href="archive/20251110_0325.html">20251110_0325</a>
+<a href="archive/20251109_0326.html">20251109_0326</a>
+<a href="archive/20251108_0328.html">20251108_0328</a>
+<a href="archive/20251107_0328.html">20251107_0328</a>
+<a href="archive/20251106_0329.html">20251106_0329</a>
+<a href="archive/20251105_0326.html">20251105_0326</a>
+<a href="archive/20251104_0327.html">20251104_0327</a>
+<a href="archive/20251103_0324.html">20251103_0324</a>
+<a href="archive/20251102_0326.html">20251102_0326</a>
+<a href="archive/20251101_0324.html">20251101_0324</a>
+<a href="archive/20251031_0328.html">20251031_0328</a>
+<a href="archive/20251030_0330.html">20251030_0330</a>
+<a href="archive/20251029_0329.html">20251029_0329</a>
+<a href="archive/20251028_0329.html">20251028_0329</a>
+<a href="archive/20251027_0322.html">20251027_0322</a>
+<a href="archive/20251026_0327.html">20251026_0327</a>
+<a href="archive/20251025_0331.html">20251025_0331</a>
+<a href="archive/20251024_0329.html">20251024_0329</a>
+<a href="archive/20251023_0329.html">20251023_0329</a>
+<a href="archive/20251022_0330.html">20251022_0330</a>
+<a href="archive/20251021_0331.html">20251021_0331</a>
+<a href="archive/20251020_0328.html">20251020_0328</a>
+<a href="archive/20251019_0321.html">20251019_0321</a>
+<a href="archive/20251018_0327.html">20251018_0327</a>
+<a href="archive/20251017_0320.html">20251017_0320</a>
+<a href="archive/20251016_0328.html">20251016_0328</a>
+<a href="archive/20251015_0328.html">20251015_0328</a>
+<a href="archive/20251014_0323.html">20251014_0323</a>
+<a href="archive/20251011_0328.html">20251011_0328</a>
+<a href="archive/20251010_0330.html">20251010_0330</a>
+<a href="archive/20251009_0321.html">20251009_0321</a>
+<a href="archive/20251008_0343.html">20251008_0343</a>
+<a href="archive/20251007_0353.html">20251007_0353</a>
+<a href="archive/20251006_0325.html">20251006_0325</a>
+<a href="archive/20251005_0350.html">20251005_0350</a>
+<a href="archive/20251004_0352.html">20251004_0352</a>
+<a href="archive/20251003_0352.html">20251003_0352</a>
+<a href="archive/20251002_0356.html">20251002_0356</a>
+<a href="archive/20251001_0321.html">20251001_0321</a>
+<a href="archive/20250925_0335.html">20250925_0335</a>
+<a href="archive/20250924_0350.html">20250924_0350</a>
+<a href="archive/20250923_0348.html">20250923_0348</a>
+<a href="archive/20250922_0346.html">20250922_0346</a>
+<a href="archive/20250921_0345.html">20250921_0345</a>
+<a href="archive/20250920_0342.html">20250920_0342</a>
+<a href="archive/20250919_0346.html">20250919_0346</a>
+<a href="archive/20250918_0342.html">20250918_0342</a>
+<a href="archive/20250917_0336.html">20250917_0336</a>
+<a href="archive/20250916_0333.html">20250916_0333</a>
+<a href="archive/20250915_0333.html">20250915_0333</a>
+<a href="archive/20250914_0328.html">20250914_0328</a>
+<a href="archive/20250913_0322.html">20250913_0322</a>
+<a href="archive/20250912_0335.html">20250912_0335</a>
+<a href="archive/20250911_0337.html">20250911_0337</a>
+<a href="archive/20250910_0338.html">20250910_0338</a>
+<a href="archive/20250909_0341.html">20250909_0341</a>
+<a href="archive/20250908_0342.html">20250908_0342</a>
+<a href="archive/20250907_0333.html">20250907_0333</a>
+<a href="archive/20250906_0350.html">20250906_0350</a>
+<a href="archive/20250905_0319.html">20250905_0319</a>
+<a href="archive/20250904_0323.html">20250904_0323</a>
+<a href="archive/20250903_0355.html">20250903_0355</a>
+<a href="archive/20250902_0325.html">20250902_0325</a>
+<a href="archive/20250901_0355.html">20250901_0355</a>
+<a href="archive/20250831_0355.html">20250831_0355</a>
+<a href="archive/20250830_0356.html">20250830_0356</a>
+<a href="archive/20250829_0355.html">20250829_0355</a>
+<a href="archive/20250828_0333.html">20250828_0333</a>
+<a href="archive/20250827_1654.html">20250827_1654</a>
+<a href="archive/20250827_1602.html">20250827_1602</a>
+<a href="archive/20250827_1557.html">20250827_1557</a>
+<a href="archive/20250827_0320.html">20250827_0320</a>
+<a href="archive/20250826_0320.html">20250826_0320</a>
+<a href="archive/20250825_1752.html">20250825_1752</a>
+<a href="archive/20250825_1709.html">20250825_1709</a>
+<a href="archive/20250825_1652.html">20250825_1652</a>
+<a href="archive/20250825_1647.html">20250825_1647</a>
+<a href="archive/20250825_1645.html">20250825_1645</a>
+<a href="archive/20250825_1631.html">20250825_1631</a>
+<a href="archive/20250825_1606.html">20250825_1606</a>
+<a href="archive/20250825_1559.html">20250825_1559</a>
+<a href="archive/20250825_1558.html">20250825_1558</a>
+<a href="archive/20250825_1556.html">20250825_1556</a>
+<a href="archive/20250825_1531.html">20250825_1531</a>
+<a href="archive/20250825_1525.html">20250825_1525</a>
+<a href="archive/20250825_1516.html">20250825_1516</a>
+<a href="archive/20250825_1450.html">20250825_1450</a>
+<a href="archive/20250825_1444.html">20250825_1444</a>
+<a href="archive/20250825_1438.html">20250825_1438</a>
+<a href="archive/20250825_1414.html">20250825_1414</a>
+<a href="archive/20250825_1413.html">20250825_1413</a>
+<a href="archive/20250825_1410.html">20250825_1410</a>
+<a href="archive/20250825_1408.html">20250825_1408</a>
+<a href="archive/20250825_1405.html">20250825_1405</a>
+<a href="archive/20250825_1401.html">20250825_1401</a>
+<a href="archive/20250825_1355.html">20250825_1355</a>
+<a href="archive/20250825_1347.html">20250825_1347</a>
+<a href="archive/20250825_1345.html">20250825_1345</a>
+<a href="archive/20250825_1344.html">20250825_1344</a>
+<a href="archive/20250825_1343.html">20250825_1343</a>
+<a href="archive/20250825_1340.html">20250825_1340</a>
+<a href="archive/20250825_1339.html">20250825_1339</a>
+<a href="archive/20250825_1333.html">20250825_1333</a>
+<a href="archive/20250825_1323.html">20250825_1323</a>
+<a href="archive/20250825_1317.html">20250825_1317</a>
+<a href="archive/20250825_1243.html">20250825_1243</a>
+<a href="archive/20250824_0342.html">20250824_0342</a>
+<a href="archive/20250823_0343.html">20250823_0343</a>
+<a href="archive/20250823_0142.html">20250823_0142</a>
+<a href="archive/20250822_2331.html">20250822_2331</a>
+<a href="archive/20250822_2308.html">20250822_2308</a>
+<a href="archive/20250822_2258.html">20250822_2258</a>
+<a href="archive/20250822_2241.html">20250822_2241</a>
+<a href="archive/20250822_2228.html">20250822_2228</a>
+<a href="archive/20250822_2206.html">20250822_2206</a>
+<a href="archive/20250822_2147.html">20250822_2147</a>
+<a href="archive/20250822_2111.html">20250822_2111</a>
+<a href="archive/20250822_1259.html">20250822_1259</a>
+<a href="archive/20250822_1233.html">20250822_1233</a>
+<a href="archive/20250822_1229.html">20250822_1229</a>
+<a href="archive/20250822_1223.html">20250822_1223</a>
+<a href="archive/20250822_1210.html">20250822_1210</a>
+<a href="archive/20250822_1201.html">20250822_1201</a>
+<a href="archive/20250822_1111.html">20250822_1111</a>
+<a href="archive/20250822_1058.html">20250822_1058</a>
+<a href="archive/20250822_1052.html">20250822_1052</a>
+<a href="archive/20250822_1045.html">20250822_1045</a>
+<a href="archive/20250822_0657.html">20250822_0657</a>
+<a href="archive/20250822_0553.html">20250822_0553</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
